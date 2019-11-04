@@ -1,0 +1,59 @@
+@font-face {
+  font-family: Nexa;
+  src: local(NexaRegular),
+    url(/fonts/NexaRegular.otf) format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+}
+@font-face {
+  font-family: Nexa;
+  src: local(NexaBold),
+    url(/fonts/NexaBold.otf) format("opentype");
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+}
+@mixin Text-Style {
+  font-size: 48px;
+  font-weight: bold;
+  line-height: 1.35;
+  text-align: left;
+  color: $black;
+}
+@mixin Text-Style-2 {
+  font-size: 24px;
+  line-height: 2.71;
+  text-align: left;
+  color: $black;
+}
+@mixin Text-Style-3 {
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 3.61;
+  text-align: left;
+  color: #ffffff;
+}
+@mixin Text-Style-4 {
+  font-size: 18px;
+  line-height: 3.61;
+  text-align: left;
+  color: $black;
+}
+
+body {
+  font-family: Nexa;
+}
+
+.text-1 {
+  @include Text-Style();
+}
+.text-2 {
+  @include Text-Style-2();
+}
+.text-3 {
+  @include Text-Style-3();
+}
+.text-4 {
+  @include Text-Style-4();
+}

@@ -1,0 +1,51 @@
+@import "colors";
+
+%btn {
+  height: 60px;
+  box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.16);
+  border-radius: 100px;
+}
+
+%btn-ghost {
+  @extend %btn;
+  border-width: 3px;
+}
+
+.btn-reset {
+  background: transparent;
+  border: none;
+}
+
+.btn-sm {
+  @extend %btn;
+  width: 195px;
+}
+
+.btn-lg {
+  @extend %btn;
+  width: 300px;
+}
+
+.btn--primary {
+  background-color: $dark-hot-pink;
+  color: $white;
+}
+
+.btn--primary-ghost {
+  @extend %btn-ghost;
+  border-color: $dark-hot-pink;
+}
+
+.btn--secondary,
+.btn--secondary-ghost {
+  @extend %btn-ghost;
+  border-color: $white;
+}
+
+.link--primary {
+  color: $dark-hot-pink;
+}
+
+.link--secondary {
+  color: $black;
+}

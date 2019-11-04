@@ -1,0 +1,39 @@
+{
+  "name": "f5",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "babel-node app.js",
+    "dev": "run-p dev:js dev:sass",
+    "dev:js": "nodemon --exec babel-node app.js",
+    "dev:sass": "npm run compile:sass -- --watch",
+    "babel-node": "babel-node",
+    "sass": "sass",
+    "compile:sass": "sass styles:dist/css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/cli": "^7.6.4",
+    "bcryptjs": "^2.4.3",
+    "connect-flash": "^0.1.1",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.0",
+    "express-session": "^1.16.2",
+    "mongoose": "^5.7.4",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/node": "^7.6.3",
+    "@babel/preset-env": "^7.6.3",
+    "nodemon": "^1.19.3",
+    "npm-run-all": "^4.1.5",
+    "sass": "^1.23.3"
+  }
+}

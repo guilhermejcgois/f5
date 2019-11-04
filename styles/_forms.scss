@@ -1,0 +1,27 @@
+@import 'colors';
+@import 'typography';
+
+.form-control {
+  @extend .text-2;
+
+  height: 60px;
+  border-radius: 100px;
+  border: solid 1px $light-grey;
+  background-color: $white;
+
+  line-height: 3.25;
+  letter-spacing: normal;
+  text-align: left;
+
+  padding-left: 30px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-footer {
+    display: flex;
+    justify-content: space-between;
+}

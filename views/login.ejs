@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="css/login.css">
+<section class="login">
+  <aside class="login__left-side">
+    <img src="img/login.png" srcset="img/login@2x.png 2x,
+                 img/login@3x.png 3x">
+  </aside>
+  <main class="login__right-side">
+    <span class="login__register-link text-4">
+      Não possui uma conta? <a class="link--primary" href="/cadastro">Registre-se</a>
+    </span>
+    <div class="login__box">
+      <h2 class="text-1">Acesse sua conta</h2>
+      <h4 class="text-2">Insira seus dados abaixo</h4>
+      <form action="/users/login" method="POST">
+        <div class="form-group">
+          <label class="text-2" for="email">Email comercial</label>
+          <input type="email" id="email" name="email" class="form-control" placeholder="Digite seu email" />
+        </div>
+        <div class="form-group">
+          <label class="text-2" for="password">Senha</label>
+          <input type="password" id="password" name="password" class="form-control" placeholder="Digite sua senha" />
+        </div>
+        <div class="form-footer">
+          <button type="submit" class="btn-sm btn--primary">Login</button>
+          <a class="text-4" href="/esqueci-minha-senha">Esqueceu sua senha?</a>
+        </div>
+      </form>
+    </div>
+  </main>
+</section>

@@ -1,0 +1,62 @@
+<link rel="stylesheet" href="css/register.css">
+<section class="register">
+  <aside class="register__left-side">
+    <img src="img/register.png" srcset="img/register@2x.png 2x,
+                   img/register@3x.png 3x">
+  </aside>
+  <main class="register__right-side">
+    <span class="register__register-link text-4">
+      Já possui uma conta? <a class="link--primary" href="/login">Entre aqui</a>
+    </span>
+    <div class="register__box">
+      <h2 class="text-1">1. Dados da empresa</h2>
+      <h4 class="text-2">Insira os dados da sua empresa abaixo</h4>
+      <form action="/users/register/1" method="POST">
+        <div class="form-group">
+          <label class="text-2" for="organization">Nome da empresa</label>
+          <input type="text" id="organization" name="organization" class="form-control" placeholder="Digite o nome da sua empresa" />
+        </div>
+        <div class="form-group">
+          <label class="text-2" for="address">Endereço</label>
+          <input type="text" id="address" name="address" class="form-control" placeholder="Digite o endereço da empresa" />
+        </div>
+        <div class="form-group">
+          <label class="text-2" for="cnpj">CNPJ</label>
+          <input type="text" id="cnpj" name="cnpj" class="form-control" placeholder="Digite o CNPJ da empresa sem pontos" />
+        </div>
+        <div class="form-group">
+          <label class="text-2" for="phone">Telefone comercial</label>
+          <input type="tel" id="phone" name="phone" class="form-control" placeholder="(11) XXXX-XXXX" />
+        </div>
+        <div class="form-footer">
+          <span></span>
+          <button type="submit" class="btn-reset link--primary">Prosseguir &gt;</button>
+        </div>
+      </form>
+    </div>
+    <div class="register__box">
+      <h2 class="text-1">2. Dados de cadastro</h2>
+      <h4 class="text-2">Insira seus dados abaixo</h4>
+      <form action="/users/register/2" method="POST">
+        <div class="form-group">
+          <label class="text-2" for="email">Email comercial</label>
+          <input type="email" id="email" name="email" class="form-control" placeholder="Digite seu email" />
+        </div>
+        <div class="form-group">
+          <label class="text-2" for="password">Senha</label>
+          <input type="password" id="password" name="password" class="form-control" placeholder="Digite sua senha" />
+        </div>
+        <div class="form-group">
+          <label class="text-2" for="confirmPassword">Confirme sua senha</label>
+          <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" placeholder="Confirme a senha acima" />
+        </div>
+        <div class="form-group">
+          <label class="text-2" for="accept"><input name="accept" id="accept" type="checkbox" />Aceitos os <a class="link--primary" href="">Termos de Serviço e Política de Privacidade.</a></label>
+        </div>
+        <div class="form-footer">
+          <button type="submit" class="btn-sm btn--primary">Registrar</button>
+        </div>
+      </form>
+    </div>
+  </main>
+</section>
