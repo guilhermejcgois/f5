@@ -5,6 +5,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "prestart": "npm run compile:sass",
     "start": "babel-node app.js",
     "dev": "run-p dev:js dev:sass",
     "dev:js": "nodemon --exec babel-node app.js",
