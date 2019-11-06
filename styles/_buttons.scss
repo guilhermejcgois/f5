@@ -1,9 +1,13 @@
 @import "colors";
+@import "variables";
 
 %btn {
   height: 60px;
   box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.16);
   border-radius: 100px;
+  border: none;
+  font-size: $text-3-font-size;
+  cursor: pointer;
 }
 
 %btn-ghost {
