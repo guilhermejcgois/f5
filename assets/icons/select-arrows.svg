@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="7.888" height="17.75" viewBox="0 0 7.888 17.75">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Caminho_29" data-name="Caminho 29" d="M3.944.547,7.888-5H0Z" transform="translate(0 5)" fill="#bcbcbc" clip-rule="evenodd"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <path id="Caminho_28" data-name="Caminho 28" d="M-824,452.455H73.475V-252H-824Z" transform="translate(824 252)" fill="#bcbcbc"/>
+    </clipPath>
+    <clipPath id="clip-path-3">
+      <rect id="Retângulo_54" data-name="Retângulo 54" width="26" height="28" transform="translate(-0.409 0)" fill="#bcbcbc"/>
+    </clipPath>
+    <clipPath id="clip-path-5">
+      <path id="Caminho_24" data-name="Caminho 24" d="M0,.547H7.888V-5H0Z" transform="translate(0 5)" fill="#bcbcbc"/>
+    </clipPath>
+    <clipPath id="clip-path-7">
+      <path id="Caminho_36" data-name="Caminho 36" d="M3.944-16l3.944,5.547H0Z" transform="translate(0 16)" fill="#bcbcbc" clip-rule="evenodd"/>
+    </clipPath>
+    <clipPath id="clip-path-9">
+      <rect id="Retângulo_55" data-name="Retângulo 55" width="26" height="28" transform="translate(-0.409)" fill="#bcbcbc"/>
+    </clipPath>
+    <clipPath id="clip-path-11">
+      <path id="Caminho_31" data-name="Caminho 31" d="M0-10.453H7.888V-16H0Z" transform="translate(0 16)" fill="#bcbcbc"/>
+    </clipPath>
+  </defs>
+  <g id="Grupo_55" data-name="Grupo 55" transform="translate(0 16)">
+    <g id="Grupo_46" data-name="Grupo 46" transform="translate(0 -3.797)" clip-path="url(#clip-path)">
+      <g id="Grupo_45" data-name="Grupo 45" transform="translate(-722.187 -274.016)" clip-path="url(#clip-path-2)">
+        <g id="Grupo_44" data-name="Grupo 44" transform="translate(713.484 262.813)" style="isolation: isolate">
+          <g id="Grupo_43" data-name="Grupo 43" transform="translate(0 0)" clip-path="url(#clip-path-3)">
+            <g id="Grupo_41" data-name="Grupo 41" transform="translate(8.703 11.203)" clip-path="url(#clip-path)">
+              <g id="Grupo_40" data-name="Grupo 40" clip-path="url(#clip-path-5)">
+                <path id="Caminho_23" data-name="Caminho 23" d="M3.944.547,7.888-5H0Z" transform="translate(0 5)" fill="#bcbcbc"/>
+              </g>
+            </g>
+            <g id="Grupo_42" data-name="Grupo 42" transform="translate(8.703 11.203)" clip-path="url(#clip-path-5)">
+              <path id="Caminho_26" data-name="Caminho 26" d="M3.944.547,7.888-5H0Z" transform="translate(0 5)" fill="#bcbcbc"/>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="Grupo_54" data-name="Grupo 54" transform="translate(0 -16)" clip-path="url(#clip-path-7)">
+      <g id="Grupo_53" data-name="Grupo 53" transform="translate(-722.187 -261.813)" clip-path="url(#clip-path-2)">
+        <g id="Grupo_52" data-name="Grupo 52" transform="translate(713.484 250.813)" style="isolation: isolate">
+          <g id="Grupo_51" data-name="Grupo 51" transform="translate(0 0)" clip-path="url(#clip-path-9)">
+            <g id="Grupo_48" data-name="Grupo 48" transform="translate(8.703 11)" clip-path="url(#clip-path-7)">
+              <g id="Grupo_47" data-name="Grupo 47" clip-path="url(#clip-path-11)">
+                <path id="Caminho_30" data-name="Caminho 30" d="M3.944-16l3.944,5.547H0Z" transform="translate(0 16)" fill="#bcbcbc"/>
+              </g>
+            </g>
+            <g id="Grupo_50" data-name="Grupo 50" transform="translate(8.703 11)" clip-path="url(#clip-path-11)">
+              <g id="Grupo_49" data-name="Grupo 49">
+                <path id="Caminho_33" data-name="Caminho 33" d="M3.944,0,7.888,5.547H0Z" fill="#bcbcbc"/>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -54,6 +54,7 @@ app.use('/users', require('./routes/users').default);
 
 app.use('/css', express.static(__dirname + '/dist/css'));
 app.use('/fonts', express.static(__dirname + '/assets/fonts'));
+app.use('/icons', express.static(__dirname + '/assets/icons'));
 app.use('/img', express.static(__dirname + '/assets/img'));
 
 const PORT = process.env.PORT || 5000;
