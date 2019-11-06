@@ -1,7 +1,7 @@
 import { Router } from 'express';
 const router = Router();
 import { genSalt, hash as _hash } from 'bcryptjs';
-import { authenticate } from 'passport';
+import passport from 'passport';
 
 // Bin model
 import { Bin } from '../models/Bins';
@@ -90,9 +90,9 @@ router.post('/register', (req, res) => {
 
 // Local Handle
 router.post('/login', (req, res, next) => {
-    authenticate('local', {
+    passport.authenticate('local', {
         successRedirect: '/dashboard',
-        failureRedirect: '/users/login',
+        failureRedirect: '/login',
         failureFlash: true
     })(req, res, next);
 
