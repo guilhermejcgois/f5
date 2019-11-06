@@ -20,6 +20,7 @@
   "dependencies": {
     "@babel/cli": "^7.6.4",
     "bcryptjs": "^2.4.3",
+    "bootstrap": "^4.3.1",
     "connect-flash": "^0.1.1",
     "ejs": "^2.7.1",
     "express": "^4.17.1",
