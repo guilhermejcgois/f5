@@ -1,7 +1,7 @@
-import { Router } from 'express';
+import express from 'express';
 import configAuth from '../config/auth';
 
-const router = Router();
+const router = express.Router();
 
 router.get('/', (req, res) => res.redirect('login'));
 router.get('/login', (req, res) => res.render('login'));

@@ -22,8 +22,8 @@
       <h4 class="text-2">Insira os dados da sua empresa abaixo</h4>
       <form id="form-step-1">
         <div class="form-group">
-          <label class="text-2" for="organization">Nome da empresa *</label>
-          <input type="text" id="organization" name="organization" class="form-control" placeholder="Digite o nome da sua empresa" required/>
+          <label class="text-2" for="name">Nome da empresa *</label>
+          <input type="text" id="name" name="name" class="form-control" placeholder="Digite o nome da sua empresa" required/>
         </div>
         <div class="form-group">
           <label class="text-2" for="address">Endereço *</label>
@@ -34,8 +34,8 @@
           <input type="text" id="cnpj" name="cnpj" class="form-control" placeholder="Digite o CNPJ da empresa sem pontos" required/>
         </div>
         <div class="form-group">
-          <label class="text-2" for="phone">Telefone comercial (opcional)</label>
-          <input type="tel" id="phone" name="phone" class="form-control" placeholder="(11) XXXX-XXXX" />
+          <label class="text-2" for="tel">Telefone comercial (opcional)</label>
+          <input type="tel" id="tel" name="tel" class="form-control" placeholder="(11) XXXX-XXXX" />
         </div>
         <div class="form-footer">
           <span></span>
@@ -97,12 +97,8 @@
 
     if ($('#password.form-control').val() !== $('#confirm_password.form-control').val()) { return; }
 
-    let data = [];
-    $('form').each(() => {
-      data.push($(this).serialize());
-    });
-
-    $.post('users/register', data.join('&'));
+    const data = $(this).serialize() + '&' + $(lopBox1Sel + ' form').serialize();
+    $.post('users/register', data);
   });
 
   const password = $('#password.form-control');

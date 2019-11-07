@@ -15,7 +15,7 @@ const OrganizationSchema = new mongoose.Schema({
     },
     tel: {
         type: String,
-        required: true
+        required: false
     }
 });
 

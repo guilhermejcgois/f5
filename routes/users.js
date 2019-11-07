@@ -1,89 +1,100 @@
-import { Router } from 'express';
-const router = Router();
+import express from 'express';
+const router = express.Router();
 import { genSalt, hash as _hash } from 'bcryptjs';
 import passport from 'passport';
 
-// Bin model
-import { Bin } from '../models/Bins';
-
-// User model
-import User, { findOne } from '../models/User';
+import { Organization } from '../models/Organization';
+import { User } from '../models/User';
 
 // Register Handle
 router.post('/register', (req, res) => {
-    const { name, email, password, password2, latitude, longitude } = req.body;
+    const { name, email, password, confirm_password, address, cnpj, tel, accept } = req.body;
     let errors = [];
 
     // Check required fields
-    if (!name || !email || !password || !password2) {
-        errors.push({ msg: 'Please fill in all fields' });
+    if (!name || !email || !password || !confirm_password || !address || !cnpj) {
+        errors.push({ msg: 'Preencha todos os campos por favor' });
     }
 
     // Check if passwords match
-    if (password !== password2) {
-        errors.push({ msg: 'Passwords do not match' });
+    if (password !== confirm_password) {
+        errors.push({ msg: 'As senhas não conferem' });
     }
 
     // Check pass length
     if (password.length < 6) {
-        errors.push({ msg: 'Password should be at least 6 characters' });
+        errors.push({ msg: 'A senha precisa ter pelo menos 6 caracteres' });
     }
 
-    if (errors.length > 0) {
+    if (!accept || accept != 'on') {
+        errors.push({ msg: 'É obrigatório aceitar nossos termos' });
+    }
+
+    const renderError = () => {
         res.render('register', {
             errors,
             name,
             email,
-            password,
-            password2
+            address,
+            cnpj,
+            phone
         });
-    } else {
-        // Validation passed
-        findOne({ email: email })
-            .then(user => {
-                if (user) {
-                    // User exists
-                    errors.push({ msg: 'Email is already taken' });
-                    res.render('register', {
-                        errors,
-                        name,
-                        email,
-                        password,
-                        password2
-                    });
-                } else {
-                    const newBin = new Bin({
-                        coords: {
-                            latitude,
-                            longitude
-                        }
-                    });
-                    const newUser = new User({
-                        name,
-                        email,
-                        password,
-                        bins: [
-                            newBin
-                        ]
-                    });
+    };
 
-                    // Hash Password
-                    genSalt(10, (err, salt) =>
-                        _hash(newUser.password, salt, (err, hash) => {
-                            if (err) throw err;
-                            // Set password to hash
-                            newUser.password = hash;
-                            // Save user
-                            newBin.save()
-                            newUser.save()
-                                .then(user => {
-                                    req.flash('success_msg', 'You are now registered and can log in :D');
-                                    res.redirect('/users/login');
-                                })
-                                .catch(err => console.log(err));
-                        }))
-                }
-            });
+    if (errors.length > 0) {
+        renderError();
+    } else {
+        let organization;
+        let user;
+
+        // Validation passed
+        const hashCb = (user) => (err, hash) => {
+            if (err) throw err;
+            // Set password to hash
+            user.password = hash;
+            user.organization.save()
+                .then(() => user.save())
+                .then(user => {
+                    req.flash('success_msg', 'Você já está cadastrado e agora já pode fazer seu login');
+                    res.redirect('/login');
+                })
+                .catch(err => console.log(err));
+        };
+        const genSaltCb = (user) => (err, salt) =>
+            _hash(user.password, salt, hashCb(user));
+        const thenUser = user => {
+            if (user) {
+                // User exists
+                errors.push({ msg: 'Email já cadastrado' });
+                renderError();
+            } else {
+                user = new User({
+                    email,
+                    password,
+                    organization: organization
+                });
+
+                // Hash Password
+                genSalt(10, genSaltCb(user));
+            }
+        };
+        const thenOrg = org => {
+            if (org) {
+                errors.push({ msg: 'Organização já cadastrada' });
+                renderError();
+            } else {
+                organization = new Organization({
+                    name,
+                    address,
+                    cnpj,
+                    tel
+                });
+
+                User.findOne({ email }).then(thenUser);
+            }
+        };
+
+        Organization.findOne({ name }).then(thenOrg);    
     }
 
 });
@@ -97,6 +108,8 @@ router.post('/login', (req, res, next) => {
     })(req, res, next);
 
 });
+
+router.get('/login', (req, res) => res.redirect('../login'));
 
 // Logout Handle
 router.get('/logout', (req, res) => {
