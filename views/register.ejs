@@ -22,19 +22,19 @@
       <h4 class="text-2">Insira os dados da sua empresa abaixo</h4>
       <form id="form-step-1">
         <div class="form-group">
-          <label class="text-2" for="organization">Nome da empresa</label>
-          <input type="text" id="organization" name="organization" class="form-control" placeholder="Digite o nome da sua empresa" />
+          <label class="text-2" for="organization">Nome da empresa *</label>
+          <input type="text" id="organization" name="organization" class="form-control" placeholder="Digite o nome da sua empresa" required/>
         </div>
         <div class="form-group">
-          <label class="text-2" for="address">Endereço</label>
-          <input type="text" id="address" name="address" class="form-control" placeholder="Digite o endereço da empresa" />
+          <label class="text-2" for="address">Endereço *</label>
+          <input type="text" id="address" name="address" class="form-control" placeholder="Digite o endereço da empresa" required/>
         </div>
         <div class="form-group">
-          <label class="text-2" for="cnpj">CNPJ</label>
-          <input type="text" id="cnpj" name="cnpj" class="form-control" placeholder="Digite o CNPJ da empresa sem pontos" />
+          <label class="text-2" for="cnpj">CNPJ *</label>
+          <input type="text" id="cnpj" name="cnpj" class="form-control" placeholder="Digite o CNPJ da empresa sem pontos" required/>
         </div>
         <div class="form-group">
-          <label class="text-2" for="phone">Telefone comercial</label>
+          <label class="text-2" for="phone">Telefone comercial (opcional)</label>
           <input type="tel" id="phone" name="phone" class="form-control" placeholder="(11) XXXX-XXXX" />
         </div>
         <div class="form-footer">
@@ -48,19 +48,20 @@
       <h4 class="text-2">Insira seus dados abaixo</h4>
       <form id="form-step-2">
         <div class="form-group">
-          <label class="text-2" for="email">Email comercial</label>
-          <input type="email" id="email" name="email" class="form-control" placeholder="Digite seu email" />
+          <label class="text-2" for="email">Email comercial *</label>
+          <input type="email" id="email" name="email" class="form-control" placeholder="Digite seu email" required/>
         </div>
         <div class="form-group">
-          <label class="text-2" for="password">Senha</label>
-          <input type="password" id="password" name="password" class="form-control" placeholder="Digite sua senha" />
+          <label class="text-2" for="password">Senha *</label>
+          <input minlength="6" type="password" id="password" name="password" class="form-control" placeholder="Digite sua senha" required/>
         </div>
         <div class="form-group">
-          <label class="text-2" for="confirmPassword">Confirme sua senha</label>
-          <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" placeholder="Confirme a senha acima" />
+          <label class="text-2" for="confirm_password">Confirme sua senha *</label>
+          <input minlength="6" type="password" id="confirm_password" name="confirm_password" class="form-control" placeholder="Confirme a senha acima" required/>
+          <div class="form-error"></div>
         </div>
         <div class="form-group">
-          <label class="text-2" for="accept"><input name="accept" id="accept" type="checkbox" />Aceitos os <a class="link--primary" href="">Termos de Serviço e Política de Privacidade.</a></label>
+          <label class="text-2" for="accept"><input name="accept" id="accept" type="checkbox" required />Aceitos os <a class="link--primary" href="">Termos de Serviço e Política de Privacidade.</a></label>
         </div>
         <div class="form-footer">
           <button type="submit" class="btn-sm btn--primary">Registrar</button>
@@ -73,11 +74,10 @@
 </section>
 
 <script>
-  var step = 1;
-  var lopBox1Sel = '.lop__box.step-1';
-  var lopBox2Sel = '.lop__box.step-2';
-  var lopBox1 = $(lopBox1Sel);
-  var lopBox2 = $(lopBox2Sel);
+  const lopBox1Sel = '.lop__box.step-1';
+  const lopBox2Sel = '.lop__box.step-2';
+  const lopBox1 = $(lopBox1Sel);
+  const lopBox2 = $(lopBox2Sel);
 
   lopBox1.removeClass('hide');
 
@@ -94,5 +94,29 @@
   
   $(lopBox2Sel + ' form').submit(function (e) {
     e.preventDefault();
+
+    if ($('#password.form-control').val() !== $('#confirm_password.form-control').val()) { return; }
+
+    let data = [];
+    $('form').each(() => {
+      data.push($(this).serialize());
+    });
+
+    $.post('users/register', data.join('&'));
   });
+
+  const password = $('#password.form-control');
+  const confirmPassword = $('#confirm_password.form-control');
+  const confirmPasswordError = $('#confirm_password.form-control ~ .form-error');
+  function validatePassword() {
+    if (password.val() != confirmPassword.val()) {
+      confirmPassword.get(0).setCustomValidity('As duas senhas não conferem');
+      confirmPasswordError.text('As duas senhas não conferem');
+    } else {
+      confirmPassword.get(0).setCustomValidity('');
+      confirmPasswordError.text('');
+    }
+  }
+  password.change(validatePassword);
+  confirmPassword.keyup(validatePassword);
 </script>
