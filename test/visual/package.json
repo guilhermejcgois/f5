@@ -1,0 +1,9 @@
+{
+  "name": "f5-test-visual",
+  "scripts": {
+    "test": "percy exec -- node snapshots.js"
+  },
+  "devDependencies": {
+    "@percy/script": "^1.0.2"
+  }
+}
