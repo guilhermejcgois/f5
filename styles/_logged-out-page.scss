@@ -1,0 +1,81 @@
+@import "colors";
+@import "variables";
+
+.lop,
+.logged-out-page {
+  height: 100vh;
+  width: 100vw;
+
+  display: flex;
+
+  > * {
+    min-width: 50vw;
+  }
+
+  &__left-text {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    color: $white;
+
+    span {
+        line-height: normal;
+    }
+  }
+
+  &__left-side img {
+    height: 100%;
+    width: 100%;
+  }
+
+  &__left-side,
+  &__right-side {
+    position: relative;
+  }
+
+  &__right-side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__box,
+  &__header {
+    box-sizing: border-box;
+    padding: 1rem 5.625rem 0 5rem;
+    width: 100%;
+  }
+
+  &__header {
+    position: absolute;
+    top: 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .form-footer {
+    margin-top: 50px;
+  }
+
+  &__header img {
+    margin-left: -27px;
+  
+    @media screen and (max-width: $xlg-width) {
+      height: 64px;
+      width: 64px;
+    }
+  
+    @media screen and (min-width: $xlg-width) {
+      height: 110px;
+      width: 110px;
+    }
+  }
+}
+

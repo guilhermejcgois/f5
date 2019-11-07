@@ -1,17 +1,26 @@
+<% include ./partials/messages %>
 <link rel="stylesheet" href="css/register.css">
-<section class="register">
-  <aside class="register__left-side">
+<section class="register lop">
+  <aside class="lop__left-side">
     <img src="img/register.png" srcset="img/register@2x.png 2x,
                    img/register@3x.png 3x">
+    <div class="lop__left-text text-0-slab">
+      <span>Venha fazer parte</span>
+      <span>desse movimento</span>
+    </div>
   </aside>
-  <main class="register__right-side">
-    <span class="register__register-link text-4">
-      Já possui uma conta? <a class="link--primary" href="/login">Entre aqui</a>
-    </span>
-    <div class="register__box">
+  <main class="lop__right-side">
+    <div class="lop__header">
+      <img src="img/f5_fundo_escuro.png" srcset="img/f5_fundo_escuro@2x.png 2x,
+                           img/f5_fundo_escuro@3x.png 3x">
+      <span class="lop__login-link text-4">
+        Já possui uma conta? <a class="link--primary" href="/login">Entre aqui</a>
+      </span>
+    </div>
+    <div class="lop__box step-1 hide">
       <h2 class="text-1">1. Dados da empresa</h2>
       <h4 class="text-2">Insira os dados da sua empresa abaixo</h4>
-      <form action="/users/register/1" method="POST">
+      <form id="form-step-1">
         <div class="form-group">
           <label class="text-2" for="organization">Nome da empresa</label>
           <input type="text" id="organization" name="organization" class="form-control" placeholder="Digite o nome da sua empresa" />
@@ -30,14 +39,14 @@
         </div>
         <div class="form-footer">
           <span></span>
-          <button type="submit" class="btn-reset link--primary">Prosseguir &gt;</button>
+          <button type="submit" class="link--primary">Prosseguir</button>
         </div>
       </form>
     </div>
-    <div class="register__box">
+    <div class="lop__box step-2 hide">
       <h2 class="text-1">2. Dados de cadastro</h2>
       <h4 class="text-2">Insira seus dados abaixo</h4>
-      <form action="/users/register/2" method="POST">
+      <form id="form-step-2">
         <div class="form-group">
           <label class="text-2" for="email">Email comercial</label>
           <input type="email" id="email" name="email" class="form-control" placeholder="Digite seu email" />
@@ -55,8 +64,35 @@
         </div>
         <div class="form-footer">
           <button type="submit" class="btn-sm btn--primary">Registrar</button>
+
+          <button type="button" class="link--primary">Voltar</button>
         </div>
       </form>
     </div>
   </main>
 </section>
+
+<script>
+  var step = 1;
+  var lopBox1Sel = '.lop__box.step-1';
+  var lopBox2Sel = '.lop__box.step-2';
+  var lopBox1 = $(lopBox1Sel);
+  var lopBox2 = $(lopBox2Sel);
+
+  lopBox1.removeClass('hide');
+
+  $(lopBox1Sel + ' form').submit(function (e) {
+    e.preventDefault();
+    lopBox1.addClass('hide');
+    lopBox2.removeClass('hide');
+  });
+
+  $(lopBox2Sel + ' form .link--primary').click(function () {
+    lopBox2.addClass('hide');
+    lopBox1.removeClass('hide');
+  });
+  
+  $(lopBox2Sel + ' form').submit(function (e) {
+    e.preventDefault();
+  });
+</script>

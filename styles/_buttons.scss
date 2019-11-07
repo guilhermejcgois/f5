@@ -15,9 +15,10 @@
   border-width: 3px;
 }
 
-.btn-reset {
+%btn-reset {
   background: transparent;
   border: none;
+  cursor: pointer;
 }
 
 .btn-sm {
@@ -47,9 +48,11 @@
 }
 
 .link--primary {
+  @extend %btn-reset;
   color: $dark-hot-pink;
 }
 
 .link--secondary {
+  @extend %btn-reset;
   color: $black;
 }
