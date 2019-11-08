@@ -16,6 +16,15 @@
         <%- body %>
     </div>
 
-
+    <script>
+        window.doLogin = () => {
+            $('#email').val('guijocargo@gmail.com');
+            $('#password').val('123456');
+            $('#login').click();
+        };
+        window.doLogout = () => {
+            $('#logout').click();
+        }
+    </script>
 </body>
 </html>
