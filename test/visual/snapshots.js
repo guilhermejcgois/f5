@@ -43,4 +43,11 @@ PercyScript.run(async (page, percySnapshot) => {
     
     await page.click('#logout')
     await percySnapshot('Login page after logout');
+    
+    await page.waitFor('#login');
+    await page.type('#email', 'empresa@teste.com');
+    await page.type('#password', '123456');
+    await page.click('#login');
+    await page.waitFor('#logout');
+    await percySnapshot('Dashboard page for not paying user');
 });
