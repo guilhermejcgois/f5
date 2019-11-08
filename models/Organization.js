@@ -16,6 +16,11 @@ const OrganizationSchema = new mongoose.Schema({
     tel: {
         type: String,
         required: false
+    },
+    payed: {
+        type: Boolean,
+        required: true,
+        default: false
     }
 });
 
