@@ -1,7 +1,20 @@
 @import 'reset';
 
+.container {
+  height: 100vh;
+  width: 100vw;
+}
+
 .capitalize {
   text-transform: capitalize;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.pointer {
+  cursor: pointer;
 }
 
 .hide {
@@ -19,6 +32,7 @@ img {
 
 @import 'buttons';
 @import 'forms';
+@import 'icons';
 @import 'typography';
 
 @import "../node_modules/bootstrap/scss/functions";

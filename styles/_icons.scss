@@ -1,3 +1,42 @@
+.ic {
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.ic-sm {
+    height: 22px;
+    width: 22px;
+}
+
+.ic-md {
+    height: 32px;
+    width: 32px;
+}
+
 .ic-notification {
     background-image: url(/icons/notification.svg);
+}
+.ic-facebook {
+    background-image: url(/icons/facebook.svg);
+    &:hover {
+        background-image: url(/icons/facebook_pink.svg);
+    }
+}
+.ic-instagram {
+    background-image: url(/icons/instagram.svg);
+    &:hover {
+        background-image: url(/icons/instagram_pink.svg);
+    }
+}
+.ic-twitter {
+    background-image: url(/icons/twitter.svg);
+    &:hover {
+        background-image: url(/icons/twitter_pink.svg);
+    }
+}
+.ic-linkedin {
+    background-image: url(/icons/linkedin.svg);
+    &:hover {
+        background-image: url(/icons/linkedin_pink.svg);
+    }
 }
