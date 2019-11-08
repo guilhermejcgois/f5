@@ -1,3 +1,8 @@
+<link rel="stylesheet" href="css/dashboard.css">
+
+<%- include('partials/header', { canAdd: org.payed }) %>
+
 <h1 class="mt-4">Dashboard</h1>
-<p class="lead mb-3">Welcome <%= name %>!</p>
-<a id="logout" href="/users/logout" class="btn btn-secondary">Logout</a>
+<p class="lead mb-3">Welcome <%= org %>!</p>
+<p class="lead mb-3">Welcome <%= org.name %>!</p>
+<p class="lead mb-3">Welcome <%= org.payed %>!</p>

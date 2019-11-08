@@ -1,5 +1,9 @@
 @import 'reset';
 
+.capitalize {
+  text-transform: capitalize;
+}
+
 .hide {
   display: none;
 }

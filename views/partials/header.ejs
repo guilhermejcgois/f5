@@ -1,0 +1,19 @@
+<header class="header">
+    <div class="header__logo-wrapper">
+        <img src="img/f5_fundo_escuro.png" srcset="img/f5_fundo_escuro@2x.png 2x,
+            img/f5_fundo_escuro@3x.png 3x">
+    </div>
+    <div class="header__actions-wrapper">
+        <% if (canAdd) { %>
+            <button class="btn-md btn--primary capitalize">cadastrar ponto</button>
+        <% } else { %>
+            <button class="btn-md btn--inactive capitalize">cadastrar ponto</button>
+        <% } %>
+        <span class="ic-notification"></span>
+        <div class="user-menu" style="margin-left: 10px">
+            <button class="btn-sm btn--secondary-ghost">
+                <a id="logout" href="/users/logout" style="color:inherit; text-decoration: none">Logout</a>
+            </button>
+        </div>
+    </div>
+</header>
