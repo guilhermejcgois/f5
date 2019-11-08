@@ -8,10 +8,15 @@
   border: none;
   font-size: $text-3-font-size;
   cursor: pointer;
+  -webkit-transition: background-position 0.2s ease-in-out;
+  transition: background-position 0.2s ease-in-out;
+  background-size: 200%;
 }
 
 %btn-ghost {
   @extend %btn;
+  background: transparent;
+  border-style: solid;
   border-width: 3px;
 }
 
@@ -23,28 +28,55 @@
 
 .btn-sm {
   @extend %btn;
-  width: 195px;
+  width: 190px;
 }
 
-.btn-lg {
+.btn-md {
   @extend %btn;
   width: 300px;
 }
 
-.btn--primary {
-  background-color: $dark-hot-pink;
+.btn-lg {
+  @extend %btn;
+  width: 390px;
+}
+
+.btn--inactive {
+  background-image: linear-gradient(to left, $light-grey, $dark-grey, $light-grey);
   color: $white;
+}
+
+.btn--primary {
+  background-image: linear-gradient(to left, $squash, $dark-hot-pink, $squash);
+  color: $white;
+  
+  &:focus,
+  &:hover {
+    background-position-x: 100%;
+  }
 }
 
 .btn--primary-ghost {
   @extend %btn-ghost;
   border-color: $dark-hot-pink;
+  
+  &:focus,
+  &:hover {
+    background-color: $white;
+    border-color: $white;
+  }
 }
 
-.btn--secondary,
 .btn--secondary-ghost {
   @extend %btn-ghost;
   border-color: $white;
+  color: $white;
+  
+  &:focus,
+  &:hover {
+    background-color: $dark-hot-pink;
+    border-color: $dark-hot-pink;
+  }
 }
 
 .link--primary {
