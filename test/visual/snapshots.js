@@ -40,6 +40,18 @@ PercyScript.run(async (page, percySnapshot) => {
     await page.click('#login');
     await page.waitFor('#logout');
     await percySnapshot('Dashboard page');
+
+    await page.click('#bins-link a');
+    await page.waitFor('#logout');
+    await percySnapshot('Dashboard page for bins');
+
+    await page.click('#requests-link a');
+    await page.waitFor('#logout');
+    await percySnapshot('Dashboard page for requests');
+
+    await page.click('#gathering-link a');
+    await page.waitFor('#logout');
+    await percySnapshot('Dashboard page for gathering');
     
     await page.click('#logout')
     await percySnapshot('Login page after logout');
