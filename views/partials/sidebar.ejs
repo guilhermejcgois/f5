@@ -1,9 +1,17 @@
 <aside class="sidebar">
     <ul class="sidebar__menu">
-        <li class="sidebar__menu-item uppercase">Dashboard</li>
-        <li class="sidebar__menu-item uppercase">Minhas bins</li>
-        <li class="sidebar__menu-item uppercase">Meus pedidos</li>
-        <li class="sidebar__menu-item uppercase">Coletas</li>
+        <li id="dashboard-link" class="sidebar__menu-item uppercase">
+            <a href="/dashboard">Dashboard</a>
+        </li>
+        <li id="bins-link" class="sidebar__menu-item uppercase">
+            <a href="/dashboard/bins">Minhas bins</a>
+        </li>
+        <li id="requests-link" class="sidebar__menu-item uppercase">
+            <a href="/dashboard/requests">Meus pedidos</a>
+        </li>
+        <li id="gathering-link" class="sidebar__menu-item uppercase">
+            <a href="/dashboard/gathering">Coletas</a>
+        </li>
     </ul>
     <div class="sidebar__footer">
         <button class="btn-sm  btn--secondary-ghost uppercase">Ir para o site</button>
@@ -15,3 +23,7 @@
         </div>
     </div>
 </aside>
+<script>
+    const activeMenuItem = '#<%= page%>-link';
+    document.querySelector(activeMenuItem).classList.add('active');
+</script>

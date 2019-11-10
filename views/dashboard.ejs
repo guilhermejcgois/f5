@@ -1,14 +1,11 @@
-<link rel="stylesheet" href="css/dashboard.css">
+<link rel="stylesheet" href="/css/dashboard.css">
 
 <div class="dashboard">
     <%- include('partials/header', { canAdd: org.payed }) %>
     <div class="dashboard__body">
         <%- include('partials/sidebar') %>
         <main class="dashboard__main">
-            <h1 class="mt-4">Dashboard</h1>
-            <p class="lead mb-3">Welcome <%= org %>!</p>
-            <p class="lead mb-3">Welcome <%= org.name %>!</p>
-            <p class="lead mb-3">Welcome <%= org.payed %>!</p>
+            <%- include('partials/' + page) %>
         </main>
     </div>
 </div>
