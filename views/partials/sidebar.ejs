@@ -25,5 +25,8 @@
 </aside>
 <script>
     const activeMenuItem = '#<%= page%>-link';
-    document.querySelector(activeMenuItem).classList.add('active');
+    const li = document.querySelector(activeMenuItem);
+    if (li) {
+        li.classList.add('active');
+    }
 </script>

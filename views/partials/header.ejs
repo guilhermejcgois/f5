@@ -5,9 +5,9 @@
     </div>
     <div class="header__actions-wrapper">
         <% if (canAdd) { %>
-            <button class="btn-md btn--primary capitalize">cadastrar ponto</button>
+            <a id="new-bin-link" href="/dashboard/bins/cadastrar" class="btn-md btn--primary capitalize">cadastrar ponto</a>
         <% } else { %>
-            <button class="btn-md btn--inactive capitalize">cadastrar ponto</button>
+            <button id="new-bin-link" class="btn-md btn--inactive capitalize" disabled>cadastrar ponto</button>
         <% } %>
         <span class="ic-notification"></span>
         <div class="user-menu" style="margin-left: 10px">

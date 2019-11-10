@@ -8,6 +8,12 @@
     
     padding-left: 100px;
     padding-right: 99px;
+
+    .btn--primary {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 .header,
@@ -80,5 +86,13 @@
 
     &__main {
         margin: 50px;
+    }
+
+    &-title {
+        font-family: NexaSlab;
+        font-size: 2rem;
+        font-weight: 900;
+        line-height: 1.81;
+        color: $blueberry;
     }
 }

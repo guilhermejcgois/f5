@@ -52,6 +52,10 @@ PercyScript.run(async (page, percySnapshot) => {
     await page.click('#gathering-link a');
     await page.waitFor('#logout');
     await percySnapshot('Dashboard page for gathering');
+
+    await page.click('#new-bin-link');
+    await page.waitFor('#save-bin');
+    await percySnapshot('Register page for new bin request');
     
     await page.click('#logout')
     await percySnapshot('Login page after logout');

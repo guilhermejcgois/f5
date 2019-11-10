@@ -1,5 +1,9 @@
 @import 'reset';
 
+.bold {
+  font-weight: bold;
+}
+
 .container {
   height: 100vh;
   width: 100vw;
@@ -35,6 +39,7 @@ img {
   object-fit: none;
 }
 
+@import 'badge';
 @import 'buttons';
 @import 'forms';
 @import 'icons';

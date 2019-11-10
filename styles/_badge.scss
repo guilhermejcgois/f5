@@ -1,0 +1,18 @@
+@import "colors";
+
+.badge {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 44px;
+    width: 44px;
+    border-radius: 44px;
+
+    background: $light-grey;
+    color: $white;
+
+    &--active {
+        background: $dark-hot-pink;
+    }
+}
