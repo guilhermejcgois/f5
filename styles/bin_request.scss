@@ -6,6 +6,12 @@
         justify-content: flex-start;
         align-items: center;
     }
+
+    .form-group.bin_address .form-control {
+        margin-top: 10px;
+        margin-left: 54px;
+    }
+    
     .form-group.bin_size {
         margin-top: 56px;
 
@@ -18,9 +24,6 @@
         .form-control {
             height: auto;
             width: 171px;
-            border-radius: 30px;
-            box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.16);
-            background-color: $white;
 
             display: flex;
             flex-direction: column;
@@ -30,6 +33,22 @@
             padding-top: 33px;
             padding-left: 25px;
             padding-right: 25px;
+
+            cursor: pointer;
+            background: transparent;
+            border: none;
+        }
+
+        .form-control[disabled] {
+            cursor: not-allowed;
+        }
+
+        .form-control:not([disabled]):active,
+        .form-control:not([disabled]):hover,
+        .form-control:not([disabled]).active {
+            border-radius: 30px;
+            box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.16);
+            background-color: $white;
         }
 
         .form-control img {
@@ -40,9 +59,53 @@
         }
     }
 
-    .form-group.bin_address .form-control {
-        margin-top: 10px;
-        margin-left: 54px;
+    
+    .form-group.bin_address {
+        position: relative;
+
+        #address,
+        #autoComplete_list {
+            width: 463px;
+        }
+
+        #autoComplete_list {
+            position: absolute;
+            top: 130px;
+            background: $white;
+            margin-left: 54px;
+        }
+        
+        .autoComplete_result {
+            margin: 0;
+            height: 61px;
+            padding: 0;
+            padding-left: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+
+            .line-1,
+            .line-2 {
+                height: 50%;
+            }
+
+            .line-1 {
+                color: $blueberry;
+                padding-bottom: 20px;
+            }
+
+            .line-2 {
+                font-size: 0.77rem;
+                color: $black;
+            }
+
+            &:active,
+            &:hover {
+                background: rgba($light-blueberry, 0.2);
+                border: none;
+            }
+        }
     }
 
     .form-footer {

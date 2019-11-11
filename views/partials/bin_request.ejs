@@ -1,4 +1,7 @@
 <link rel="stylesheet" href="/css/bin_request.css">
+<link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@7.2.0/dist/css/autoComplete.min.css">
+<script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@7.2.0/dist/js/autoComplete.min.js"></script>
 
 <section class="new-bin">
     <main class="new-bin__left-side">
@@ -9,7 +12,7 @@
                     <span class="badge badge--active">1</span>
                     Selecione um local ou endereço
                 </label>
-                <input class="form-control text-3" type="text" placeholder="Digite um local ou endereço" />
+                <input id="address" class="form-control text-3" type="text" placeholder="Digite um local ou endereço" />
             </div>
             <div class="form-group bin_size">
                 <label for="bin_size">
@@ -17,8 +20,8 @@
                     Escolha o tamanho do ponto
                 </label>
                 <div class="form-controls">
-                    <button id="size-m" class="form-control uppercase"><img src="" alt="">Bin M</button>
-                    <button id="size-g" class="form-control uppercase"><img src="" alt="">Bin G</button>
+                    <button id="size-m" class="form-control uppercase" disabled><img src="" alt="">Bin M</button>
+                    <button id="size-g" class="form-control uppercase" disabled><img src="" alt="">Bin G</button>
                 </div>
             </div>
             <div class="form-footer">
@@ -28,3 +31,79 @@
     </main>
     <aside class="new-bin__right-side"></aside>
 </section>
+<script>
+    const addressSel = '#address';
+    new autoComplete({
+        data: {
+            src: async () => {
+                const query = document.querySelector(addressSel).value;
+                const source = await fetch(`/bins/address?q=${query}`);
+                const data = await source.json();
+                return data;
+            },
+            key: ["name"],
+            cache: false
+        },
+        selector: addressSel,
+        threshold: 3,
+        debounce: 300,
+        searchEngine: "strict",
+        resultsList: {
+            render: true,
+            container: source => {
+                const resultsListID = "places_List";
+                return resultsListID;
+            },
+            destination: document.querySelector(addressSel),
+            position: "afterend",
+            element: "ul"
+        },
+        maxResults: 5,
+        highlight: true,
+        resultItem: {
+            content: (data, source) => {
+                console.log({data, source})
+                const place = data.value;
+                source.innerHTML = `
+                <span class="line-1 text-3">${place.name}</span>
+                <span class="line-2">${place.type} - ${place.address} Pontos disponíveis: ${place.number_points}</span>
+                `;
+            },
+            element: "li"
+        },
+        noResults: () => {
+            const result = document.createElement("li");
+            result.setAttribute("class", "no_result");
+            result.setAttribute("tabindex", "1");
+            result.innerHTML = "Endereço não encontrado";
+            document.querySelector("#autoComplete_list").appendChild(result);
+        },
+        onSelection: feedback => {
+            console.log({feedback});
+            document.querySelector(addressSel).value = feedback.selection.value.name;
+            document.querySelector('.form-group.bin_size .badge').classList.add('badge--active');
+            document.querySelector('#size-m').removeAttribute('disabled');
+            document.querySelector('#size-g').removeAttribute('disabled');
+        }
+    });
+
+    const enableSubmit = (e) => {
+        e.preventDefault();
+        let target = e.target;
+        if (target.tagName == 'IMG') {
+            target - target.parentElement;
+        }
+        target.classList.add('active');
+        if (target.id === 'size-m') {
+            document.querySelector('#size-g').classList.remove('active');
+        } else {
+            document.querySelector('#size-m').classList.remove('active');
+        }
+        const saveButton = document.querySelector('#save-bin');
+        saveButton.removeAttribute('disabled');
+        saveButton.classList.add('btn--primary');
+        saveButton.classList.add('btn--inactive');
+    };
+    document.querySelector('#size-m').addEventListener('click', enableSubmit);
+    document.querySelector('#size-g').addEventListener('click', enableSubmit);
+</script>

@@ -21,7 +21,7 @@ const dashCb = (renderFn) => (req, res) => {
   });
 };
 const renderWithPage = (req, res, org) => {
-  const page = req.param('page') || 'dashboard';
+  const page = req.params.page || 'dashboard';
   res.render('dashboard', {
     org,
     page
