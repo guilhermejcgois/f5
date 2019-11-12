@@ -45,7 +45,6 @@ router.post('/register', (req, res) => {
         renderError();
     } else {
         let organization;
-        let user;
 
         // Validation passed
         const hashCb = (user) => (err, hash) => {
@@ -54,11 +53,11 @@ router.post('/register', (req, res) => {
             user.password = hash;
             user.organization.save()
                 .then(() => user.save())
-                .then(user => {
+                .then(() => {
                     req.flash('success_msg', 'Você já está cadastrado e agora já pode fazer seu login');
                     res.redirect('/login');
                 })
-                .catch(err => console.log(err));
+                .catch(err => console.error(err));
         };
         const genSaltCb = (user) => (err, salt) =>
             _hash(user.password, salt, hashCb(user));

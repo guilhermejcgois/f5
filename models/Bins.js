@@ -1,7 +1,11 @@
 const mongoose = require('mongoose');
 
-const BinSchema = new mongoose.Schema({
+const BinsSchema = new mongoose.Schema({
   coords: {
+    address: {
+      type: String,
+      required: true
+    },
     latitude: {
       type: Number,
       required: true
@@ -21,11 +25,14 @@ const BinSchema = new mongoose.Schema({
   },
   mac_address: {
     type: String
+  },
+  size: {
+    type: String,
+    enum: ['M', 'G'],
+    required: true
   }
-}, {
-  collection: "raspberry_records"
 });
 
-const Bin = mongoose.model('Bin', BinSchema);
+const Bins = mongoose.model('Bins', BinsSchema);
 
-module.exports = { Bin, BinSchema };  
+module.exports = { Bins, BinsSchema };  

@@ -63,8 +63,17 @@
     .form-group.bin_address {
         position: relative;
 
+        #address.searched {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            border-top-left-radius: 33px;
+            border-top-right-radius: 33px;
+        }
+
         #address,
-        #autoComplete_list {
+        #autoComplete_list,
+        #autoComplete_list ul,
+        #autoComplete_list ul li {
             width: 463px;
         }
 
@@ -73,25 +82,29 @@
             top: 130px;
             background: $white;
             margin-left: 54px;
+            width: 493px;
         }
         
         .autoComplete_result {
             margin: 0;
             height: 61px;
+            width: 493px;
+            max-width: unset !important;
             padding: 0;
-            padding-left: 30px;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: flex-start;
             cursor: pointer;
 
             .line-1,
             .line-2 {
                 height: 50%;
+                margin-left: 30px;
             }
 
             .line-1 {
                 color: $blueberry;
+                margin-top: -15px;
                 padding-bottom: 20px;
             }
 
@@ -101,6 +114,7 @@
             }
 
             &:active,
+            &:focus,
             &:hover {
                 background: rgba($light-blueberry, 0.2);
                 border: none;

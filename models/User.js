@@ -1,8 +1,5 @@
 const mongoose = require('mongoose');
 
-const bins = [
-    { type: mongoose.Schema.Types.ObjectId, ref: 'Bin' }
-];
 const organization = { type: mongoose.Schema.Types.ObjectId, ref: 'Organization' };
 
 const UserSchema = new mongoose.Schema({
@@ -26,7 +23,6 @@ const UserSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
-    bins,
     organization
 });
 

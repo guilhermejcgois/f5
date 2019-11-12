@@ -25,6 +25,13 @@
         window.doLogout = () => {
             $('#logout').click();
         }
+        window.openBinRequest = () => {
+            $('#new-bin-link').trigger('click');
+        }
+        window.searchKalunga = () => {
+            $('#address').val('Kalunga');
+            setTimeout(() => $('#address').focus());
+        }
     </script>
 </body>
 </html>

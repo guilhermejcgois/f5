@@ -1,5 +1,9 @@
 const mongoose = require('mongoose');
 
+const bins = [
+    { type: mongoose.Schema.Types.ObjectId, ref: 'Bin' }
+];
+
 const OrganizationSchema = new mongoose.Schema({
     address: {
         type: String,
@@ -21,7 +25,8 @@ const OrganizationSchema = new mongoose.Schema({
         type: Boolean,
         required: true,
         default: false
-    }
+    },
+    bins
 });
 
 const Organization = mongoose.model('Organization', OrganizationSchema);

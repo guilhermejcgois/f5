@@ -6,7 +6,7 @@
 <section class="new-bin">
     <main class="new-bin__left-side">
         <h2 class="dashboard-title">Configure seu ponto</h2>
-        <form action="">
+        <form>
             <div class="form-group bin_address">
                 <label for="bin_address" class="text-2 bold">
                     <span class="badge badge--active">1</span>
@@ -25,20 +25,23 @@
                 </div>
             </div>
             <div class="form-footer">
-                <button id="save-bin" type="submit" class="btn-sm btn--inactive capitalize" disabled>Cadastrar Bin</button>
+                <button id="save-bin" type="button" class="btn-sm btn--inactive capitalize" disabled>Cadastrar Bin</button>
             </div>
         </form>
     </main>
-    <aside class="new-bin__right-side"></aside>
+    <aside class="new-bin__right-side">
+    </aside>
 </section>
 <script>
     const addressSel = '#address';
+    const data = {};
     new autoComplete({
         data: {
             src: async () => {
                 const query = document.querySelector(addressSel).value;
                 const source = await fetch(`/bins/address?q=${query}`);
                 const data = await source.json();
+                document.querySelector("#address").classList.add('searched');
                 return data;
             },
             key: ["name"],
@@ -77,13 +80,16 @@
             result.setAttribute("tabindex", "1");
             result.innerHTML = "Endereço não encontrado";
             document.querySelector("#autoComplete_list").appendChild(result);
+            document.querySelector("#address").classList.add('searched');
         },
         onSelection: feedback => {
             console.log({feedback});
+            document.querySelector("#address").classList.remove('searched');
             document.querySelector(addressSel).value = feedback.selection.value.name;
             document.querySelector('.form-group.bin_size .badge').classList.add('badge--active');
             document.querySelector('#size-m').removeAttribute('disabled');
             document.querySelector('#size-g').removeAttribute('disabled');
+            data.address = feedback.selection.value._id;
         }
     });
 
@@ -91,13 +97,15 @@
         e.preventDefault();
         let target = e.target;
         if (target.tagName == 'IMG') {
-            target - target.parentElement;
+            target = target.parentElement;
         }
         target.classList.add('active');
         if (target.id === 'size-m') {
             document.querySelector('#size-g').classList.remove('active');
+            data.size = 'm';
         } else {
             document.querySelector('#size-m').classList.remove('active');
+            data.size = 'g';
         }
         const saveButton = document.querySelector('#save-bin');
         saveButton.removeAttribute('disabled');
@@ -106,4 +114,8 @@
     };
     document.querySelector('#size-m').addEventListener('click', enableSubmit);
     document.querySelector('#size-g').addEventListener('click', enableSubmit);
+    document.querySelector('#save-bin').addEventListener('click', () => {
+        const bin = `address=${data.address}&size=${data.size}`;
+        $.post('/bins/register', bin);
+    });
 </script>
