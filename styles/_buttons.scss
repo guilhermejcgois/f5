@@ -59,11 +59,12 @@
 .btn--primary-ghost {
   @extend %btn-ghost;
   border-color: $dark-hot-pink;
+  color: $dark-hot-pink;
   
   &:focus,
   &:hover {
-    background-color: $white;
-    border-color: $white;
+    background-color: $dark-hot-pink;
+    color: $white;
   }
 }
 

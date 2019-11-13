@@ -116,6 +116,12 @@
     document.querySelector('#size-g').addEventListener('click', enableSubmit);
     document.querySelector('#save-bin').addEventListener('click', () => {
         const bin = `address=${data.address}&size=${data.size}`;
-        $.post('/bins/register', bin);
+        $.post('/bins/register', bin, (data) => {
+            const modalContainer = document.querySelector('.dashboard__main .modal-container');
+            if (modalContainer) {
+                document.removeChild(modalContainer);
+            }
+            document.querySelector('.dashboard__main').innerHTML += data;
+        });
     });
 </script>

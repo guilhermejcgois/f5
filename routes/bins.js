@@ -88,11 +88,13 @@ router.post('/register', configAuth.ensureAuthenticated, (req, res) => {
         })
         .then(() => org.save())
         .then(() => {
-            res.status(201);
-            res.send({
-                orderId: order._id,
-                address: bin.coords.address,
-                size: bin.size
+            res.render('modals/request_register_confirm', {
+                layout: 'modals/layout',
+                data: {
+                    orderId: order._id,
+                    address: bin.coords.address,
+                    size: bin.size
+                }
             });
         })
         .catch(err => {

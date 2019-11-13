@@ -1,6 +1,8 @@
 @import "colors";
 
 .new-bin {
+    position: relative;
+
     .form-group label {
         display: flex;
         justify-content: flex-start;
@@ -131,5 +133,58 @@
     .badge {
         margin-bottom: 1px;
         margin-right: 20px;
+    }
+}
+
+.modal-container {
+    .modal {
+        max-width: 851px;
+        min-height: 481px;
+        max-height: 681px;
+        border-radius: 5px;
+        box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.16);
+        padding: 49px 75.5px 72px 73.5px;
+        background: $white;
+        position: relative;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .ic-close {
+        position: absolute;
+        top: 49px;
+        right: 75.5px;
+    }
+
+    .modal-title {
+        font-size: 36px;
+        line-height: 1.19;
+        font-weight: 900;
+    }
+
+    .modal-title,
+    .label {
+        color: $blueberry;
+    }
+
+    .modal-disclaimer {
+        width: 681px;
+        text-align: center;
+    }
+
+    .row--bottom-border {
+        border-bottom: 2px solid $snow;
+    }
+
+    .row .value {
+        margin-left: 50px;
+    }
+
+    .modal-actions {
+        display: flex;
+        justify-content: center;
     }
 }

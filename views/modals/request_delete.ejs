@@ -1,0 +1,22 @@
+<span class="ic ic-sm ic-close"></span>
+<header class="modal-title">Seu pedido foi realizado com sucesso</header>
+<p class="modal-disclaimer">Seu pedido foi enviado e deverá ser aprovado dentro de 24h pela
+nossa equipe. Enquanto isso, você pode acompanhar o status da
+sua solicitação na aba <a href="/dashboard/requests" class="link--primary">Meus Pedidos</a>, no menu lateral.</p>
+<main class="request-data-table">
+    <div class="row row--bottom-border">
+        <span class="label text-2">Número da solicitação</span>
+        <span class="value text-2"><%= data.orderId %></span>
+    </div>
+    <div class="row row--bottom-border">
+        <span class="label text-2">Endereço</span>
+        <span class="value text-2"><%= data.address %></span>
+    </div>
+    <div class="row">
+        <span class="label text-2">Tamanho</span>
+        <span class="value text-2"><%= data.size %></span>
+    </div>
+</main>
+<div class="modal-actions">
+    <a href="/dashboard/bins/requests/delete?orderId=<%= data.orderId %>" class="btn btn-md btn--primary-ghost uppercase">Cancelar pedido</a>
+</div>

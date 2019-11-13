@@ -85,7 +85,23 @@
     }
 
     &__main {
-        margin: 50px;
+        padding: 50px;
+        position: relative;
+        width: 100%;
+        height: 100%;
+
+        .modal-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: rgba($black, 0.4);
+            z-index: 1000;
+            width: inherit;
+            height: inherit;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     }
 
     &-title {
