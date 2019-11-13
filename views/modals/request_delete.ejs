@@ -1,9 +1,12 @@
-<span class="ic ic-sm ic-close"></span>
+<%- include('modal_close') %>
 <header class="modal-title">Tem certeza que deseja cancelar o pedido do seu ponto?</header>
 <div class="modal-actions">
     <button id="delete-btn" class="btn btn-md btn--primary-ghost uppercase" data-id="<%= orderId %>">Sim, quero cancelar</button>
 </div>
 <script>
+    document.querySelector('.modal .ic-close').addEventListener('click', () => {
+        history.replaceState(history.state, document.title, '/dashboard/resquests');
+    });
     document.querySelector('#delete-btn').addEventListener('click', function () {
         const reqId = this.dataset.id;
         $.ajax({
