@@ -102,6 +102,40 @@
             justify-content: center;
             align-items: center;
         }
+
+        .modal {
+            max-width: 851px;
+            
+            border-radius: 5px;
+            box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.16);
+            background: $white;
+            position: relative;
+            padding: 49px 75.5px 72px 73.5px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal .ic-close {
+            position: absolute;
+            top: 49px;
+            right: 75.5px;
+        }
+
+        .modal-title {
+            font-size: 36px;
+            line-height: 1.19;
+            font-weight: 900;
+            color: $blueberry;
+            text-align: center;
+        }
+
+        .modal-actions {
+            display: flex;
+            justify-content: center;
+        }
     }
 
     &-title {

@@ -7,6 +7,7 @@ import passport from 'passport';
 import passportConfig from './config/passport';
 import routes from './routes/index';
 import routesBins from './routes/bins';
+import routesRequests from './routes/requests';
 import routesUsers from './routes/users';
 
 const app = express();
@@ -54,6 +55,7 @@ app.use((req, res, next) => {
 // Routes
 app.use('/', routes);
 app.use('/bins', routesBins);
+app.use('/dashboard/requests', routesRequests);
 app.use('/users', routesUsers);
 
 app.use('/css', express.static(__dirname + '/dist/css'));
