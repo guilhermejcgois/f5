@@ -59,6 +59,7 @@ app.use('/dashboard/requests', routesRequests);
 app.use('/users', routesUsers);
 
 app.use('/css', express.static(__dirname + '/dist/css'));
+app.use('/js', express.static(__dirname + '/assets/js'));
 app.use('/fonts', express.static(__dirname + '/assets/fonts'));
 app.use('/icons', express.static(__dirname + '/assets/icons'));
 app.use('/img', express.static(__dirname + '/assets/img'));

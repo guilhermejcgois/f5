@@ -1,5 +1,6 @@
 <% include ./partials/messages %>
 <link rel="stylesheet" href="css/register.css">
+<script src="js/jq-mask-plugin.js"></script>
 <section class="register lop">
   <aside class="lop__left-side">
     <img src="/img/register.png" srcset="/img/register@2x.png 2x,
@@ -74,6 +75,11 @@
 </section>
 
 <script>
+  $(document).ready(function () {
+    $('#cnpj').mask('00.000.000/0000-00');
+    $('#tel').mask('(00) 0000-0000');
+  });
+  
   const lopBox1Sel = '.lop__box.step-1';
   const lopBox2Sel = '.lop__box.step-2';
   const lopBox1 = $(lopBox1Sel);
