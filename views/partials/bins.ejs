@@ -22,7 +22,7 @@
                             ? 'bins__row--red'
                             : 'bins__row--yellow'
                 %> text-4">
-                    <th class="bins__cell code"><%= bin._id %></th>
+                    <th class="bins__cell code"><%= bin._id.toString().substr(0, 4) + '...' + bin._id.toString().substr(-4) %></th>
                     <th class="bins__cell storage_level">
                         <div class="loading-bar">
                             <div class="loading-bar__fill<%= bin.storage_level == 1 ? ' full' : '' %>" style="width: <%= bin.storage_level * 100 %>%"></div>
