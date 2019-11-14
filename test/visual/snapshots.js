@@ -54,8 +54,27 @@ PercyScript.run(async (page, percySnapshot) => {
     await percySnapshot('Dashboard page for gathering');
 
     await page.click('#new-bin-link');
-    await page.waitFor('#save-bin');
+    await page.waitFor('#address');
     await percySnapshot('Register page for new bin request');
+    await page.type('#address', 'address');
+    await page.waitFor('.no_result');
+    await percySnapshot('Register page for new bin request with not found address');
+    await page.type('#address', 'Kalunga');
+    await page.waitFor('.autoComplete_result', { timeout: 60000 });
+    await percySnapshot('Register page for new bin request with found address');
+    await page.click('.autoComplete_result');
+    await percySnapshot('Register page for new bin request with selected address');
+    await page.click('#size-m');
+    await percySnapshot('Register page for new bin request with selected bin size');
+    await page.click('#save-bin');
+    await page.waitFor('.modal-container');
+    await percySnapshot('Register page for new bin request with success modal');
+    
+    await page.click('#order-cancel');
+    await page.waitFor('.modal-container');
+    await percySnapshot('Orders page with cancelation modal');
+    await page.click('#delete-btn');
+    await percySnapshot('Orders page with cancelation confirmed modal');
     
     await page.click('#logout')
     await percySnapshot('Login page after logout');

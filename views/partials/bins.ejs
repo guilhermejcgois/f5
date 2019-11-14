@@ -1,1 +1,41 @@
+<link rel="stylesheet" href="/css/bins.css">
+
 <h2 class="dashboard-title">Minhas Bins</h2>
+<% if (typeof bins != 'undefined') {%>
+    <table class="bins__table">
+        <thead class="bins__table-head">
+            <tr class="bins__header-row text-4 uppercase">
+                <th class="bins__header-cell code">código</th>
+                <th class="bins__header-cell storage_level">nível de armazenamento</th>
+                <th class="bins__header-cell district">bairro</th>
+                <th class="bins__header-cell center gathering_status">status da coleta</th>
+                <th class="bins__header-cell right actions"></th>
+            </tr>
+        </thead>
+        <tbody class="bins__table-body">
+            <% for (var i = 0; i < bins.length; i++) { var bin = bins[i]; %>
+                <tr aria-hidden class="bins__row--spacer"></tr>
+                <tr class="bins__row <%=
+                    bin.storage_level <= 0.25
+                        ? 'bins__row--green'
+                        : bin.storage_level >= 0.75
+                            ? 'bins__row--red'
+                            : 'bins__row--yellow'
+                %> text-4">
+                    <th class="bins__cell code"><%= bin._id %></th>
+                    <th class="bins__cell storage_level">
+                        <div class="loading-bar">
+                            <div class="loading-bar__fill<%= bin.storage_level == 1 ? ' full' : '' %>" style="width: <%= bin.storage_level * 100 %>%"></div>
+                        </div>
+                    </th>
+                    <th class="bins__cell district"><%= bin.place.district %></th>
+                    <th class="bins__cell center gathering_status"><%= lang[bin.gathering_status] %></th>
+                    <th class="bins__cell right actions">
+                        <span title="Ainda não implementado" aria-label="Ainda não implementado" role="button" class="ic ic-sm ic-edit"></span>
+                        <span title="Ainda não implementado" aria-label="Ainda não implementado" role="button" class="ic ic-sm ic-delete"></span>
+                    </th>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+<% } %>

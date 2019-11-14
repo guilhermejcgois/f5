@@ -69,11 +69,7 @@ router.post('/register', configAuth.ensureAuthenticated, (req, res) => {
                 return;
             }
             bin = new Bins({
-                coords: {
-                    latitude: place.latitude,
-                    longitude: place.longitude,
-                    address: place.address
-                },
+                place,
                 size: size.toUpperCase()
             });
             org.bins.push(bin);
@@ -92,7 +88,7 @@ router.post('/register', configAuth.ensureAuthenticated, (req, res) => {
                 layout: 'modals/layout',
                 data: {
                     orderId: order._id,
-                    address: bin.coords.address,
+                    address: bin.place.address,
                     size: bin.size
                 }
             });

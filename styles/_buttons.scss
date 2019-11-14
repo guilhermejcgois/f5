@@ -21,9 +21,13 @@
 }
 
 %btn-reset {
-  background: transparent;
+  background-color: transparent;
   border: none;
   cursor: pointer;
+}
+
+.btn-reset {
+  @extend %btn;
 }
 
 .btn-sm {

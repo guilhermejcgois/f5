@@ -17,6 +17,18 @@
 .ic-close {
     background-image: url(/icons/close.svg);
 }
+.ic-edit {
+    background-image: url(/icons/edit.svg);
+    &:hover {
+        background-image: url(/icons/edit_purple.svg);
+    }
+}
+.ic-delete {
+    background-image: url(/icons/delete.svg);
+    &:hover {
+        background-image: url(/icons/delete_red.svg);
+    }
+}
 .ic-notification {
     background-image: url(/icons/notification.svg);
 }

@@ -1,0 +1,113 @@
+@import "colors";
+
+$cell-gap: 20px;
+
+.bins {
+    &__table {
+        width: 100%;
+        .gathering_status {
+            min-width: 180px;
+            max-width: 180px;
+        }
+
+        .storage_level {
+            min-width: 280px - $cell-gap;
+            max-width: 300px;
+        }
+
+        .actions {
+            min-width: 200px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+
+            .ic-delete {
+                margin-right: 22px;
+            }
+
+            .ic-edit {
+                margin-right: 50px;
+            }
+        }
+
+        .loading-bar {
+            border-radius: 100px;
+            max-width: 300px;
+            width: 90%;
+            height: 20px;
+            border: 1px solid $light-grey;
+            background: $white;
+            
+            &__fill {
+                border-top-left-radius: 100px;
+                border-bottom-left-radius: 100px;
+                height: 100%; 
+            }
+
+            &__fill.full {
+                border-radius: 100px;
+            }
+        }
+    }
+
+    &__header-row,
+    &__row {
+        background: $white;
+    }
+
+    &__header-cell {
+        color: $blueberry;
+        height: 84px;
+        vertical-align: middle;
+    }
+
+    &__header-cell:first-child {
+        padding-left: 40px;
+    }
+
+    &__cell {
+        height: 65px;
+        vertical-align: middle;
+    }
+
+    &__cell:first-child {
+        border-left: 7px solid;
+        padding-left: 33px;
+    }
+    
+    &__row {
+        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+
+        &--spacer {
+            background: transparent;
+            display: block;
+        }
+        &--spacer:first-of-type {
+            height: 10px;
+        }
+        &--spacer:not(:first-of-type) {
+            height: 3px;
+        }
+
+        &--green .bins__cell:first-child {
+            border-left-color: $light-green;
+        }
+        &--green .loading-bar__fill {
+            background-color: $light-green;
+        }
+
+        &--red .bins__cell:first-child {
+            border-left-color: $tomato;
+        }
+        &--red .loading-bar__fill {
+            background-color: $tomato;
+        }
+
+        &--yellow .bins__cell:first-child {
+            border-left-color: $squash;
+        }
+        &--yellow .loading-bar__fill {
+            background-color: $squash;
+        }
+    }
+}

@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="/css/requests.css">
 
 <h2 class="dashboard-title">Meus Pedidos</h2>
-<% if (op=='DELETE') { %>
+<% if (typeof op != 'undefined' && op == 'DELETE') { %>
     <%- include('../modals/layout', { body: include('../modals/request_delete', { orderId: data.id }) }) %>
 <% } %>

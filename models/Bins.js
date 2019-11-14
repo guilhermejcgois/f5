@@ -1,23 +1,19 @@
 const mongoose = require('mongoose');
 
+const place = { type: mongoose.Schema.Types.ObjectId, ref: 'Places' };
+
 const BinsSchema = new mongoose.Schema({
-  coords: {
-    address: {
-      type: String,
-      required: true
-    },
-    latitude: {
-      type: Number,
-      required: true
-    },
-    longitude: {
-      type: Number,
-      required: true
-    }
+  place,
+  storage_level: {
+    type: Number,
+    default: 0.0
   },
-  status: {
-    type: Boolean,
-    default: false
+  gathering_status: {
+    type: String,
+    enum: [
+      'GATHERING_SCHEDULED'
+    ],
+    default: 'GATHERING_SCHEDULED'
   },
   date: {
     type: Date,

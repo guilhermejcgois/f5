@@ -8,7 +8,7 @@
     "prestart": "npm run compile:sass",
     "start": "babel-node app.js",
     "dev": "run-p dev:js dev:sass",
-    "dev:js": "nodemon --exec babel-node app.js",
+    "dev:js": "nodemon --exec babel-node app.js --ignore 'test/**/*.js'",
     "dev:sass": "npm run compile:sass -- --watch",
     "babel-node": "babel-node",
     "sass": "sass",
