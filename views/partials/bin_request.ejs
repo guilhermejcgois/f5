@@ -15,7 +15,7 @@
                 <input id="address" class="form-control text-3" type="text" placeholder="Digite um local ou endereço" />
             </div>
             <div class="form-group bin_size">
-                <label for="bin_size">
+                <label for="bin_size" class="text-2 bold">
                     <span class="badge">2</span>
                     Escolha o tamanho do ponto
                 </label>
@@ -30,6 +30,7 @@
         </form>
     </main>
     <aside class="new-bin__right-side">
+        <div class="map-wrapper"></div>
     </aside>
 </section>
 <script>
@@ -90,6 +91,7 @@
             console.log({feedback});
             document.querySelector("#address").classList.remove('searched');
             document.querySelector(addressSel).value = feedback.selection.value.name;
+            document.querySelector('.form-group.bin_size').classList.add('active');
             document.querySelector('.form-group.bin_size .badge').classList.add('badge--active');
             document.querySelector('#size-m').removeAttribute('disabled');
             document.querySelector('#size-g').removeAttribute('disabled');

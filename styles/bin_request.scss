@@ -2,6 +2,24 @@
 
 .new-bin {
     position: relative;
+    display: flex;
+    
+    > * {
+        flex: 1;
+    }
+
+    &__right-side {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        .map-wrapper {
+            width: 627px;
+            height: 493px;
+            border: solid 1px #707070;
+            background-color: $white;
+        }
+    }
 
     .form-group label {
         display: flex;
@@ -16,6 +34,14 @@
     
     .form-group.bin_size {
         margin-top: 56px;
+
+        label {
+            color: $light-grey;
+        }
+        
+        &.active label {
+            color: $black;
+        }
 
         .form-controls {
             display: flex;
@@ -61,7 +87,6 @@
         }
     }
 
-    
     .form-group.bin_address {
         position: relative;
 
