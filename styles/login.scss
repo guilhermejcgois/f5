@@ -1,11 +1,21 @@
 @import "logged-out-page";
 
 .login {
+  .form-group .icon {
+    margin-right: 20px;
+    
+    @media screen and (max-width: $md-width) {
+      margin-right: 10px;
+    }
+  }
+
   .form-group.email {
     margin-top: 23px;
 
     .icon {
         background-image: url(/icons/email.svg);
+        width: 19px;
+        height: 15px;
     }
   }
 
@@ -14,6 +24,8 @@
 
     .icon {
         background-image: url(/icons/password.svg);
+        width: 18px;
+        height: 23px;
     }
   }
 }

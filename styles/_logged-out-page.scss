@@ -28,6 +28,12 @@
     }
   }
 
+  &__left-side {
+    @media screen and (max-width: $md-width) {
+      display: none;
+    }
+  }
+
   &__left-side img {
     height: 100%;
     width: 100%;
@@ -42,6 +48,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media screen and (max-width: $md-width) {
+      width: 100vw;
+    }
   }
 
   &__box,
@@ -66,8 +76,13 @@
 
   &__header img {
     margin-left: -27px;
+
+    @media screen and (max-width: $md-width) {
+      height: 128px;
+      width: 128px;
+    }
   
-    @media screen and (max-width: $xlg-width) {
+    @media screen and (min-width: $md-width + 1px) and (max-width: $xlg-width) {
       height: 64px;
       width: 64px;
     }
@@ -75,6 +90,14 @@
     @media screen and (min-width: $xlg-width) {
       height: 110px;
       width: 110px;
+    }
+  }
+
+  @media screen and (max-width: $md-width) {
+    .btn-sm,
+    .link--primary,
+    .text-4 {
+      font-size: $text-2-font-size;
     }
   }
 }
