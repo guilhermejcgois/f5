@@ -38,17 +38,10 @@
     const data = {};
     new autoComplete({
         data: {
-            src: () => {
-            // src: async () => {
+            src: async () => {
                 const query = document.querySelector(addressSel).value;
-                // const source = await fetch(`/bins/address?q=${query}`);
-                // const data = await source.json();
-                document.querySelector("#address").classList.add('searched');
-                return [
-                    { "_id": "5dc8c840e78cfe5b945b8bad", "name": "Kalunga - Itaim Bibi (SP)", "type": "Papelaria", "address": "R. Iguatemi, 321", "number_points": 3, "latitude": -23.5843693, "longitude": -46.6829804 },
-                    { "_id": "5dc8c9d1b0d5d45b94f2cdce", "name": "Kalunga - Eldorado SP)", "type": "Papelaria", "address": "Av. Rebouças, 3970", "number_points": 5, "latitude": -23.5728747, "longitude": -46.6981967 },
-                    { "_id": "5dc8ca18b0d5d45b94f2cdcf", "name": "Kalunga - Pinheiros (SP)", "type": "Papelaria", "address": "Av. Pedroso de Morais, 735", "number_points": 2, "latitude": -23.5638853, "longitude": -46.6939096 }
-                ];
+                const source = await fetch(`/bins/address?q=${query}`);
+                return await source.json();
             },
             key: ["name"],
             cache: false
@@ -88,7 +81,6 @@
             document.querySelector("#address").classList.add('searched');
         },
         onSelection: feedback => {
-            console.log({feedback});
             document.querySelector("#address").classList.remove('searched');
             document.querySelector(addressSel).value = feedback.selection.value.name;
             document.querySelector('.form-group.bin_size').classList.add('active');

@@ -1,12 +1,11 @@
 <%- include('modal_close') %>
 <header class="modal-title">Tem certeza que deseja cancelar o pedido do seu ponto?</header>
 <div class="modal-actions">
-    <button id="delete-btn" class="btn btn-md btn--primary-ghost uppercase" data-id="<%= orderId %>">Sim, quero cancelar</button>
+    <button id="delete-btn" class="btn btn-md btn--primary uppercase" data-id="<%= orderId %>">Sim, cancelar</button>
+    <button id="cancel-btn" class="btn btn-sm btn--primary-ghost uppercase">Voltar</button>
 </div>
 <script>
-    document.querySelector('.modal .ic-close').addEventListener('click', () => {
-        history.replaceState(history.state, document.title, '/dashboard/resquests');
-    });
+    document.querySelector('#cancel-btn').addEventListener('click', () => document.querySelector('.modal-container').click());
     document.querySelector('#delete-btn').addEventListener('click', function () {
         const reqId = this.dataset.id;
         $.ajax({

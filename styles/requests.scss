@@ -1,4 +1,14 @@
 #confirm-delete-modal .modal {
-    height: 276px - 49px - 72px;
-    width: 771px - 75.5px - 73.5px;
+    height: 276px - 49px;
+    width: 778px - 75.5px - 73.5px;
+
+    .ic {
+        display: none;
+    }
+
+    .modal-actions {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+    }
 }
