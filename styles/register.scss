@@ -4,6 +4,7 @@
 .register {
     .step-1 .link--primary {
         display: flex;
+        font-size: $text-2-font-size;
     }
 
     .step-1 .link--primary:after {
@@ -11,9 +12,10 @@
         background-repeat: no-repeat;
         content: '';
         display: block;
-        height: 0.7rem;
-        width: 0.7rem;
+        height: $text-2-font-size;
+        width: $text-2-font-size;
         background-size: contain;
         margin-left: 12px;
+        margin-top: 3px;
     }
 }
