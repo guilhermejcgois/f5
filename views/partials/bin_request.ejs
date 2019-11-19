@@ -31,6 +31,8 @@
     </main>
     <aside class="new-bin__right-side">
         <div class="map-wrapper"></div>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDQXi8Ivilc0wysu24bcjh0t2qhAtz5ls">
+        </script>
     </aside>
 </section>
 <script>
@@ -88,6 +90,31 @@
             document.querySelector('#size-m').removeAttribute('disabled');
             document.querySelector('#size-g').removeAttribute('disabled');
             data.address = feedback.selection.value._id;
+
+            const place = {
+                lat: feedback.selection.value.latitude,
+                lng: feedback.selection.value.longitude
+            };
+            var map = new google.maps.Map(
+                document.querySelector('.map-wrapper'), {
+                    center: place,
+                    clickableIcons: false,
+                    gestureHandling: 'none',
+                    fullscreenControl: false,
+                    mapTypeControl: false,
+                    panControlOptions: false,
+                    rotateControl: false,
+                    streetViewControl: false,
+                    minZoom: 15,
+                    maxZoom: 17,
+                    zoom: 16,
+                }
+            );
+            var marker = new google.maps.Marker({
+                icon: '/img/F5_fundo_escuro.png',
+                position: place,
+                map: map
+            });
         }
     });
 
