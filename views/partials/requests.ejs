@@ -1,6 +1,39 @@
 <link rel="stylesheet" href="/css/requests.css">
 
 <h2 class="dashboard-title">Meus Pedidos</h2>
+
+<% if (typeof orders != 'undefined') {%>
+    <% for (var i = 0; i < orders.length; i++) { var order = orders[i]; %>
+        <div class="card">
+            <div class="card-header">
+                <span class="text-2 card-header__title">
+                    Número da solicitação: <%= order._id.toString().substr(0, 4) + '...' + order._id.toString().substr(-4) %>
+                </span>
+                <span class="text-4 card-header__subtitle">
+                    Atualização em <%= order.lastModifiedDate %>
+                </span>
+            </div>
+            <div class="card-body">
+                <div class="wizard-step">
+                    <div class="wizard-step__item"><span class="wizard-step__item-text text-3"><%= lang.ORDER_OPENED %></span></div>
+                    <% if (orderStatuses.indexOf(order.status) >= 1) {%>
+                        <div class="wizard-step__item"><span class="wizard-step__item-text text-3"><%= lang.ORDER_CONFIRMED %></span></div>
+                    <% } %>
+                    <% if (orderStatuses.indexOf(order.status) >= 2) {%>
+                        <div class="wizard-step__item"><span class="wizard-step__item-text text-3"><%= lang.ORDER_WAITING %></span></div>
+                    <% } %>
+                    <% if (orderStatuses.indexOf(order.status) >= 3) {%>
+                        <div class="wizard-step__item"><span class="wizard-step__item-text text-3"><%= lang.ORDER_DISPATCHED %></span></div>
+                    <% } %>
+                    <% if (orderStatuses.indexOf(order.status) >= 4) {%>
+                        <div class="wizard-step__item current"><span class="wizard-step__item-text text-3"><%= lang.ORDER_FINISHED %></span></div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    <% } %>
+<% } %>
+
 <% if (typeof op != 'undefined' && op == 'DELETE') { %>
     <%- include('../modals/layout', { body: include('../modals/request_delete', { orderId: data.id }) }) %>
 <% } %>

@@ -1,3 +1,5 @@
+@import "colors";
+
 #confirm-delete-modal .modal {
     height: 276px - 49px;
     width: 778px - 75.5px - 73.5px;
@@ -10,5 +12,113 @@
         width: 100%;
         display: flex;
         justify-content: space-around;
+    }
+}
+
+.card {
+    border-radius: 3px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    background-color: $white;
+    padding-top: 59px;
+    padding-left: 56px;
+    height: 394px;
+    display: flex;
+    flex-direction: column;
+
+    &:not(:first-of-type) {
+        margin-top: 20px;
+    }
+
+    &-header {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+
+    &-header > * {
+        display: block;
+        max-height: 40px;
+    }
+    
+    &-header__title {
+        color: $blueberry;
+        font-weight: bold;
+    }
+
+    &-header__subtitle {
+        color: $light-blueberry;
+    }
+
+    &-body {
+        display: flex;
+        flex: 1;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding-top: 5%;
+    }
+}
+
+.wizard-step {
+    $bullet-size: 20px;
+    $line-width: 3px;
+
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+    width: 100%;
+    max-width: 1230px;
+    margin-left: -5%;
+
+    &__item {
+        color: rgba($light-blueberry, 0.5);
+        width: 20%;
+    }
+
+    &__item:before {
+        display: block;
+        content: '';
+        background-color: $dark-hot-pink;
+        border: $line-width solid $dark-hot-pink;
+        width: $bullet-size;
+        height: $bullet-size;
+        line-height: $bullet-size;
+        border-radius: $bullet-size;
+        position: relative;
+        left: 50%;
+        margin-bottom: $bullet-size / 2;
+        margin-left: $bullet-size * -0.5;
+        z-index: 1;
+    }
+
+    &__item + &__item {
+        &:after{
+            content: "";
+            display: block;
+            width: 20%;
+            background-color: $dark-hot-pink;
+            height: $line-width;
+            position: absolute;
+            margin-left: -10%;
+            top: $bullet-size / 2;
+            z-index: 0;
+        }
+
+    }
+
+    .wizard-step__item:last-child {
+        color: $dark-hot-pink;
+
+        &.current:before {
+            color: $white;
+            content: '\2714';
+            text-align: center;
+        }
+    }
+
+    &__item-text {
+        display: flex;
+        padding-left: calc(50% - #{$bullet-size} / 2);
+        color: inherit;
+        line-height: initial;
     }
 }

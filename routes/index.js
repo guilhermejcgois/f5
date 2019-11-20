@@ -79,6 +79,24 @@ const renderWithPage = (req, res, org) => {
       };
       Orders.find({ organization: org._id }, allOrdersForOrgCb);
       break;
+    case 'requests':
+      Orders.find({ organization: org._id }, (err, orders) => {
+        if (err) {
+          res.render('login', err);
+
+          return;
+        }
+        const orderStatuses = [
+            'ORDER_OPENED',
+            'ORDER_CONFIRMED',
+            'ORDER_WAITING',
+            'ORDER_DISPATCHED',
+            'ORDER_FINISHED'
+        ];
+        
+        render({ orders, orderStatuses });
+      });
+      break;
     default:
       render();
   }

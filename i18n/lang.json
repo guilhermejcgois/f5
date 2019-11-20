@@ -1,3 +1,8 @@
 {
-    "GATHERING_SCHEDULED": "Agendado"
+    "GATHERING_SCHEDULED": "Agendado",
+    "ORDER_OPENED": "Pedido realizado",
+    "ORDER_CONFIRMED": "Pedido confirmado",
+    "ORDER_WAITING": "BIN pronta para dispacho",
+    "ORDER_DISPATCHED": "Em trânsito",
+    "ORDER_FINISHED": "BIN instalada e pronta para uso!"
 }

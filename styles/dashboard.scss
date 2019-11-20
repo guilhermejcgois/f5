@@ -100,6 +100,7 @@ $header-height: 128px;
         padding: 50px;
         position: relative;
         width: 100%;
+        overflow-y: auto;
 
         .modal-container {
             position: absolute;
