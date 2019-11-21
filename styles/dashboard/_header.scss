@@ -1,0 +1,25 @@
+@import '../colors';
+@import '../variables';
+
+.header {
+    background: $dark-blueberry;
+    box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.16);
+    
+    height: $header-height;
+    
+    padding-left: 70px;
+    padding-right: 100px;
+
+    .btn--primary {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.header,
+.header__actions-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
