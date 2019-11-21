@@ -7,6 +7,7 @@ import passport from 'passport';
 import passportConfig from './config/passport';
 import routes from './routes/index';
 import routesBins from './routes/bins';
+import routesDashboard from './routes/dashboard';
 import routesRequests from './routes/requests';
 import routesUsers from './routes/users';
 
@@ -55,6 +56,7 @@ app.use((req, res, next) => {
 // Routes
 app.use('/', routes);
 app.use('/bins', routesBins);
+app.use('/dashboard', routesDashboard);
 app.use('/dashboard/requests', routesRequests);
 app.use('/users', routesUsers);
 
