@@ -100,6 +100,7 @@ const renderWithPage = (req, res, org) => {
 };
 const renderNewBin = (req, res, org) => {
     res.render('dashboard', {
+        user: req.user,
         org,
         page: 'bin_request'
     });
