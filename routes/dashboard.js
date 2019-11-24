@@ -1,5 +1,7 @@
 import express from 'express';
 
+import PAGE_TITLES from './config/page-titles';
+
 import configAuth from '../config/auth';
 import * as lang from '../i18n/lang.json';
 import { Bins } from '../models/Bins';
@@ -22,12 +24,14 @@ const dashCb = (renderFn) => (req, res) => {
 };
 const renderWithPage = (req, res, org) => {
     const page = req.params.page || 'dashboard';
+    const title = PAGE_TITLES[page.toUpperCase()];
 
     const render = opts =>
         res.render('dashboard', {
             user: req.user,
             org,
             page,
+            title,
             lang,
             ...opts
         });
@@ -102,7 +106,8 @@ const renderNewBin = (req, res, org) => {
     res.render('dashboard', {
         user: req.user,
         org,
-        page: 'bin_request'
+        page: 'bin_request',
+        title: PAGE_TITLES.BIN_REQUEST
     });
 }
 router.get('/', configAuth.ensureAuthenticated, dashCb(renderWithPage));
