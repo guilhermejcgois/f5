@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="/css/payment.css">
+
+<h2 class="dashboard-title">Dados de Pagamento</h2>
+<form class="payment__form">
+    <div class="form-group">
+        <label class="text-2" for="name">Nome do titular *</label>
+        <input type="text" id="name" name="name" class="form-control" placeholder="Digite o nome do titular igual ao cartão" required />
+    </div>
+    <div class="form-group">
+        <label class="text-2" for="number">Número do Cartão *</label>
+        <input type="text" id="number" name="number" class="form-control"
+            placeholder="Ex.: 0000 0000 0000 0000" required />
+    </div>
+    <div class="form-row">
+        <div class="form-group">
+            <label class="text-2" for="name">Validade *</label>
+            <input type="text" id="validity" name="validity" class="form-control" placeholder="Ex.: 10/2024"
+                required />
+        </div>
+        <div class="form-group">
+            <label class="text-2" for="name">CVV *</label>
+            <input type="text" id="cvv" name="cvv" class="form-control" placeholder="Ex.: 123"
+                required />
+        </div>
+    </div>
+    <div class="form-footer">
+        <button id="save" type="button" class="btn-sm btn--inactive capitalize" disabled>Cadastrar cartão</button>
+    </div>
+</form>
