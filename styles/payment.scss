@@ -1,0 +1,22 @@
+.payment__form {
+    max-width: 600px;
+
+    .form-group {
+        margin-top: 20px;
+    }
+
+    .form-row {
+        display: flex;
+        justify-content: space-between;
+
+        .form-group {
+            max-width: 250px;
+        }
+    }
+
+    .form-footer {
+        margin-top: 50px;
+        display: flex;
+        justify-content: center;
+    }
+}

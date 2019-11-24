@@ -1,3 +1,5 @@
+<script src="/js/tooltip.js"></script>
+
 <header class="header">
     <div class="header__logo-wrapper">
         <img src="/img/F5_fundo_escuro.png" srcset="/img/F5_fundo_escuro@2x.png 2x,
@@ -10,10 +12,38 @@
             <button id="new-bin-link" class="btn-md btn--inactive capitalize" disabled>cadastrar ponto</button>
         <% } %>
         <span class="ic-notification"></span>
-        <div class="user-menu" style="margin-left: 10px">
-            <button class="btn-sm btn--secondary-ghost">
-                <a id="logout" href="/users/logout" style="color:inherit; text-decoration: none">Logout</a>
-            </button>
+        <div id="user-menu" class="user-menu">
+            <div class="user-menu__initials text-2">AB</div>
+            <div class="user-menu__arrow-down">
+                <img src="/icons/arrow_down.svg" alt="Abrir menu do usuário">
+            </div>
         </div>
     </div>
 </header>
+<script>
+    const t = new Tooltip(document.querySelector('#user-menu'), {
+        title: `
+        <div class="user-menu__dropdown text-4 tooltip__inner">
+            <div class="user-menu__dropdown-header">
+                <span class="name"><%= org.name %></span>
+                <span class="email"><%= user.email %></span>
+            </div>
+            <div class="user-menu__dropdown-body">
+                <ul>
+                    <li>
+                        <a id="my-account-link" title="Não implementado ainda" style="color:inherit; text-decoration: none">Minha conta</a>
+                    </li>
+                    <li>
+                        <a id="payment-link" href="/dashboard/payment" style="color:inherit; text-decoration: none">Pagamento</a>
+                    </li>
+                    <li>
+                        <a id="logout-link" href="/users/logout" style="color:inherit; text-decoration: none">Sair</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    `,
+        placement: 'bottom-start',
+        html: true
+    });
+</script>

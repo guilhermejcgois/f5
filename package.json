@@ -8,7 +8,7 @@
     "prestart": "npm run compile:sass",
     "start": "babel-node app.js",
     "dev": "run-p dev:js dev:sass",
-    "dev:js": "nodemon --exec babel-node app.js --ignore 'test/**/*.js'",
+    "dev:js": "nodemon --exec babel-node app.js --ignore 'js/**/*.js'",
     "dev:sass": "npm run compile:sass -- --watch",
     "babel-node": "babel-node",
     "sass": "sass",
@@ -31,7 +31,8 @@
     "express-session": "^1.16.2",
     "mongoose": "^5.7.5",
     "passport": "^0.4.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "tooltip.js": "^1.3.3"
   },
   "devDependencies": {
     "@babel/core": "^7.6.4",

@@ -25,6 +25,7 @@ const renderWithPage = (req, res, org) => {
 
     const render = opts =>
         res.render('dashboard', {
+            user: req.user,
             org,
             page,
             lang,
