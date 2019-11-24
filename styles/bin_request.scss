@@ -112,6 +112,10 @@
             background: $white;
             margin-left: 54px;
             width: 493px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            border-bottom-left-radius: 33px;
+            border-bottom-right-radius: 33px;
         }
         
         .autoComplete_result {
@@ -146,7 +150,7 @@
             &:focus,
             &:hover {
                 background: rgba($light-blueberry, 0.2);
-                border: none;
+                border: .05rem solid #e3e3e3;
             }
         }
     }

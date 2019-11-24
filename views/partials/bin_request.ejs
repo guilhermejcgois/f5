@@ -66,6 +66,7 @@
         highlight: true,
         resultItem: {
             content: (data, source) => {
+                document.querySelector("#address").classList.add('searched');
                 const place = data.value;
                 source.innerHTML = `
                 <span class="line-1 text-3">${place.name}</span>

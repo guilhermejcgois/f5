@@ -54,7 +54,7 @@
         .modal .ic-close {
             position: absolute;
             top: 49px;
-            right: 75.5px;
+            right: 30px;
         }
 
         .modal-title {
@@ -63,6 +63,8 @@
             font-weight: 900;
             color: $blueberry;
             text-align: center;
+            width: 50%;
+            margin: 0 auto;
         }
 
         .modal-actions {
