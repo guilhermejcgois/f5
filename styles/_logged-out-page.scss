@@ -52,6 +52,10 @@
     @media screen and (max-width: $md-width) {
       width: 100vw;
     }
+
+    form {
+      max-width: 600px;
+    }
   }
 
   &__box,
