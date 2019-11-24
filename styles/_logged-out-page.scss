@@ -80,6 +80,7 @@
 
   &__header img {
     margin-left: -27px;
+    object-fit: contain;
 
     @media screen and (max-width: $md-width) {
       height: 128px;
