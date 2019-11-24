@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="/css/payment.css">
+<script src="/js/jq-mask-plugin.js"></script>
 
 <h2 class="dashboard-title">Dados de Pagamento</h2>
 <form class="payment__form">
@@ -24,6 +25,57 @@
         </div>
     </div>
     <div class="form-footer">
-        <button id="save" type="button" class="btn-sm btn--inactive capitalize" disabled>Cadastrar cartão</button>
+        <input id="save" type="button" class="btn-sm btn--inactive capitalize" disabled value="Cadastrar cartão" />
     </div>
 </form>
+<script>
+    $(document).ready(function () {
+        $('#cvv').mask('000');
+        $('#validity').mask('00/0000');
+        $('#number').mask('0000 0000 0000 0000');
+    });
+    
+    const data = {
+        name: '',
+        number: '',
+        validity: '',
+        cvv: ''
+    };
+    const valid = {
+        name: false,
+        number: false,
+        validity: false,
+        cvv: false
+    };
+    const checkForm = (e) => {
+        const elId = e.target.id;
+        data[elId] = e.target.value;
+        valid[elId] = e.target.validity.valid;
+        const saveButton = document.querySelector('#save');
+
+        const isValid = valid.name && valid.number && valid.validity && valid.cvv;
+        if (isValid && saveButton.disabled) {
+            saveButton.removeAttribute('disabled');
+            saveButton.classList.add('btn--primary');
+            saveButton.classList.remove('btn--inactive');
+        } else if (!isValid && !saveButton.disabled) {
+            saveButton.setAttribute('disabled');
+            saveButton.classList.remove('btn--primary');
+            saveButton.classList.add('btn--inactive');
+        }
+    };
+    document.querySelector('#name').addEventListener('keyup', checkForm);
+    document.querySelector('#number').addEventListener('keyup', checkForm);
+    document.querySelector('#validity').addEventListener('keyup', checkForm);
+    document.querySelector('#cvv').addEventListener('keyup', checkForm);
+    document.querySelector('#save').addEventListener('click', () => {
+        const cc = `name=${data.name}&number=${data.number}&validity=${data.validity}&cvv=${data.cvv}`;
+        $.post('/payment/credit-card', cc, (data) => {
+            const modalContainer = document.querySelector('.dashboard__main .modal-container');
+            if (modalContainer) {
+                document.removeChild(modalContainer);
+            }
+            document.querySelector('.dashboard__main').innerHTML += data;
+        });
+    });
+</script>
