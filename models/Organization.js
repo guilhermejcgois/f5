@@ -26,6 +26,24 @@ const OrganizationSchema = new mongoose.Schema({
         required: true,
         default: false
     },
+    payment_info: {
+        name: {
+            type: String,
+            required: true
+        },
+        number: {
+            type: String,
+            required: true
+        },
+        validity: {
+            type: String,
+            required: true
+        },
+        cvv: {
+            type: String,
+            required: true
+        },
+    },
     bins
 });
 

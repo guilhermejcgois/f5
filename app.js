@@ -8,6 +8,7 @@ import passportConfig from './config/passport';
 import routes from './routes/index';
 import routesBins from './routes/bins';
 import routesDashboard from './routes/dashboard';
+import routesPayment from './routes/payment';
 import routesRequests from './routes/requests';
 import routesUsers from './routes/users';
 
@@ -58,6 +59,7 @@ app.use('/', routes);
 app.use('/bins', routesBins);
 app.use('/dashboard', routesDashboard);
 app.use('/dashboard/requests', routesRequests);
+app.use('/payment', routesPayment);
 app.use('/users', routesUsers);
 
 app.use('/css', express.static(__dirname + '/dist/css'));
