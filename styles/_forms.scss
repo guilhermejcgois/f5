@@ -35,8 +35,8 @@
 
   input {
     border: none;
-    border-bottom: solid 1px $light-grey;
-    border-top: solid 1px $light-grey;
+    // border-bottom: solid 1px $light-grey;
+    // border-top: solid 1px $light-grey;
     height: 95%;
     width: 100%;
     font-size: inherit;
@@ -48,6 +48,10 @@
 .form-group {
   display: flex;
   flex-direction: column;
+
+  label {
+    font-weight: bold;
+  }
 }
 
 .form-footer {

@@ -98,6 +98,16 @@
     }
   }
 
+  &__box {
+    h2 {
+      color: $blueberry;
+    }
+
+    h4 {
+      color: $greyish;
+    }
+  }
+
   @media screen and (max-width: $md-width) {
     .btn-sm,
     .link--primary,
