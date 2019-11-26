@@ -1,11 +1,10 @@
-import escapeRegExp from 'escape-string-regexp';
 import express from 'express';
-import gmaps from '@google/maps';
+
+import PAGE_TITLES from './config/page-titles';
+
 import configAuth from '../config/auth';
-import { Bins } from '../models/Bins';
 import { Orders } from '../models/Orders';
 import { Organization } from '../models/Organization';
-import { Places } from '../models/Places';
 
 const router = express.Router();
 
@@ -22,6 +21,8 @@ router.get('/delete/:id', configAuth.ensureAuthenticated, (req, res) => {
         res.render('dashboard', {
             modalId: 'confirm-delete-modal',
             org,
+            title: PAGE_TITLES.REQUESTS,
+            user: req.user,
             page: 'requests',
             op: 'DELETE',
             data: {
@@ -33,9 +34,12 @@ router.get('/delete/:id', configAuth.ensureAuthenticated, (req, res) => {
 
 router.delete('/:id', configAuth.ensureAuthenticated, (req, res) => {
     const { id } = req.params;
-
+    
     const deleteCb = () => res.render('modals/request_delete_confirm', {
-        layout: 'modals/layout'
+        layout: 'modals/layout',
+        modalId: 'confirmed-delete-modal',
+        user: req.user,
+        title: PAGE_TITLES.REQUESTS
     });
 
     Orders.findByIdAndDelete(id).then(deleteCb);
