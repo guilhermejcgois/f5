@@ -13,7 +13,14 @@
         <% } %>
         <span class="ic-notification"></span>
         <div id="user-menu" class="user-menu">
-            <div class="user-menu__initials text-2">AB</div>
+            <div class="user-menu__initials text-2">
+                <% var name = org.name.split(' '); %>
+                <% if (name.length === 1) { %>
+                    <%= name[0][0].toUpperCase() + name[0][1].toUpperCase() %>
+                <% } else { %>
+                    <%= name[0][0].toUpperCase() + name[name.length - 1][0].toUpperCase() %>
+                <% } %>
+            </div>
             <div class="user-menu__arrow-down">
                 <img src="/icons/arrow_down.svg" alt="Abrir menu do usuário">
             </div>
