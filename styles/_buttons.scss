@@ -26,6 +26,14 @@
   cursor: pointer;
 }
 
+a.btn-sm,
+a.btn-md,
+a.btn-lg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .btn-reset {
   @extend %btn;
 }
