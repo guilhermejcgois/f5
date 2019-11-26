@@ -4,14 +4,34 @@
 #confirm-delete-modal .modal {
     height: 276px - 49px;
     width: 778px - 75.5px - 73.5px;
-
+    
     .ic {
         display: none;
     }
-
+    
+    
     .modal-actions {
         width: 100%;
         display: flex;
         justify-content: space-around;
+    }
+}
+
+#confirm-delete-modal,
+#confirmed-delete-modal {
+    .modal .modal-title {
+        width: initial;
+        max-width: initial;
+    }
+}
+
+#confirmed-delete-modal .modal {
+    padding: 0;
+    width: 600PX;
+    height: 200px;
+    justify-content: center;
+    
+    .ic {
+        top: 30px;
     }
 }

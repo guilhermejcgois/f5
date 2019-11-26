@@ -20,8 +20,6 @@
         padding: 50px;
         position: relative;
         width: 100%;
-        overflow-y: auto;
-        height: inherit;
 
         .modal-container {
             position: absolute;
@@ -30,7 +28,7 @@
             background-color: rgba($black, 0.4);
             z-index: 1000;
             width: inherit;
-            height: inherit;
+            height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -63,8 +61,13 @@
             font-weight: 900;
             color: $blueberry;
             text-align: center;
-            width: 50%;
+            width: 75%;
+            max-width: 445px;
             margin: 0 auto;
+        }
+
+        .modal-disclaimer {
+            line-height: 27px;
         }
 
         .modal-actions {
