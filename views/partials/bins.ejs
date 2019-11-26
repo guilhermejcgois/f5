@@ -14,7 +14,7 @@
         <tbody class="bins__table-body">
             <% for (var i = 0; i < bins.length; i++) { var bin = bins[i]; %>
                 <tr aria-hidden class="bins__row--spacer"></tr>
-                <tr class="bins__row <%=
+                <tr id="bin-<%= bin._id%>" class="bins__row <%=
                     bin.storage_level <= 0.25
                         ? 'bins__row--green'
                         : bin.storage_level >= 0.75
@@ -35,7 +35,7 @@
                             <span title="Ainda não implementado" aria-label="Ainda não implementado" role="button" class="ic ic-sm ic-edit"></span>
                         <% } %>
                         <% if (typeof canDelete != 'undefined' && canDelete) { %>
-                            <span title="Ainda não implementado" aria-label="Ainda não implementado" role="button" class="ic ic-sm ic-delete"></span>
+                            <span data-id="<%= bin._id%>" aria-label="Apagar bin de código <%= bin._id%>" role="button" class="ic ic-sm ic-delete"></span>
                         <% } %>
                     </td>
                 </tr>
@@ -43,3 +43,48 @@
         </tbody>
     </table>
 <% } %>
+<script>
+    const delBtns = document.querySelectorAll('.ic-delete');
+    delBtns.forEach(delBtn => delBtn.addEventListener('click', function () {
+        const binId = this.dataset.id;
+        const url = `/bins/${binId}`;
+        const closeModal = () => {
+            const modalContainer = document.querySelector('.modal-container');
+            if (modalContainer) {
+                modalContainer.remove();
+            }
+        };
+        const parseResHTML = (data, cssclass) => {
+            const domParser = new DOMParser();
+            const doc = domParser.parseFromString(data, 'text/html');
+            const modal = doc.querySelector('.modal-container');
+            if (cssclass) { modal.classList.add(cssclass); }
+            document.querySelector('.dashboard__main').appendChild(modal);
+            doc.clear();
+        };
+        const deleteBinFn = () => {
+            $.ajax({
+                url,
+                type: 'DELETE',
+                success: (data) => {
+                    closeModal();
+                    parseResHTML(data, 'confirmed');
+                    document.querySelector('.ic-close').addEventListener('click', () => {
+                        closeModal();
+                        const binRow = document.querySelector(`#bin-${binId}`);
+                        const rowSpacer = binRow.previousSibling();
+                        if (rowSpacer) { rowSpacer.remove(); }
+                        binRow.remove();
+                    });
+                }
+            });
+        };
+
+        $.get(url, (data) => {
+            parseResHTML(data, 'confirm');
+            document.querySelector('#cancel-btn').addEventListener('click', closeModal);
+            document.querySelector('#delete-btn').addEventListener('click', deleteBinFn);
+        });
+    }));
+</script>
+

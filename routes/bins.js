@@ -9,6 +9,27 @@ import { Places } from '../models/Places';
 
 const router = express.Router();
 
+const layout = 'modals/layout';
+const modalId = 'bin-delete-modal';
+
+router.get('/:id', configAuth.ensureAuthenticated, (req, res) => {
+    res.render('modals/bin_delete', {
+        layout,
+        modalId
+    });
+});
+
+router.delete('/:id', configAuth.ensureAuthenticated, (req, res) => {
+    const { id } = req.params;
+
+    const deleteCb = () => res.render('modals/bin_delete_confirm', {
+        layout,
+        modalId
+    });
+
+    Bins.findByIdAndDelete(id).then(deleteCb);
+});
+
 router.get('/address', configAuth.ensureAuthenticated, (req, res) => {
     const query = req.query.q;
     if (process.env.USE_GOOGLE_PLACES_API) {
@@ -32,7 +53,6 @@ router.get('/address', configAuth.ensureAuthenticated, (req, res) => {
         });
     }
 });
-
 
 router.post('/register', configAuth.ensureAuthenticated, (req, res) => {
     const { address, size } = req.body;
