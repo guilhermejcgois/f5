@@ -25,4 +25,12 @@ const OrdersSchema = new mongoose.Schema({
 
 const Orders = mongoose.model('Orders', OrdersSchema);
 
-module.exports = { Orders, OrdersSchema };
+const orderStatuses = [
+    'ORDER_OPENED',
+    'ORDER_CONFIRMED',
+    'ORDER_WAITING',
+    'ORDER_DISPATCHED',
+    'ORDER_FINISHED'
+];
+
+module.exports = { Orders, OrdersSchema, orderStatuses };

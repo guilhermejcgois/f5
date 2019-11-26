@@ -1,14 +1,5 @@
 <link rel="stylesheet" href="/css/dashboard.css">
 
-<div class="dashboard">
-    <%- include('partials/header', { canAdd: org.payed }) %>
-    <div class="dashboard__body">
-        <%- include('partials/sidebar') %>
-        <%- include('layouts/dashboard') %>
-        <div class="dashboard-loader"></div>
-    </div>
-</div>
-
 <script type="text/javascript">
     __f5__.closeModal = function () {
         let modal = document.querySelector('.modal-container');
@@ -24,17 +15,22 @@
     };
     __f5__.modalCloseListener = __f5__.closeModal;
     __f5__.parseModalHTML = function (data, cssclass) {
+        console.log("const domParser = new DOMParser();")
         const domParser = new DOMParser();
+        console.log("const doc = domParser.parseFromString(data, 'text/html');")
         const doc = domParser.parseFromString(data, 'text/html');
         
         this.closeModal();
         
+        console.log("const modal = doc.querySelector('.modal-container');")
         const modal = doc.querySelector('.modal-container');
         if (cssclass) { modal.classList.add(cssclass); }
 
+        console.log("const closeBtn = modal.querySelector('.ic-close');")
         const closeBtn = modal.querySelector('.ic-close');
         if (closeBtn) { closeBtn.addEventListener('click', __f5__.modalCloseListener); }
 
+        console.log("const cancelBtn = modal.querySelector('#cancel-btn');")
         const cancelBtn = modal.querySelector('#cancel-btn');
         if (cancelBtn) { cancelBtn.addEventListener('click', __f5__.modalCloseListener); }
 
@@ -51,8 +47,27 @@
                     __f5__.parseModalHTML(data, 'deleted-request');
                 }
             });
+        },
+        listenCancel: () => {
+            document.querySelector('#order-cancel').addEventListener('click', function () {
+                const id = this.dataset.id;
+                const url = `/dashboard/requests/delete/${id}`;
+                $.get(url, (data) => {
+                    __f5__.parseModalHTML(data, 'delete-request');
+                    document.querySelector('#delete-btn').addEventListener('click', __f5__.orders.delete);
+                });
+            });
         }
     };
     __f5__.removeDashLoader();
 </script>
+
+<div class="dashboard">
+    <%- include('partials/header', { canAdd: org.payed }) %>
+    <div class="dashboard__body">
+        <%- include('partials/sidebar') %>
+        <%- include('layouts/dashboard') %>
+        <div class="dashboard-loader"></div>
+    </div>    
+</div>    
 

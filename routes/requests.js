@@ -3,7 +3,9 @@ import express from 'express';
 import PAGE_TITLES from './config/page-titles';
 
 import configAuth from '../config/auth';
-import { Orders } from '../models/Orders';
+import * as lang from '../i18n/lang.json';
+import { Bins } from '../models/Bins';
+import { Orders, orderStatuses } from '../models/Orders';
 import { Organization } from '../models/Organization';
 
 const router = express.Router();
@@ -43,6 +45,34 @@ router.delete('/:id', configAuth.ensureAuthenticated, (req, res) => {
     });
 
     Orders.findByIdAndDelete(id).then(deleteCb);
+});
+
+router.get('/:id', configAuth.ensureAuthenticated, (req, res) => {
+    const { id } = req.params;
+    let address;
+    let status;
+    let size;
+
+    Orders.findById(id).then(order => {
+        status = order.status
+        return Bins.findById(order.bin);
+    }).then(bin => {
+        size = bin.size;
+        address = bin.place.address;
+    }).then(() => res.render('modals/request_info', {
+        layout: 'layouts/modal',
+        modalId: 'info-modal',
+        user: req.user,
+        title: PAGE_TITLES.REQUESTS,
+        lang,
+        orderStatuses,
+        data: {
+            address,
+            id,
+            size,
+            status
+        }
+    }));
 });
 
 export default router;

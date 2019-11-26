@@ -6,7 +6,7 @@ import configAuth from '../config/auth';
 import * as lang from '../i18n/lang.json';
 import { Bins } from '../models/Bins';
 import { Organization } from '../models/Organization';
-import { Orders } from '../models/Orders';
+import { Orders, orderStatuses } from '../models/Orders';
 import { Places } from '../models/Places';
 
 const router = express.Router();
@@ -87,13 +87,6 @@ const renderWithPage = (req, res, org) => {
 
                     return;
                 }
-                const orderStatuses = [
-                    'ORDER_OPENED',
-                    'ORDER_CONFIRMED',
-                    'ORDER_WAITING',
-                    'ORDER_DISPATCHED',
-                    'ORDER_FINISHED'
-                ];
 
                 render({ orders, orderStatuses });
             });

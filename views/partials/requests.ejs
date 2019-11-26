@@ -2,7 +2,7 @@
 
 <% if (typeof orders != 'undefined') {%>
     <% for (var i = 0; i < orders.length; i++) { var order = orders[i]; %>
-        <div class="card">
+        <div class="card order" data-id="<%= order._id %>">
             <div class="card-header">
                 <span class="text-2 card-header__title">
                     Número da solicitação: <%= order._id.toString().substr(0, 4) + '...' + order._id.toString().substr(-4) %>
@@ -33,5 +33,18 @@
 <% } %>
 
 <% if (typeof op != 'undefined' && op == 'DELETE') { %>
-    <%- include('../modals/layout', { body: include('../modals/request_delete', { orderId: data.id }) }) %>
+    <%- include('../layouts/modal', { body: include('../modals/request_delete', { orderId: data.id }) }) %>
 <% } %>
+
+<script>
+    document.querySelectorAll('.card.order').forEach(card => {
+        card.addEventListener('click', function () {
+            const id = this.dataset.id;
+            console.log({id, __f5__})
+            $.get(`/dashboard/requests/${id}`, function (data) {
+                __f5__.parseModalHTML(data);
+                __f5__.orders.listenCancel();
+            });
+        });
+    });
+</script>
