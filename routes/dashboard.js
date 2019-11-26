@@ -67,7 +67,7 @@ const renderWithPage = (req, res, org) => {
                 };
                 rawBins.filter(rb => !!rb)
                     .reduce(reduceBins, firstPromise)
-                    .then(res => render({ bins: Object.values(res.bins || {}) }));
+                    .then(res => render({ bins: Object.values(res.bins || {}), canDelete: true }));
             };
             const allOrdersForOrgCb = (err, orders) => {
                 if (err) {

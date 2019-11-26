@@ -14,8 +14,19 @@ $cell-gap: 20px;
         .storage_level {
             min-width: 280px - $cell-gap;
             max-width: 300px;
+
         }
 
+        td.storage_level {
+            display: flex;
+            align-items: center;
+
+            .content {
+                width: 50px;
+                margin-left: 10px;
+            }
+        }
+        
         .actions {
             min-width: 200px;
             display: flex;

@@ -21,18 +21,23 @@
                             ? 'bins__row--red'
                             : 'bins__row--yellow'
                 %> text-4">
-                    <th class="bins__cell code"><%= bin._id.toString().substr(0, 4) + '...' + bin._id.toString().substr(-4) %></th>
-                    <th class="bins__cell storage_level">
+                    <td class="bins__cell code"><%= bin._id.toString().substr(0, 4) + '...' + bin._id.toString().substr(-4) %></td>
+                    <td class="bins__cell storage_level">
                         <div class="loading-bar">
                             <div class="loading-bar__fill<%= bin.storage_level == 1 ? ' full' : '' %>" style="width: <%= bin.storage_level * 100 %>%"></div>
                         </div>
-                    </th>
-                    <th class="bins__cell district"><%= bin.place.district %></th>
-                    <th class="bins__cell center gathering_status"><%= lang[bin.gathering_status] %></th>
-                    <th class="bins__cell right actions">
-                        <span title="Ainda não implementado" aria-label="Ainda não implementado" role="button" class="ic ic-sm ic-edit"></span>
-                        <span title="Ainda não implementado" aria-label="Ainda não implementado" role="button" class="ic ic-sm ic-delete"></span>
-                    </th>
+                        <span class="content"><%= bin.storage_level * 100 %>%</span>
+                    </td>
+                    <td class="bins__cell district"><%= bin.place.district %></td>
+                    <td class="bins__cell center gathering_status"><%= lang[bin.gathering_status] %></td>
+                    <td class="bins__cell right actions">
+                        <% if (typeof canEdit != 'undefined' && canEdit) { %>
+                            <span title="Ainda não implementado" aria-label="Ainda não implementado" role="button" class="ic ic-sm ic-edit"></span>
+                        <% } %>
+                        <% if (typeof canDelete != 'undefined' && canDelete) { %>
+                            <span title="Ainda não implementado" aria-label="Ainda não implementado" role="button" class="ic ic-sm ic-delete"></span>
+                        <% } %>
+                    </td>
                 </tr>
             <% } %>
         </tbody>
