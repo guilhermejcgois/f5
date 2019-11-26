@@ -11,3 +11,49 @@
     </div>
 </div>
 
+<script type="text/javascript">
+    __f5__.closeModal = function () {
+        let modal = document.querySelector('.modal-container');
+        if (modal) {
+            const closeBtn = modal.querySelector('.ic-close');
+            if (closeBtn) { closeBtn.removeEventListener('click', __f5__.modalCloseListener); }
+
+            const cancelBtn = modal.querySelector('#cancel-btn');
+            if (cancelBtn) { cancelBtn.removeEventListener('click', __f5__.modalCloseListener); }
+
+            modal.remove();
+        }
+    };
+    __f5__.modalCloseListener = __f5__.closeModal;
+    __f5__.parseModalHTML = function (data, cssclass) {
+        const domParser = new DOMParser();
+        const doc = domParser.parseFromString(data, 'text/html');
+        
+        this.closeModal();
+        
+        const modal = doc.querySelector('.modal-container');
+        if (cssclass) { modal.classList.add(cssclass); }
+
+        const closeBtn = modal.querySelector('.ic-close');
+        if (closeBtn) { closeBtn.addEventListener('click', __f5__.modalCloseListener); }
+
+        const cancelBtn = modal.querySelector('#cancel-btn');
+        if (cancelBtn) { cancelBtn.addEventListener('click', __f5__.modalCloseListener); }
+
+        document.querySelector('.dashboard__main').appendChild(modal);
+        doc.clear();
+    };
+    __f5__.orders = {
+        delete: function (e) {
+            const reqId = e.target.dataset.id;
+            $.ajax({
+                url: `/dashboard/requests/${reqId}`,
+                type: 'DELETE',
+                success: function (data) {
+                    __f5__.parseModalHTML(data, 'deleted-request');
+                }
+            });
+        }
+    };
+</script>
+

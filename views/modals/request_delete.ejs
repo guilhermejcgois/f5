@@ -10,25 +10,5 @@
         const modalContainer = document.querySelector('.modal-container');
         modalContainer.parentElement.removeChild(modalContainer);
     });
-    document.querySelector('#delete-btn').addEventListener('click', function () {
-        const reqId = this.dataset.id;
-        $.ajax({
-            url: `/dashboard/requests/${reqId}`,
-            type: 'DELETE',
-            success: (data) => {
-                const modalContainer = document.querySelector('.dashboard__main .modal-container');
-                if (modalContainer) {
-                    document.querySelector('.dashboard__main').removeChild(modalContainer);
-                }
-                document.querySelector('.dashboard__main').innerHTML += data;
-
-                const close = function (e) {
-                    history.replaceState(history.state, document.title, '/dashboard/resquests');
-                    const modal = document.querySelector('.modal-container');
-                    modal.parentElement.removeChild(modal);
-                };
-                document.querySelector('.ic-close').addEventListener('click', close);
-            }
-        });
-    });
+    document.querySelector('#delete-btn').addEventListener('click', __f5__.orders.delete);
 </script>

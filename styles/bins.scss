@@ -1,5 +1,6 @@
 @import "colors";
 @import "variables";
+@import "widgets/modals";
 
 $cell-gap: 20px;
 
@@ -130,26 +131,12 @@ $cell-gap: 20px;
     &-title {
         font-size: 40px;
     }
-    
-    .modal-actions {
-        width: 100%;
-        display: flex;
-        justify-content: space-around;
-    }
 }
 
 #bin-delete-modal.confirm .modal {
-    height: 276px - 49px;
-    width: 778px - 75.5px - 73.5px;
+    @extend %modal-bin-delete;
 }
 
-#bin-delete-modal.confirmed .modal {
-    padding: 0;
-    width: 600PX;
-    height: 160px;
-    justify-content: center;
-
-    .ic-close {
-        top: 30px;
-    }
+#bin-delete-modal.confirmed {
+    @extend %modal-bin-deleted;
 }

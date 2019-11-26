@@ -44,35 +44,21 @@
     </table>
 <% } %>
 <script>
+    const f5 = window.__f5__;
     const delBtns = document.querySelectorAll('.ic-delete');
     delBtns.forEach(delBtn => delBtn.addEventListener('click', function () {
         const binId = this.dataset.id;
         const url = `/bins/${binId}`;
-        const closeModal = () => {
-            const modalContainer = document.querySelector('.modal-container');
-            if (modalContainer) {
-                modalContainer.remove();
-            }
-        };
-        const parseResHTML = (data, cssclass) => {
-            const domParser = new DOMParser();
-            const doc = domParser.parseFromString(data, 'text/html');
-            const modal = doc.querySelector('.modal-container');
-            if (cssclass) { modal.classList.add(cssclass); }
-            document.querySelector('.dashboard__main').appendChild(modal);
-            doc.clear();
-        };
         const deleteBinFn = () => {
             $.ajax({
                 url,
                 type: 'DELETE',
                 success: (data) => {
-                    closeModal();
-                    parseResHTML(data, 'confirmed');
+                    f5.parseModalHTML(data, 'confirmed');
                     document.querySelector('.ic-close').addEventListener('click', () => {
-                        closeModal();
                         const binRow = document.querySelector(`#bin-${binId}`);
-                        const rowSpacer = binRow.previousSibling();
+                        if (!binRow) { return; }
+                        const rowSpacer = binRow.previous;
                         if (rowSpacer) { rowSpacer.remove(); }
                         binRow.remove();
                     });
@@ -81,8 +67,7 @@
         };
 
         $.get(url, (data) => {
-            parseResHTML(data, 'confirm');
-            document.querySelector('#cancel-btn').addEventListener('click', closeModal);
+            f5.parseModalHTML(data, 'confirm');
             document.querySelector('#delete-btn').addEventListener('click', deleteBinFn);
         });
     }));

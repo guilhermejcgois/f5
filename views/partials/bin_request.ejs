@@ -41,7 +41,7 @@
         data: {
             src: async () => {
                 const query = document.querySelector(addressSel).value;
-                const source = await fetch(`/bins/address?q=${query}`);
+                const source = await fetch(`/bins/search/address?q=${query}`);
                 return await source.json();
             },
             key: ["name"],
@@ -141,12 +141,16 @@
     document.querySelector('#size-g').addEventListener('click', enableSubmit);
     document.querySelector('#save-bin').addEventListener('click', () => {
         const bin = `address=${data.address}&size=${data.size}`;
-        $.post('/bins/register', bin, (data) => {
-            const modalContainer = document.querySelector('.dashboard__main .modal-container');
-            if (modalContainer) {
-                document.removeChild(modalContainer);
-            }
-            document.querySelector('.dashboard__main').innerHTML += data;
+        $.post('/bins/register', bin, (data) =>{
+            __f5__.parseModalHTML(data, 'registered-bin');
+            document.querySelector('#order-cancel').addEventListener('click', function () {
+                const id = this.dataset.id;
+                const url = `/dashboard/requests/delete/${id}`;
+                $.get(url, (data) => {
+                    __f5__.parseModalHTML(data, 'delete-request');
+                    document.querySelector('#delete-btn').addEventListener('click', __f5__.orders.delete);
+                });
+            });
         });
     });
 </script>

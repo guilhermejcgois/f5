@@ -1,4 +1,5 @@
 @import "colors";
+@import "widgets/modals";
 
 .new-bin {
     position: relative;
@@ -167,30 +168,15 @@
 }
 
 .modal-container {
-    .modal {
-        min-height: 481px;
-        max-height: 681px;
+    &.delete-request {
+        @extend %modal-order-delete;
     }
 
-    .label {
-        color: $blueberry;
+    &.deleted-request {
+        @extend %modal-order-deleted;
     }
 
-    .modal-disclaimer {
-        width: 681px;
-        text-align: center;
-    }
-
-    .row--bottom-border {
-        border-bottom: 2px solid $snow;
-    }
-
-    .row .value {
-        margin-left: 50px;
-    }
-
-    #order-cancel {
-        line-height: 60px;
-        text-align: center;
+    &.registered-bin {
+        @extend %modal-bin-inserted;
     }
 }

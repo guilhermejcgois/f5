@@ -30,7 +30,7 @@ router.delete('/:id', configAuth.ensureAuthenticated, (req, res) => {
     Bins.findByIdAndDelete(id).then(deleteCb);
 });
 
-router.get('/address', configAuth.ensureAuthenticated, (req, res) => {
+router.get('/search/address', configAuth.ensureAuthenticated, (req, res) => {
     const query = req.query.q;
     if (process.env.USE_GOOGLE_PLACES_API) {
         const googleMapsClient = gmaps.createClient({
