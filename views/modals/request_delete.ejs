@@ -5,7 +5,11 @@
     <button id="cancel-btn" class="btn btn-sm btn--primary-ghost uppercase">Voltar</button>
 </div>
 <script>
-    document.querySelector('#cancel-btn').addEventListener('click', () => document.querySelector('.modal-container').click());
+    document.querySelector('#cancel-btn').addEventListener('click', () =>  {
+        history.replaceState(history.state, document.title, '/dashboard/resquests');
+        const modalContainer = document.querySelector('.modal-container');
+        modalContainer.parentElement.removeChild(modalContainer);
+    });
     document.querySelector('#delete-btn').addEventListener('click', function () {
         const reqId = this.dataset.id;
         $.ajax({
@@ -17,6 +21,13 @@
                     document.querySelector('.dashboard__main').removeChild(modalContainer);
                 }
                 document.querySelector('.dashboard__main').innerHTML += data;
+
+                const close = function (e) {
+                    history.replaceState(history.state, document.title, '/dashboard/resquests');
+                    const modal = document.querySelector('.modal-container');
+                    modal.parentElement.removeChild(modal);
+                };
+                document.querySelector('.ic-close').addEventListener('click', close);
             }
         });
     });

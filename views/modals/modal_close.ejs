@@ -1,6 +1,6 @@
 <span class="ic ic-sm ic-close"></span>
 <script>
-    document.querySelector('.modal .ic-close').addEventListener('click', () => {
+    document.querySelector('.ic-close').addEventListener('click', function (e) {
         const modal = document.querySelector('.modal-container');
         modal.parentElement.removeChild(modal);
     });

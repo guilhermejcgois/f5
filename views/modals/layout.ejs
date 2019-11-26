@@ -2,12 +2,4 @@
     <article class="modal">
         <%- body %>
     </article>
-    <script>
-        const closeModal = () => {
-            history.replaceState(history.state, document.title, '/dashboard/resquests');
-            const modalContainer = document.querySelector('.modal-container');
-            modalContainer.parentElement.removeChild(modalContainer);
-        };
-        document.querySelector('.modal-container').addEventListener('click', closeModal);
-    </script>
 </div>

@@ -1,2 +1,9 @@
-<% -include('modal_close') %>
+<%- include('modal_close') %>
 <header class="modal-title">Seu pedido foi cancelado!</header>
+<script>
+    const close = function (e) {
+        const modal = document.querySelector('.modal-container');
+        modal.parentElement.removeChild(modal);
+    };
+    document.querySelector('.ic-close').addEventListener('click', close);
+</script>
