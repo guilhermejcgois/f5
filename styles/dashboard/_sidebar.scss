@@ -1,6 +1,7 @@
 
 .sidebar {
-    width: 379px;
+    min-width: $sidebar-width;
+    max-width: $sidebar-width;
 
     display: flex;
     flex-direction: column;

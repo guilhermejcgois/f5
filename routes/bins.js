@@ -9,7 +9,7 @@ import { Places } from '../models/Places';
 
 const router = express.Router();
 
-const layout = 'modals/layout';
+const layout = 'layouts/modal';
 const modalId = 'bin-delete-modal';
 
 router.get('/:id', configAuth.ensureAuthenticated, (req, res) => {

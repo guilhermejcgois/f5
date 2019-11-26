@@ -14,7 +14,47 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 
     <script type="text/javascript">
-        window.__f5__ = {};
+        window.__f5__ = {
+            parseDashHTML: function (data) {
+                const domParser = new DOMParser();
+                const doc = domParser.parseFromString(data, 'text/html');
+                const mainSel = '.dashboard__main';
+                const main = doc.querySelector(mainSel);
+                const dashBody = document.querySelector('.dashboard__body');
+                dashBody.removeChild(document.querySelector(mainSel));
+                dashBody.appendChild(main);
+                document.title = 'F5 - ' + dashBody.querySelector('.dashboard-title').textContent;
+                doc.clear();
+
+                __f5__.removeDashLoader();
+            },
+            removeDashLoader: function () {
+                setTimeout(() => {
+                    document.querySelector('.dashboard-loader').classList.add('hide');
+                    document.querySelector('.dashboard-loader').classList.remove('blink');
+                }, 3000);
+            },
+            router: {
+                navigate: function (route) {
+                    if (sessionStorage.getItem('lastroute') === route) { return false; }
+
+                    document.querySelector('.dashboard-loader').classList.remove('hide');
+                    document.querySelector('.dashboard-loader').classList.add('blink');
+
+                    const prevActive = document.querySelector('.sidebar__menu-item.active');
+                    if (prevActive) { prevActive.classList.remove('active'); }
+
+                    history.replaceState(history.state, document.title, route);
+
+                    $.get(route, data => {
+                        __f5__.parseDashHTML(data);
+                        sessionStorage.setItem('lastroute', route);
+                    });
+
+                    return true;
+                }
+            }
+        };
         window.doLogin = () => {
             $('#email').val('guijocargo@gmail.com');
             $('#password').val('123456');

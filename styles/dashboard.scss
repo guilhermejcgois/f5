@@ -10,6 +10,30 @@
     height: 100%;
     width: 100%;
     background: $snow;
+
+    &-loader {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: $header-height;
+        left: $sidebar-width;
+        z-index: 10;
+
+        @-webkit-keyframes blinker {
+            from {opacity: 1.0;}
+            to {opacity: 0.5;}
+        }
+
+        &.blink {
+            background: $light-blueberry;
+            -webkit-animation-name: blinker;
+            -webkit-animation-duration: 1s;
+            -webkit-animation-iteration-count: infinite;
+            -webkit-animation-timing-function: ease-in-out;
+            -webkit-animation-direction: alternate;
+        }
+
+    }
     
     &__body {
         display: flex;

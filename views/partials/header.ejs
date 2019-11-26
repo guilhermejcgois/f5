@@ -7,7 +7,7 @@
     </div>
     <div class="header__actions-wrapper">
         <% if (canAdd) { %>
-            <a id="new-bin-link" href="/dashboard/bins/cadastrar" class="btn-md btn--primary capitalize">cadastrar ponto</a>
+            <a id="new-bin-link" href="#" data-route="/dashboard/bins/cadastrar" class="btn-md btn--primary capitalize">cadastrar ponto</a>
         <% } else { %>
             <button id="new-bin-link" class="btn-md btn--inactive capitalize" disabled>cadastrar ponto</button>
         <% } %>
@@ -28,7 +28,13 @@
     </div>
 </header>
 <script>
-    const t = new Tooltip(document.querySelector('#user-menu'), {
+    function navigate (e) {
+        __f5__.router.navigate(e.target.dataset.route);
+    };
+    document.querySelector('a#new-bin-link').addEventListener('click', navigate);
+    const userMenu = document.querySelector('#user-menu');
+    userMenu.addEventListener('mouseenter', () => setTimeout(() => document.querySelector('a#payment-link').addEventListener('click', navigate), 500));
+    new Tooltip(userMenu, {
         title: `
         <div class="user-menu__dropdown text-4 tooltip__inner">
             <div class="user-menu__dropdown-header">
@@ -41,7 +47,7 @@
                         <a id="my-account-link" title="Não implementado ainda" style="color:inherit; text-decoration: none">Minha conta</a>
                     </li>
                     <li>
-                        <a id="payment-link" href="/dashboard/payment" style="color:inherit; text-decoration: none">Pagamento</a>
+                        <a id="payment-link" href="#" data-route="/dashboard/payment" style="color:inherit; text-decoration: none">Pagamento</a>
                     </li>
                     <li>
                         <a id="logout-link" href="/users/logout" style="color:inherit; text-decoration: none">Sair</a>

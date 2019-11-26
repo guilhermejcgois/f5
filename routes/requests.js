@@ -36,7 +36,7 @@ router.delete('/:id', configAuth.ensureAuthenticated, (req, res) => {
     const { id } = req.params;
     
     const deleteCb = () => res.render('modals/request_delete_confirm', {
-        layout: 'modals/layout',
+        layout: 'layouts/modal',
         modalId: 'confirmed-delete-modal',
         user: req.user,
         title: PAGE_TITLES.REQUESTS

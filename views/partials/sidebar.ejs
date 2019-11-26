@@ -1,16 +1,16 @@
 <aside class="sidebar">
     <ul class="sidebar__menu">
         <li id="dashboard-link" class="sidebar__menu-item uppercase">
-            <a href="/dashboard">Dashboard</a>
+            <a href="#" data-route="/dashboard">Dashboard</a>
         </li>
         <li id="bins-link" class="sidebar__menu-item uppercase">
-            <a href="/dashboard/bins">Minhas bins</a>
+            <a href="#" data-route="/dashboard/bins">Minhas bins</a>
         </li>
         <li id="requests-link" class="sidebar__menu-item uppercase">
-            <a href="/dashboard/requests">Meus pedidos</a>
+            <a href="#" data-route="/dashboard/requests">Meus pedidos</a>
         </li>
         <li id="gathering-link" class="sidebar__menu-item uppercase">
-            <a href="/dashboard/gathering">Coletas</a>
+            <a href="#" data-route="/dashboard/gathering">Coletas</a>
         </li>
     </ul>
     <div class="sidebar__footer">
@@ -24,6 +24,12 @@
     </div>
 </aside>
 <script>
+    document.querySelectorAll('.sidebar__menu-item a').forEach(a => {
+        a.addEventListener('click', function (e) {
+            __f5__.router.navigate(e.target.dataset.route);
+            e.target.parentElement.classList.add('active');
+        });
+    });
     const activeMenuItem = '#<%= page%>-link';
     const li = document.querySelector(activeMenuItem);
     if (li) {

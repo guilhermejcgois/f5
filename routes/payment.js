@@ -41,7 +41,7 @@ console.log(req.user)
         }
 
         res.render('modals/payment_confirm', {
-            layout: 'modals/layout'
+            layout: 'layouts/modal'
         });
     });
 });
