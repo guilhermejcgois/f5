@@ -2,38 +2,42 @@
 <link rel="stylesheet" href="css/login.css">
 <section class="login lop">
   <aside class="lop__left-side">
+    <div class="lop__header">
+      <img src="/img/F5-logo.png" srcset="/img/F5-logo@2x.png 2x,
+                       img/F5-logo@3x.png 3x">
+    </div>
     <img src="/img/login.png" srcset="/img/login@2x.png 2x,
                  img/login@3x.png 3x">
     <div class="lop__left-text text-0-slab">
       <span>Venha fazer parte</span>
-      <span>desse movimento</span>
+      <span>desse movimento.</span>
+      <span>Da um F5!</span>
     </div>
   </aside>
   <main class="lop__right-side">
     <div class="lop__header">
-      <img src="/img/F5-logo.png" srcset="/img/F5-logo@2x.png 2x,
-                       img/F5-logo@3x.png 3x">
       <span class="lop__register-link text-4">
-        Não possui uma conta? <a class="link--primary" href="/cadastro">Registre-se</a>
+        Ainda não possui uma conta? <a class="link--primary" href="/cadastro">Registre-se</a>
       </span>
     </div>
     <div class="lop__box">
-      <h2 class="text-1-slab">Acesse sua conta</h2>
-      <h4 class="text-2">Insira seus dados abaixo</h4>
-      <form action="/users/login" method="POST">
-        <div class="form-group email">
-          <label class="text-2" for="email">Email comercial</label>
-          <%- include('partials/custom-input', {type:"email", id:"email", name:"email", placeholder:"Digite seu email"}); %>
-        </div>
-        <div class="form-group password">
-          <label class="text-2" for="password">Senha</label>
-          <%- include('partials/custom-input', {type:"password", id:"password", name:"password", placeholder:"Digite sua senha"}); %>
-        </div>
-        <div class="form-footer">
-          <button id="login" type="submit" class="btn-sm btn--primary">Login</button>
-          <a id="forgot-pass" class="text-4" href="/esqueci-minha-senha">Esqueceu sua senha?</a>
-        </div>
-      </form>
+      <div class="lop__box-body">
+        <h2 class="text-1 bold">Entrar</h2>
+        <form action="/users/login" method="POST">
+          <div class="form-group email">
+            <label class="text-4" for="email">Email</label>
+            <%- include('partials/custom-input', {type:"email", id:"email", name:"email", placeholder:"Digite seu email"}); %>
+          </div>
+          <div class="form-group password">
+            <label class="text-4" for="password">Senha</label>
+            <%- include('partials/custom-input', {type:"password", id:"password", name:"password", placeholder:"Digite sua senha"}); %>
+          </div>
+          <div class="form-footer">
+            <button id="login" type="submit" class="btn-sm btn--primary">Entrar</button>
+            <a id="forgot-pass" class="text-4" href="/esqueci-minha-senha">Esqueceu a senha?</a>
+          </div>
+        </form>
+      </div>
     </div>
   </main>
 </section>

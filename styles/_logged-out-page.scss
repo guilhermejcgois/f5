@@ -1,6 +1,8 @@
 @import "colors";
 @import "variables";
 
+$content-padding-top: 45px;
+
 .lop,
 .logged-out-page {
   height: 100vh;
@@ -8,35 +10,38 @@
 
   display: flex;
 
-  > * {
-    min-width: 50vw;
+  > *:first-child {
+    width: 35vw;
+    position: relative;
   }
 
+  > *:last-child {
+    flex: 1;
+  }
+  
   &__left-text {
+    padding-top: 1.4rem;
+    padding-left: 5rem;
     display: flex;
     flex-direction: column;
-    position: absolute;
-    top: 0;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
     color: $white;
+    font-size: 2rem;
 
     span {
         line-height: normal;
     }
-  }
 
-  &__left-side {
     @media screen and (max-width: $md-width) {
       display: none;
     }
   }
 
-  &__left-side img {
+  &__left-side > img {
     height: 100%;
     width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: -1;
   }
 
   &__left-side,
@@ -46,11 +51,15 @@
 
   &__right-side {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
 
     @media screen and (max-width: $md-width) {
       width: 100vw;
+    }
+
+    .lop__header {
+      justify-content: flex-end;
     }
 
     form {
@@ -66,12 +75,12 @@
   }
 
   &__header {
-    position: absolute;
     top: 0;
 
     display: flex;
-    justify-content: space-between;
     align-items: center;
+
+    padding-top: $content-padding-top;
   }
 
   .form-footer {
@@ -79,7 +88,6 @@
   }
 
   &__header img {
-    margin-left: -27px;
     object-fit: contain;
 
     @media screen and (max-width: $md-width) {
@@ -99,12 +107,22 @@
   }
 
   &__box {
-    h2 {
-      color: $blueberry;
-    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex: 1;
+    margin-bottom: 155px;
 
-    h4 {
-      color: $greyish;
+    &-body {
+      width: 50%;
+      min-width: 390px;
+      max-width: 600px;
+
+    }
+    
+    .tip {
+      line-height: 1.19;
     }
   }
 

@@ -4,7 +4,6 @@
 .form-control {
   @extend .text-2;
 
-  border-radius: 100px;
   border: solid 1px $light-grey;
   background-color: $white;
 
@@ -35,13 +34,10 @@
 
   input {
     border: none;
-    // border-bottom: solid 1px $light-grey;
-    // border-top: solid 1px $light-grey;
     height: 95%;
     width: 100%;
     font-size: inherit;
     margin-left: 5px;
-    border-radius: 0 100px 100px 0;
   }
 }
 
