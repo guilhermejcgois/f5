@@ -31,6 +31,10 @@ $content-padding-top: 45px;
         line-height: normal;
     }
 
+    @media screen and (max-width: $xlg-width) {
+      padding-left: 3rem !important;
+    }
+
     @media screen and (max-width: $md-width) {
       display: none;
     }
@@ -72,6 +76,10 @@ $content-padding-top: 45px;
     box-sizing: border-box;
     padding: 1rem 5.625rem 0 5rem;
     width: 100%;
+
+    @media screen and (max-width: $xlg-width) {
+      padding-left: 3rem !important;
+    }
   }
 
   &__header {
@@ -127,6 +135,7 @@ $content-padding-top: 45px;
   }
 
   @media screen and (max-width: $md-width) {
+
     .btn-sm,
     .link--primary,
     .text-4 {
