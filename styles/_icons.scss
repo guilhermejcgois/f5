@@ -14,8 +14,17 @@
     width: 32px;
 }
 
+.ic-bins {
+    background-image: url(/icons/bins.svg);
+}
 .ic-close {
     background-image: url(/icons/close.svg);
+}
+.ic-coletas {
+    background-image: url(/icons/calendar.svg);
+}
+.ic-dashboard {
+    background-image: url(/icons/dashboard.svg);
 }
 .ic-edit {
     background-image: url(/icons/edit.svg);
@@ -29,30 +38,42 @@
         background-image: url(/icons/delete_red.svg);
     }
 }
+.ic-logout {
+    background-image: url(/icons/logout.svg);
+}
 .ic-notification {
     background-image: url(/icons/notification.svg);
+}
+.ic-perfil {
+    background-image: url(/icons/perfil.svg);
+}
+.ic-site {
+    background-image: url(/icons/site.svg);
+}
+.ic-solicitacoes {
+    background-image: url(/icons/solicitacoes.svg);
 }
 .ic-facebook {
     background-image: url(/icons/facebook.svg);
     &:hover {
-        background-image: url(/icons/facebook_pink.svg);
+        background-image: url(/icons/facebook_white.svg);
     }
 }
 .ic-instagram {
     background-image: url(/icons/instagram.svg);
     &:hover {
-        background-image: url(/icons/instagram_pink.svg);
+        background-image: url(/icons/instagram_white.svg);
     }
 }
 .ic-twitter {
     background-image: url(/icons/twitter.svg);
     &:hover {
-        background-image: url(/icons/twitter_pink.svg);
+        background-image: url(/icons/twitter_white.svg);
     }
 }
 .ic-linkedin {
     background-image: url(/icons/linkedin.svg);
     &:hover {
-        background-image: url(/icons/linkedin_pink.svg);
+        background-image: url(/icons/linkedin_white.svg);
     }
 }

@@ -1,27 +1,42 @@
 <aside class="sidebar">
+    <header class="sidebar__header">
+        <div class="logo-wrapper">
+            <img src="/img/F5-logo.png" srcset="/img/F5-logo@2x.png 2x,img/F5-logo@3x.png 3x">
+        </div>
+        <div class="user-info">
+            <img class="logo-org" src="/img/logo-org.png" srcset="/img/logo-org@2x.png 2x,img/logo-org@3x.png 3x" alt="Logo da Empresa">
+            <span class="name text-5"><%= org.name %></span>
+            <span class="email text-6"><%= user.email %></span>
+        </div>
+    </header>
     <ul class="sidebar__menu">
-        <li id="dashboard-link" class="sidebar__menu-item uppercase">
-            <a href="#" data-route="/dashboard">Dashboard</a>
+        <li id="dashboard-link" class="sidebar__menu-item">
+            <a href="#" data-route="/dashboard"><span class="ic ic-sm ic-dashboard"></span>Dashboard</a>
         </li>
-        <li id="bins-link" class="sidebar__menu-item uppercase">
-            <a href="#" data-route="/dashboard/bins">Minhas bins</a>
+        <li id="bins-link" class="sidebar__menu-item">
+            <a href="#" data-route="/dashboard/bins"><span class="ic ic-sm ic-bins"></span>Minhas Bins</a>
         </li>
-        <li id="requests-link" class="sidebar__menu-item uppercase">
-            <a href="#" data-route="/dashboard/requests">Meus pedidos</a>
+        <li id="requests-link" class="sidebar__menu-item">
+            <a href="#" data-route="/dashboard/requests"><span class="ic ic-sm ic-solicitacoes"></span>Solicitações</a>
         </li>
-        <li id="gathering-link" class="sidebar__menu-item uppercase">
-            <a href="#" data-route="/dashboard/gathering">Coletas</a>
+        <li id="gathering-link" class="sidebar__menu-item">
+            <a href="#" data-route="/dashboard/gathering"><span class="ic ic-sm ic-coletas"></span>Coletas</a>
+        </li>
+        <li id="gathering-link" class="sidebar__menu-item">
+            <a href="http://www.somosf5.com.br/" target="_blank" aria-label="Abrir website de Somos F5"><span class="ic ic-sm ic-site"></span>Ir para o site</a>
+        </li>
+        <li id="gathering-link" class="sidebar__menu-item">
+            <a href="#" data-route="/users/logout"><span class="ic ic-sm ic-logout"></span>Logout</a>
         </li>
     </ul>
-    <div class="sidebar__footer">
-        <a href="http://somosf5.com.br/" target="_blank" aria-label="Abrir website de Somos F5" class="btn-sm btn--secondary-ghost uppercase">Ir para o site</a>
+    <footer class="sidebar__footer">
         <div class="sidebar__social-menu">
-            <a href="https://www.facebook.com/somosf5oficial/" target="_blank" aria-label="Abrir página no facebook" class="ic ic-sm ic-facebook pointer"></a>
-            <a href="https://www.instagram.com/somos_f5/" target="_blank" aria-label="Abrir perfil no instagram" class="ic ic-sm ic-instagram pointer"></a>
-            <a href="https://twitter.com/somos_f5" target="_blank" aria-label="Abrir perfil no twitter" class="ic ic-sm ic-twitter pointer"></a>
-            <a href="https://www.linkedin.com/company/somosf5/" target="_blank" aria-label="Abrir página no linkedin" class="ic ic-sm ic-linkedin pointer"></a>
+            <a href="https://www.facebook.com/somosf5oficial/" target="_blank" aria-label="Abrir página no facebook" class="ic ic-md ic-facebook pointer"></a>
+            <a href="https://www.instagram.com/somos_f5/" target="_blank" aria-label="Abrir perfil no instagram" class="ic ic-md ic-instagram pointer"></a>
+            <a href="https://twitter.com/somos_f5" target="_blank" aria-label="Abrir perfil no twitter" class="ic ic-md ic-twitter pointer"></a>
+            <a href="https://www.linkedin.com/company/somosf5/" target="_blank" aria-label="Abrir página no linkedin" class="ic ic-md ic-linkedin pointer"></a>
         </div>
-    </div>
+    </footer>
 </aside>
 <script>
     document.querySelectorAll('.sidebar__menu-item a').forEach(a => {

@@ -1,9 +1,8 @@
 <script src="/js/tooltip.js"></script>
 
 <header class="header">
-    <div class="header__logo-wrapper">
-        <img src="/img/F5-logo.png" srcset="/img/F5-logo@2x.png 2x,
-            img/F5-logo@3x.png 3x">
+    <div class="header__title">
+        <h2 class="dashboard-title"><%= title %></h2>
     </div>
     <div class="header__actions-wrapper">
         <% if (canAdd) { %>
@@ -32,9 +31,6 @@
         __f5__.router.navigate(e.target.dataset.route);
     };
     document.querySelector('a#new-bin-link').addEventListener('click', navigate);
-    const userMenu = document.querySelector('#user-menu');
-    userMenu.addEventListener('mouseenter', () => setTimeout(() => document.querySelector('a#payment-link').addEventListener('click', navigate), 500));
-    new Tooltip(userMenu, {
         title: `
         <div class="user-menu__dropdown text-4 tooltip__inner">
             <div class="user-menu__dropdown-header">

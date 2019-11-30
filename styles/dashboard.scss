@@ -6,7 +6,6 @@
 
 .dashboard {
     display: flex;
-    flex-direction: column;
     height: 100%;
     width: 100%;
     background: $snow;
@@ -36,8 +35,8 @@
     }
     
     &__body {
+        flex: 1;
         display: flex;
-        height: calc(100% - #{$header-height});
     }
 
     &__main {

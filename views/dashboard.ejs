@@ -15,22 +15,17 @@
     };
     __f5__.modalCloseListener = __f5__.closeModal;
     __f5__.parseModalHTML = function (data, cssclass) {
-        console.log("const domParser = new DOMParser();")
         const domParser = new DOMParser();
-        console.log("const doc = domParser.parseFromString(data, 'text/html');")
         const doc = domParser.parseFromString(data, 'text/html');
         
         this.closeModal();
         
-        console.log("const modal = doc.querySelector('.modal-container');")
         const modal = doc.querySelector('.modal-container');
         if (cssclass) { modal.classList.add(cssclass); }
 
-        console.log("const closeBtn = modal.querySelector('.ic-close');")
         const closeBtn = modal.querySelector('.ic-close');
         if (closeBtn) { closeBtn.addEventListener('click', __f5__.modalCloseListener); }
 
-        console.log("const cancelBtn = modal.querySelector('#cancel-btn');")
         const cancelBtn = modal.querySelector('#cancel-btn');
         if (cancelBtn) { cancelBtn.addEventListener('click', __f5__.modalCloseListener); }
 
@@ -60,14 +55,22 @@
         }
     };
     __f5__.removeDashLoader();
+    function navigate(e) {
+        __f5__.router.navigate(e.target.dataset.route);
+    };
+    document.querySelector('a#new-bin-link').addEventListener('click', navigate);
 </script>
 
 <div class="dashboard">
-    <%- include('partials/header', { canAdd: org.payed }) %>
-    <div class="dashboard__body">
-        <%- include('partials/sidebar') %>
+    <!-- <% if (org.payed) { %>
+    <a id="new-bin-link" href="#" data-route="/dashboard/bins/cadastrar" class="btn-md btn--primary capitalize">cadastrar
+        ponto</a>
+    <% } else { %>
+    <button id="new-bin-link" class="btn-md btn--inactive capitalize" disabled>solicitar bin</button>
+    <% } %> -->
+    <%- include('partials/sidebar') %>
+    <div class="dashboard__body">        
         <%- include('layouts/dashboard') %>
-        <div class="dashboard-loader"></div>
+        <!-- <div class="dashboard-loader hide"></div> -->
     </div>    
-</div>    
-
+</div>

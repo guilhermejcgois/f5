@@ -30,16 +30,21 @@
             },
             removeDashLoader: function () {
                 setTimeout(() => {
-                    document.querySelector('.dashboard-loader').classList.add('hide');
-                    document.querySelector('.dashboard-loader').classList.remove('blink');
+                    const loader = document.querySelector('.dashboard-loader');
+                    if (!loader) { return; }
+                    loader.classList.add('hide');
+                    loader.classList.remove('blink');
                 }, 3000);
             },
             router: {
                 navigate: function (route) {
                     if (sessionStorage.getItem('lastroute') === route) { return false; }
 
-                    document.querySelector('.dashboard-loader').classList.remove('hide');
-                    document.querySelector('.dashboard-loader').classList.add('blink');
+                    const loader = document.querySelector('.dashboard-loader');
+                    if (loader) {
+                        loader.classList.remove('hide');
+                        loader.classList.add('blink');
+                    }
 
                     const prevActive = document.querySelector('.sidebar__menu-item.active');
                     if (prevActive) { prevActive.classList.remove('active'); }
