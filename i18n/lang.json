@@ -1,5 +1,7 @@
 {
-    "GATHERING_SCHEDULED": "Agendado",
+    "STATUS_GATHERING": "Em Coleta",
+    "STATUS_INACTIVE": "Inativo",
+    "STATUS_ACTIVE": "Operando",
     "ORDER_OPENED": "Pedido realizado",
     "ORDER_CONFIRMED": "Pedido confirmado",
     "ORDER_WAITING": "BIN pronta para dispacho",

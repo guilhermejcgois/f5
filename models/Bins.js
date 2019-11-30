@@ -11,9 +11,11 @@ const BinsSchema = new mongoose.Schema({
   gathering_status: {
     type: String,
     enum: [
-      'GATHERING_SCHEDULED'
+      'STATUS_GATHERING',
+      'STATUS_INACTIVE',
+      'STATUS_ACTIVE'
     ],
-    default: 'GATHERING_SCHEDULED'
+    default: 'STATUS_INACTIVE'
   },
   date: {
     type: Date,
