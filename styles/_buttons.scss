@@ -2,7 +2,7 @@
 @import "variables";
 
 %btn {
-  height: 60px;
+  height: 35px;
   box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.16);
   border-radius: 100px;
   border: none;
@@ -38,19 +38,27 @@ a.btn-lg {
   @extend %btn;
 }
 
+.btn-xs {
+  @extend %btn;
+  height: 15px;
+  width: 50px;
+  box-shadow: none;
+  font-size: 8px;
+}
+
 .btn-sm {
   @extend %btn;
-  width: 190px;
+  width: 130px;
 }
 
 .btn-md {
   @extend %btn;
-  width: 300px;
+  width: 130px;
 }
 
 .btn-lg {
   @extend %btn;
-  width: 390px;
+  width: 190px;
 }
 
 .btn--inactive {
@@ -65,6 +73,19 @@ a.btn-lg {
   &:focus,
   &:hover {
     background-position-x: 100%;
+  }
+}
+
+.btn--danger-ghost {
+  @extend %btn-ghost;
+  border-color: #bfc5d2;
+  color: #bfc5d2;
+  
+  &:focus,
+  &:hover {
+    background-color: $tomato;
+    border-color: $tomato;
+    color: $white;
   }
 }
 

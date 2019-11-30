@@ -1,13 +1,13 @@
 <link rel="stylesheet" href="/css/bins.css">
 
-<% if (typeof bins != 'undefined') {%>
+<% if (typeof bins != 'undefined') { %>
     <table class="bins__table">
         <thead class="bins__table-head">
             <tr class="bins__header-row text-4 uppercase">
                 <th class="bins__header-cell code">código</th>
                 <th class="bins__header-cell storage_level">nível de armazenamento</th>
                 <th class="bins__header-cell district">bairro</th>
-                <th class="bins__header-cell center gathering_status">status da coleta</th>
+                <th class="bins__header-cell gathering_status">status</th>
                 <th class="bins__header-cell right actions"></th>
             </tr>
         </thead>
@@ -15,27 +15,40 @@
             <% for (var i = 0; i < bins.length; i++) { var bin = bins[i]; %>
                 <tr aria-hidden class="bins__row--spacer"></tr>
                 <tr id="bin-<%= bin._id%>" class="bins__row <%=
-                    bin.storage_level <= 0.25
+                    bin.storage_level <= 0.35
                         ? 'bins__row--green'
-                        : bin.storage_level >= 0.75
+                        : bin.storage_level >= 0.70
                             ? 'bins__row--red'
                             : 'bins__row--yellow'
                 %> text-4">
                     <td class="bins__cell code"><%= bin._id.toString().substr(0, 4) + '...' + bin._id.toString().substr(-4) %></td>
                     <td class="bins__cell storage_level">
+                        <span class="content"><%= (bin.storage_level - 1) * -100 %>%</span>
                         <div class="loading-bar">
-                            <div class="loading-bar__fill<%= bin.storage_level == 1 ? ' full' : '' %>" style="width: <%= bin.storage_level * 100 %>%"></div>
+                            <div class="loading-bar__fill<%= bin.storage_level == 0 ? ' full' : '' %>" style="width: <%= (bin.storage_level - 1) * -100 %>%"></div>
                         </div>
-                        <span class="content"><%= bin.storage_level * 100 %>%</span>
                     </td>
                     <td class="bins__cell district"><%= bin.place.district %></td>
-                    <td class="bins__cell center gathering_status"><%= lang[bin.gathering_status] %></td>
+                    <td class="bins__cell gathering_status <%= bin.gathering_status == 'STATUS_INACTIVE' ? 'inactive' : bin.gathering_status == 'STATUS_ACTIVE' ? 'active' : '' %>">
+                        <% if (bin.gathering_status == 'STATUS_INACTIVE') { %>
+                            <span style="cursor: initial; display: block;" class="ic ic-sm ic-block"></span>
+                        <% } %>
+                        <% if (bin.gathering_status == 'STATUS_ACTIVE') { %>
+                            <span style="cursor: initial; display: block;" class="ic ic-sm ic-check"></span>
+                        <% } %>
+                        <% if (bin.gathering_status == 'STATUS_GATHERING') { %>
+                            <span style="cursor: initial; display: block;" class="ic ic-sm ic-pause"></span>
+                        <% } %>
+                        <%= lang[bin.gathering_status] %>
+                    </td>
                     <td class="bins__cell right actions">
                         <% if (typeof canEdit != 'undefined' && canEdit) { %>
                             <span title="Ainda não implementado" aria-label="Ainda não implementado" role="button" class="ic ic-sm ic-edit"></span>
                         <% } %>
                         <% if (typeof canDelete != 'undefined' && canDelete) { %>
-                            <span data-id="<%= bin._id%>" aria-label="Apagar bin de código <%= bin._id%>" role="button" class="ic ic-sm ic-delete"></span>
+                            <button data-id="<%= bin._id%>" aria-label="Apagar bin de código <%= bin._id%>" role="button" class="btn-xs btn--danger-ghost">
+                                Deletar
+                            </button>
                         <% } %>
                     </td>
                 </tr>

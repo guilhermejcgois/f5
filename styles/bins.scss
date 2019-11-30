@@ -7,32 +7,55 @@ $cell-gap: 20px;
 .bins {
     &__table {
         width: 100%;
+
+        &-body {
+            overflow-y: scroll;
+        }
+
+        th, td {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .district {
+            width: 25%;
+        }
+
         .gathering_status {
-            min-width: 180px;
+            min-width: 150px;
+            width: 20%;
             max-width: 180px;
+
+            display: flex;
+            align-items: center;
+            height: 100%;
+
+            .ic {
+                margin-right: 5px;
+            }
+
+            &.active {
+                color: $light-green;
+            }
+
+            &.inactive {
+                color: #bfc5d2;
+            }
         }
 
         .storage_level {
             min-width: 280px - $cell-gap;
             max-width: 300px;
-
-        }
-
-        td.storage_level {
             display: flex;
             align-items: center;
 
             .content {
                 width: 50px;
-                margin-left: 10px;
             }
         }
         
         .actions {
-            min-width: 200px;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
+            margin-right: 2rem;
 
             .ic-delete {
                 margin-right: 22px;
@@ -63,17 +86,18 @@ $cell-gap: 20px;
         }
     }
 
-    &__header-row,
     &__row {
         background: $white;
+        height: 73px;
+    }
+    
+    &__header-row {
+        line-height: initial;
     }
 
     &__header-cell {
-        color: $blueberry;
-        font-weight: bold;
+        color: $black;
         font-size: $text-4-font-size;
-        height: 84px;
-        vertical-align: middle;
     }
 
     &__header-cell:first-child {
@@ -81,12 +105,11 @@ $cell-gap: 20px;
     }
 
     &__cell {
-        height: 65px;
+        height: 73px;
         vertical-align: middle;
     }
 
     &__cell:first-child {
-        border-left: 7px solid;
         padding-left: 33px;
     }
     
@@ -104,25 +127,44 @@ $cell-gap: 20px;
             height: 3px;
         }
 
-        &--green .bins__cell:first-child {
-            border-left-color: $light-green;
+        .loading-bar {
+            height: 3px;
+            margin-left: 13px;
         }
-        &--green .loading-bar__fill {
+    }
+
+    &__row--green {
+        .storage_level {
+            color: $light-green;
+        }
+
+        .loading-bar__fill {
             background-color: $light-green;
         }
+    }
+    
+    &__row--yellow {
+        .storage_level {
+            color: $squash;
+        }
 
-        &--red .bins__cell:first-child {
+        .loading-bar__fill {
+            background-color: $squash;
+        }
+    }
+
+    &__row--red {
+        .storage_level {
+            color: $tomato;
+        }
+        
+        .bins__cell:first-child {
+            border-left: 7px solid;
             border-left-color: $tomato;
         }
-        &--red .loading-bar__fill {
+        
+        .loading-bar__fill {
             background-color: $tomato;
-        }
-
-        &--yellow .bins__cell:first-child {
-            border-left-color: $squash;
-        }
-        &--yellow .loading-bar__fill {
-            background-color: $squash;
         }
     }
 }
