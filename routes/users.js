@@ -111,7 +111,7 @@ router.post('/login', (req, res, next) => {
 router.get('/login', (req, res) => res.redirect('../login'));
 
 // Logout Handle
-router.get('/logout', (req, res) => {
+router.post('/logout', (req, res) => {
     req.logout();
     req.flash('success_msg', 'You have logged out');
     res.redirect('/login');

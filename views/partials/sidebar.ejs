@@ -22,11 +22,11 @@
         <li id="gathering-link" class="sidebar__menu-item">
             <a href="#" data-route="/dashboard/gathering"><span class="ic ic-sm ic-coletas"></span>Coletas</a>
         </li>
-        <li id="gathering-link" class="sidebar__menu-item">
+        <li id="site-link" class="sidebar__menu-item">
             <a href="http://www.somosf5.com.br/" target="_blank" aria-label="Abrir website de Somos F5"><span class="ic ic-sm ic-site"></span>Ir para o site</a>
         </li>
-        <li id="gathering-link" class="sidebar__menu-item">
-            <a href="#" data-route="/users/logout"><span class="ic ic-sm ic-logout"></span>Logout</a>
+        <li id="logout-link" class="sidebar__menu-item">
+            <a href="#"><span class="ic ic-sm ic-logout"></span>Logout</a>
         </li>
     </ul>
     <footer class="sidebar__footer">
@@ -50,4 +50,8 @@
     if (li) {
         li.classList.add('active');
     }
+    document.querySelector('#logout-link').addEventListener('click', function (e) {
+        e.preventDefault();
+        $.post('/users/logout', () => location.href = '/');
+    });
 </script>
