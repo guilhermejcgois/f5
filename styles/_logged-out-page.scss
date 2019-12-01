@@ -18,6 +18,65 @@ $content-padding-top: 45px;
   > *:last-child {
     flex: 1;
   }
+
+  &__header {
+    top: 0;
+
+    display: flex;
+    align-items: center;
+
+    padding-top: $content-padding-top;
+
+     img {
+      object-fit: contain;
+
+      @media screen and (max-width: $md-width) {
+        height: 128px;
+        width: 128px;
+      }
+    
+      @media screen and (min-width: $md-width + 1px) and (max-width: $xlg-width) {
+        height: 64px;
+        width: 64px;
+      }
+    
+      @media screen and (min-width: $xlg-width) {
+        height: 110px;
+        width: 110px;
+      }
+    }
+  }
+
+  &__box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex: 1;
+    margin-bottom: 155px;
+
+    &-body {
+      width: 50%;
+      min-width: 390px;
+      max-width: 600px;
+
+    }
+    
+    .tip {
+      line-height: 1.19;
+    }
+  }
+
+  &__box,
+  &__header {
+    box-sizing: border-box;
+    padding: 1rem 5.625rem 0 5rem;
+    width: 100%;
+
+    @media screen and (max-width: $xlg-width) {
+      padding-left: 3rem !important;
+    }
+  }
   
   &__left-text {
     padding-top: 1.4rem;
@@ -71,67 +130,8 @@ $content-padding-top: 45px;
     }
   }
 
-  &__box,
-  &__header {
-    box-sizing: border-box;
-    padding: 1rem 5.625rem 0 5rem;
-    width: 100%;
-
-    @media screen and (max-width: $xlg-width) {
-      padding-left: 3rem !important;
-    }
-  }
-
-  &__header {
-    top: 0;
-
-    display: flex;
-    align-items: center;
-
-    padding-top: $content-padding-top;
-  }
-
   .form-footer {
     margin-top: 50px;
-  }
-
-  &__header img {
-    object-fit: contain;
-
-    @media screen and (max-width: $md-width) {
-      height: 128px;
-      width: 128px;
-    }
-  
-    @media screen and (min-width: $md-width + 1px) and (max-width: $xlg-width) {
-      height: 64px;
-      width: 64px;
-    }
-  
-    @media screen and (min-width: $xlg-width) {
-      height: 110px;
-      width: 110px;
-    }
-  }
-
-  &__box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    flex: 1;
-    margin-bottom: 155px;
-
-    &-body {
-      width: 50%;
-      min-width: 390px;
-      max-width: 600px;
-
-    }
-    
-    .tip {
-      line-height: 1.19;
-    }
   }
 
   @media screen and (max-width: $md-width) {
