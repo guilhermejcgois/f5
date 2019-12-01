@@ -62,14 +62,9 @@
 </script>
 
 <div class="dashboard">
-    <!-- <% if (org.payed) { %>
-    <a id="new-bin-link" href="#" data-route="/dashboard/bins/cadastrar" class="btn-md btn--primary capitalize">cadastrar
-        ponto</a>
-    <% } else { %>
-    <button id="new-bin-link" class="btn-md btn--inactive capitalize" disabled>solicitar bin</button>
-    <% } %> -->
     <%- include('partials/sidebar') %>
     <div class="dashboard__body">        
+        <%- include('partials/header', { canAdd: org.payed, hello: false, hideActions: false }) %>
         <%- include('layouts/dashboard') %>
         <!-- <div class="dashboard-loader hide"></div> -->
     </div>    

@@ -1,58 +1,14 @@
-<script src="/js/tooltip.js"></script>
-
 <header class="header">
     <div class="header__title">
         <h2 class="dashboard-title"><%= title %></h2>
     </div>
-    <div class="header__actions-wrapper">
-        <% if (canAdd) { %>
-            <a id="new-bin-link" href="#" data-route="/dashboard/bins/cadastrar" class="btn-md btn--primary capitalize">cadastrar ponto</a>
-        <% } else { %>
-            <button id="new-bin-link" class="btn-md btn--inactive capitalize" disabled>cadastrar ponto</button>
-        <% } %>
-        <span class="ic-notification"></span>
-        <div id="user-menu" class="user-menu">
-            <div class="user-menu__initials text-2">
-                <% var name = org.name.split(' '); %>
-                <% if (name.length === 1) { %>
-                    <%= name[0][0].toUpperCase() + name[0][1].toUpperCase() %>
-                <% } else { %>
-                    <%= name[0][0].toUpperCase() + name[name.length - 1][0].toUpperCase() %>
-                <% } %>
-            </div>
-            <div class="user-menu__arrow-down">
-                <img src="/icons/arrow_down.svg" alt="Abrir menu do usuário">
-            </div>
+    <% if (!hideActions) {%>
+        <div class="header__actions-wrapper text-6">
+            <% if (canAdd) { %>
+                <a id="new-bin-link" href="#" data-route="/dashboard/bins/cadastrar" class="btn-md btn--primary capitalize">Solicitar Bin</a>
+            <% } else { %>
+                <button id="new-bin-link" class="btn-md btn--inactive capitalize" disabled>Solicitar Bin</button>
+            <% } %>
         </div>
-    </div>
+    <% } %>
 </header>
-<script>
-    function navigate (e) {
-        __f5__.router.navigate(e.target.dataset.route);
-    };
-    document.querySelector('a#new-bin-link').addEventListener('click', navigate);
-        title: `
-        <div class="user-menu__dropdown text-4 tooltip__inner">
-            <div class="user-menu__dropdown-header">
-                <span class="name"><%= org.name %></span>
-                <span class="email"><%= user.email %></span>
-            </div>
-            <div class="user-menu__dropdown-body">
-                <ul>
-                    <li>
-                        <a id="my-account-link" title="Não implementado ainda" style="color:inherit; text-decoration: none">Minha conta</a>
-                    </li>
-                    <li>
-                        <a id="payment-link" href="#" data-route="/dashboard/payment" style="color:inherit; text-decoration: none">Pagamento</a>
-                    </li>
-                    <li>
-                        <a id="logout-link" href="/users/logout" style="color:inherit; text-decoration: none">Sair</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    `,
-        placement: 'bottom-start',
-        html: true
-    });
-</script>
