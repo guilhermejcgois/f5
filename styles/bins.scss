@@ -2,6 +2,7 @@
 @import "variables";
 @import "widgets/modals";
 
+$table-row-height: 40px;
 $cell-gap: 20px;
 
 .bins {
@@ -32,6 +33,8 @@ $cell-gap: 20px;
 
             .ic {
                 margin-right: 5px;
+                width: 10px;
+                height: 10px;
             }
 
             &.active {
@@ -85,11 +88,6 @@ $cell-gap: 20px;
             }
         }
     }
-
-    &__row {
-        background: $white;
-        height: 73px;
-    }
     
     &__header-row {
         line-height: initial;
@@ -105,8 +103,9 @@ $cell-gap: 20px;
     }
 
     &__cell {
-        height: 73px;
         vertical-align: middle;
+        height: $table-row-height;
+
     }
 
     &__cell:first-child {
@@ -114,7 +113,10 @@ $cell-gap: 20px;
     }
     
     &__row {
-        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+        background: $white;
+        border-radius: 5px;
+        height: $table-row-height;
+        line-height: initial;
 
         &--spacer {
             background: transparent;

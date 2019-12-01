@@ -79,6 +79,7 @@ a.btn-lg {
 .btn--danger-ghost {
   @extend %btn-ghost;
   border-color: #bfc5d2;
+  border-width: 1px;
   color: #bfc5d2;
   
   &:focus,
