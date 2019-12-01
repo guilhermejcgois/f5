@@ -61,9 +61,14 @@
                 }
             }
         };
-        window.doLogin = () => {
-            $('#email').val('guijocargo@gmail.com');
-            $('#password').val('123456');
+        window.doLogin = (empty) => {
+            if (empty) {
+                $('#email').val('empresa@teste.com');
+                $('#password').val('123456');
+            } else {
+                $('#email').val('guijocargo@gmail.com');
+                $('#password').val('123456');
+            }
             $('#login').click();
         };
         window.doLogout = () => {

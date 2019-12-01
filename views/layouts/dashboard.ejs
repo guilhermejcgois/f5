@@ -1,4 +1,4 @@
 <main class="dashboard__main">
-    <%- include('../partials/header', { canAdd: org.payed, hideActions: false, dashboard: page == 'dashboard' }) %>
-    <%- include('../partials/' + page) %>
+    <%- include('../partials/header', { canAdd: org.payed, hideActions: !org.payed, dashboard: page == 'dashboard' }) %>
+    <%- include('../partials/' + page, { canAdd: org.payed }) %>
 </main>

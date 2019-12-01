@@ -55,10 +55,13 @@
         }
     };
     __f5__.removeDashLoader();
-    function navigate(e) {
-        __f5__.router.navigate(e.target.dataset.route);
-    };
-    document.querySelector('a#new-bin-link').addEventListener('click', navigate);
+    const newBinLink = document.querySelector('a#new-bin-link');
+    if (newBinLink) {
+        function navigate(e) {
+            __f5__.router.navigate(e.target.dataset.route);
+        };
+        newBinLink.addEventListener('click', navigate);
+    }
 </script>
 
 <div class="dashboard">

@@ -9,11 +9,7 @@
     </div>
     <% if (!hideActions) {%>
         <div class="header__actions-wrapper text-6">
-            <% if (canAdd) { %>
-                <a id="new-bin-link" href="#" data-route="/dashboard/bins/cadastrar" class="btn-md btn--primary capitalize">Solicitar Bin</a>
-            <% } else { %>
-                <button id="new-bin-link" class="btn-md btn--inactive capitalize" disabled>Solicitar Bin</button>
-            <% } %>
+            <%- include('../components/new-bin-link', { canAdd })%>
         </div>
     <% } %>
 </header>

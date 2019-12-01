@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="/css/bins.css">
 
-<% if (typeof bins != 'undefined') { %>
+<% if (typeof bins != 'undefined' && bins.length > 0) { %>
     <table class="bins__table">
         <thead class="bins__table-head">
             <tr class="bins__header-row text-6 uppercase">
@@ -55,6 +55,15 @@
             <% } %>
         </tbody>
     </table>
+<% } else { %>
+    <div class="empty-page empty-page--bins">
+        <h2 class="empty-page__title">Você ainda não possui uma Bin :(</h2>
+        <span class="empty-page__disclaimer">
+            <span>Todas as suas Bins aparecerão aqui.</span><br>
+            <span>Que tal fazer o seu primeiro pedido?</span>
+        </span>
+        <%- include('../components/new-bin-link', { canAdd })%>
+    </div>
 <% } %>
 <script>
     const f5 = window.__f5__;

@@ -1,0 +1,20 @@
+<% if (false) { %>
+<% } else { %>
+<div class="empty-page empty-page--dashboard">
+    <h2 class="empty-page__title">Bem-vindo à F5!</h2>
+    <span class="empty-page__disclaimer">
+        <span>Para concluir seu cadastro e começar a utilizar a plataforma, por favor</span><br>
+        <span>adicione seus dados de pagamento na aba
+            <a href="#" data-route="/dashboard/bins/cadastrar" class="profile-link capitalize">Meu Perfil </a>
+            no menu lateral</span><br>
+        <span>ou clicando no botão abaixo</span>
+    </span>
+    <a href="#" data-route="/dashboard/bins/cadastrar" class="profile-link btn-md btn--primary capitalize">Cadastrar cartão</a>
+</div>
+<script>
+    function navigate(e) {
+        __f5__.router.navigate(e.target.dataset.route);
+    };
+    document.querySelectorAll('.profile-link').forEach(el => el.addEventListener('click', navigate));
+</script>
+<% } %>

@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="/css/requests.css">
 
-<% if (typeof orders != 'undefined') {%>
+<% if (typeof orders != 'undefined' && orders.length > 0) {%>
     <% for (var i = 0; i < orders.length; i++) { var order = orders[i]; %>
         <div class="card order" data-id="<%= order._id %>">
             <div class="card-header">
@@ -30,6 +30,15 @@
             </div>
         </div>
     <% } %>
+<% } else { %>
+<div class="empty-page empty-page--requests">
+    <h2 class="empty-page__title">Sem solicitações no momento!</h2>
+    <span class="empty-page__disclaimer">
+        <span>Todos os seus pedidos de Bins aparecerão aqui.</span><br>
+        <span>Que tal fazer o seu primeiro pedido?</span>
+    </span>
+    <%- include('../components/new-bin-link', { canAdd })%>
+</div>
 <% } %>
 
 <% if (typeof op != 'undefined' && op == 'DELETE') { %>
@@ -37,13 +46,16 @@
 <% } %>
 
 <script>
-    document.querySelectorAll('.card.order').forEach(card => {
-        card.addEventListener('click', function () {
-            const id = this.dataset.id;
-            $.get(`/dashboard/requests/${id}`, function (data) {
-                __f5__.parseModalHTML(data);
-                __f5__.orders.listenCancel();
+    const cards = document.querySelectorAll('.card.order');
+    if (cards) {
+        cards.forEach(card => {
+            card.addEventListener('click', function () {
+                const id = this.dataset.id;
+                $.get(`/dashboard/requests/${id}`, function (data) {
+                    __f5__.parseModalHTML(data);
+                    __f5__.orders.listenCancel();
+                });
             });
         });
-    });
+    }
 </script>
