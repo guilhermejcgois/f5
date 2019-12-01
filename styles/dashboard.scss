@@ -39,12 +39,10 @@
         display: flex;
         flex-direction: column;
     }
-
+    
     &__main {
-        padding: 50px;
-        padding-top: 20px;
+        padding: 50px 73px;
         position: relative;
-        width: 100%;
 
         .modal-container {
             position: absolute;

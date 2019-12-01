@@ -1,6 +1,11 @@
 <header class="header">
     <div class="header__title">
-        <h2 class="dashboard-title"><%= title %></h2>
+        <% if (dashboard) {%>
+            <span class="text-2" style="line-height: initial;">Olá,</span>
+            <h2 class="dashboard-title"><%= org.name %></h2>
+        <% } else {%>
+            <h2 class="dashboard-title"><%= title %></h2>
+        <% } %>
     </div>
     <% if (!hideActions) {%>
         <div class="header__actions-wrapper text-6">

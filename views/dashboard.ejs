@@ -58,13 +58,12 @@
     function navigate(e) {
         __f5__.router.navigate(e.target.dataset.route);
     };
-    // document.querySelector('a#new-bin-link').addEventListener('click', navigate);
+    document.querySelector('a#new-bin-link').addEventListener('click', navigate);
 </script>
 
 <div class="dashboard">
     <%- include('partials/sidebar') %>
     <div class="dashboard__body">        
-        <%- include('partials/header', { canAdd: org.payed, hello: false, hideActions: false }) %>
         <%- include('layouts/dashboard') %>
         <!-- <div class="dashboard-loader hide"></div> -->
     </div>    
