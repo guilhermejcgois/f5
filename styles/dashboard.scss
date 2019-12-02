@@ -8,7 +8,6 @@
     display: flex;
     height: 100%;
     width: 100%;
-    background: $snow;
 
     &-loader {
         height: 100%;
@@ -120,16 +119,22 @@
     align-items: center;
 
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center 30%;
 
     &__title {
         font-weight: 900;
-        font-size: 2.45rem;
+        font-size: 32px;
     }
 
     &__disclaimer {
-        font-size: $text-5-font-size;
         margin: 30px 0;
+        text-align: center;
+        font-size: 16px;
+        line-height: 19px;
+
+        a {
+            color: $dark-hot-pink;
+        }
     }
 
     &--bins {
