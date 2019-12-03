@@ -54,10 +54,6 @@ $modal-order-deleted-height: 200px;
         text-align: center;
     }
 
-    .row--bottom-border {
-        border-bottom: 2px solid $snow;
-    }
-
     .row .value {
         margin-left: 50px;
     }
@@ -95,5 +91,29 @@ $modal-order-deleted-height: 200px;
         height: $modal-order-deleted-height;
         width: $modal-order-deleted-width;
         justify-content: center;
+    }
+}
+
+.modal-container {
+    .row--bottom-border {
+        border-bottom: 2px solid $snow;
+    }
+
+    .label {
+        color: $blueberry;
+        font-weight: bold;
+    }
+
+    .value {
+        color: $black;
+    }
+
+    .btn {
+        height: 60px;
+    }
+
+    .wizard-step {
+        height: 120px;
+        align-items: flex-end;
     }
 }

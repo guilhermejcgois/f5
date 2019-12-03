@@ -18,22 +18,22 @@
 </div>
 <main class="request-data-table">
     <div class="row row--bottom-border">
-        <span class="label text-2">Número da solicitação</span>
+        <span class="label text-2">Número da solicitação:</span>
         <span class="value text-2"><%= data.id %></span>
     </div>
     <div class="row row--bottom-border">
-        <span class="label text-2">Endereço</span>
+        <span class="label text-2">Endereço:</span>
         <span class="value text-2"><%= data.address %></span>
     </div>
     <div class="row">
-        <span class="label text-2">Tamanho</span>
+        <span class="label text-2">Tamanho:</span>
         <span class="value text-2"><%= data.size %></span>
     </div>
     <div class="row">
-        <span class="label text-2">Status</span>
+        <span class="label text-2">Status:</span>
         <span class="value text-2"><%= lang[data.status] %></span>
     </div>
 </main>
 <div class="modal-actions">
-    <button id="order-cancel" data-id="<%= data.id %>" class="btn btn-md btn--primary-ghost uppercase">Cancelar pedido</button>
+    <button id="order-cancel" onClick="__f5__.orders.askDelete('<%= data.id %>')" class="btn btn-lg btn--primary-ghost uppercase">Cancelar pedido</button>
 </div>

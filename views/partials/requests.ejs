@@ -1,8 +1,9 @@
 <link rel="stylesheet" href="/css/requests.css">
 
 <% if (typeof orders != 'undefined' && orders.length > 0) {%>
+    <div class="cards">
     <% for (var i = 0; i < orders.length; i++) { var order = orders[i]; %>
-        <div class="card order" onClick="__f5__.orders.askDelete(<%= order._id %>)">
+        <div class="card order" onClick="__f5__.orders.askDelete('<%= order._id %>')">
             <div class="card-header">
                 <span class="text-2 card-header__title">
                     Número da solicitação: <%= order._id.toString().substr(0, 4) + '...' + order._id.toString().substr(-4) %>
@@ -30,6 +31,7 @@
             </div>
         </div>
     <% } %>
+    </div>
 <% } else { %>
 <div class="empty-page empty-page--requests">
     <h2 class="empty-page__title">Sem solicitações no momento!</h2>
