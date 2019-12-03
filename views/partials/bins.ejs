@@ -46,7 +46,7 @@
                             <span title="Ainda não implementado" aria-label="Ainda não implementado" role="button" class="ic ic-edit"></span>
                         <% } %>
                         <% if (typeof canDelete != 'undefined' && canDelete) { %>
-                            <button data-id="<%= bin._id%>" aria-label="Apagar bin de código <%= bin._id%>" role="button" class="bin-delete btn-xs btn--danger-ghost">
+                            <button onClick="__f5__.bins.askDelete(<%= bin._id%>)" aria-label="Apagar bin de código <%= bin._id%>" role="button" class="bin-delete btn-xs btn--danger-ghost">
                                 Deletar
                             </button>
                         <% } %>
@@ -65,33 +65,3 @@
         <%- include('../components/new-bin-link', { canAdd })%>
     </div>
 <% } %>
-<script>
-    const f5 = window.__f5__;
-    const delBtns = document.querySelectorAll('.bin-delete');
-    delBtns.forEach(delBtn => delBtn.addEventListener('click', function () {
-        const binId = this.dataset.id;
-        const url = `/bins/${binId}`;
-        const deleteBinFn = () => {
-            $.ajax({
-                url,
-                type: 'DELETE',
-                success: (data) => {
-                    f5.parseModalHTML(data, 'confirmed');
-                    document.querySelector('.ic-close').addEventListener('click', () => {
-                        const binRow = document.querySelector(`#bin-${binId}`);
-                        if (!binRow) { return; }
-                        const rowSpacer = binRow.previous;
-                        if (rowSpacer) { rowSpacer.remove(); }
-                        binRow.remove();
-                    });
-                }
-            });
-        };
-
-        $.get(url, (data) => {
-            f5.parseModalHTML(data, 'confirm');
-            document.querySelector('#delete-btn').addEventListener('click', deleteBinFn);
-        });
-    }));
-</script>
-

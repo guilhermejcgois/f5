@@ -1,14 +1,6 @@
 <%- include('modal_close') %>
 <header class="modal-title">Tem certeza que deseja cancelar o pedido do seu ponto?</header>
 <div class="modal-actions">
-    <button id="delete-btn" class="btn btn-md btn--primary uppercase" data-id="<%= orderId %>">Sim, cancelar</button>
-    <button id="cancel-btn" class="btn btn-sm btn--primary-ghost uppercase">Voltar</button>
+    <button id="delete-btn" class="btn btn-md btn--primary uppercase" onClick="__f5.orders.delete(<%= orderId %>)">Sim, cancelar</button>
+    <button id="cancel-btn" class="btn btn-sm btn--primary-ghost uppercase" onClick="__f5__.modalCloseListener">Voltar</button>
 </div>
-<script>
-    document.querySelector('#cancel-btn').addEventListener('click', () =>  {
-        history.replaceState(history.state, document.title, '/dashboard/resquests');
-        const modalContainer = document.querySelector('.modal-container');
-        modalContainer.parentElement.removeChild(modalContainer);
-    });
-    document.querySelector('#delete-btn').addEventListener('click', __f5__.orders.delete);
-</script>

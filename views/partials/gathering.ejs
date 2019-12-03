@@ -7,12 +7,6 @@
         <span>Você pode não ter Bins cadastradas na plataforma ou</span><br>
         <span>ainda não fez nenhum agendamento.</span>
     </span>
-    <a href="#" data-route="/dashboard/coletas/agendar" class="schedule-link btn-md btn--primary capitalize">Agendar coleta</a>
+    <a href="#" onClick="__f5__.router.navigate('/dashboard/coletas/agendar')" class="schedule-link btn-md btn--primary capitalize">Agendar coleta</a>
 </div>
-<script>
-    function navigate(e) {
-        __f5__.router.navigate(e.target.dataset.route);
-    };
-    document.querySelectorAll('.schedule-link').forEach(el => el.addEventListener('click', navigate));
-</script>
 <% } %>
