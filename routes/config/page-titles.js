@@ -5,7 +5,8 @@ export default {
     FORGOT_PASS: 'Esqueci minha senha',
     GATHERING: 'Minhas Coletas',
     LOGIN: 'Login',
-    REQUESTS: 'Meus Pedidos',
     PAYMENT: 'Dados de Pagamento',
+    PROFILE: 'Dados de Pagamento',
     REGISTER: 'Cadastrar',
+    REQUESTS: 'Meus Pedidos',
 }

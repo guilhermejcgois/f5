@@ -11,18 +11,18 @@
     </header>
     <ul class="sidebar__menu">
         <li id="profile-link" class="sidebar__menu-item">
-            <a href="#" data-route="/profile"><span class="ic ic-sm ic-profile"></span>Meu Perfil</a>
+            <a href="#" data-route="/dashboard/profile"><span class="ic ic-sm ic-profile"></span>Meu Perfil</a>
         </li>
         <li id="dashboard-link" class="sidebar__menu-item">
             <a href="#" data-route="/dashboard"><span class="ic ic-sm ic-dashboard"></span>Dashboard</a>
         </li>
-        <li id="bins-link" class="sidebar__menu-item">
+        <li id="bins-link" class="sidebar__menu-item  <%= org.payed ? '' : 'disabled'%>">
             <a href="#" data-route="/dashboard/bins"><span class="ic ic-sm ic-bins"></span>Minhas Bins</a>
         </li>
-        <li id="requests-link" class="sidebar__menu-item">
+        <li id="requests-link" class="sidebar__menu-item  <%= org.payed ? '' : 'disabled'%>">
             <a href="#" data-route="/dashboard/requests"><span class="ic ic-sm ic-solicitacoes"></span>Solicitações</a>
         </li>
-        <li id="gathering-link" class="sidebar__menu-item">
+        <li id="gathering-link" class="sidebar__menu-item  <%= org.payed ? '' : 'disabled'%>">
             <a href="#" data-route="/dashboard/gathering"><span class="ic ic-sm ic-coletas"></span>Coletas</a>
         </li>
         <li id="site-link" class="sidebar__menu-item">
@@ -40,9 +40,9 @@
             <a href="https://www.linkedin.com/company/somosf5/" target="_blank" aria-label="Abrir página no linkedin" class="ic ic-md ic-linkedin pointer"></a>
         </div>
     </footer>
-</aside>
+</aside>>
 <script>
-    document.querySelectorAll('.sidebar__menu-item a').forEach(a => {
+    document.querySelectorAll('.sidebar__menu-item:not(.disabled) a').forEach(a => {
         a.addEventListener('click', function (e) {
             __f5__.router.navigate(e.target.dataset.route);
             e.target.parentElement.classList.add('active');

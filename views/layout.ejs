@@ -49,6 +49,8 @@
 
                     const prevActive = document.querySelector('.sidebar__menu-item.active');
                     if (prevActive) { prevActive.classList.remove('active'); }
+                    const activeCandidate = document.querySelector(`.sidebar__menu-item a[data-route="${route}"]`);
+                    if (activeCandidate) { activeCandidate.parentElement.classList.add('active'); }
 
                     history.replaceState(history.state, document.title, route);
 
