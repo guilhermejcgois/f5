@@ -69,13 +69,17 @@
             }
         }
     }
-    &__menu-item.active,
-    &__menu-item:active,
-    &__menu-item:hover {
+    &__menu-item.disabled,
+    &__menu-item.disabled a {
+        cursor: not-allowed;
+    }
+    &__menu-item:not(.disabled).active,
+    &__menu-item:not(.disabled):active,
+    &__menu-item:not(.disabled):hover {
         opacity: 1;
     }
 
-    &__footer a {
+    &__footer a { /* stylelint-disable-line */
         background-color: $dark-blue-grey;
 
         &:hover {
