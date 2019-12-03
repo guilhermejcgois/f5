@@ -9,7 +9,7 @@
   font-stretch: normal;
 }
 @font-face {
-  font-family: Nexa;
+  font-family: NexaHeavy;
   src: local(NexaBold),
     url(/fonts/NexaBold.otf) format("opentype");
   font-weight: bold;
@@ -79,6 +79,15 @@ html, body {
   @media screen and (min-width: $xlg-width) {
     font-size: $base-font-size;
   }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: NexaHeavy;
 }
 
 .text-0 {
