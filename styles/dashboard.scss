@@ -9,6 +9,71 @@
     height: 100%;
     width: 100%;
 
+    &-grid {
+        flex: 1;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1.16fr;
+        grid-template-rows: 1fr 1.5fr 2fr;
+        grid-template-areas: 
+        'vol bin chart'
+        'map map chart'
+        'map map sched';
+        grid-gap: 20px;
+
+        > * {
+            background-color: $white;
+            background-repeat: no-repeat;
+            background-position: 95% bottom;
+            background-size: auto 55px;
+            position: relative;
+            padding: 28px 20px 20px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        &__bins {
+            grid-area: bin;
+            background-image: url(/img/box.svg);
+            color: rgba($dark-hot-pink, 0.75);
+        }
+        &__chart {
+            grid-area: chart;
+        }
+        &__map {
+            grid-area: map;
+            background-image: url(/img/world.svg);
+            color: rgba($blueberry, 0.75);
+
+            .map-wrapper {
+                background: $lightest-grey;
+                height: 80%;
+            }
+        }
+        &__schedule {
+            grid-area: sched;
+            background-image: url(/img/appointment.svg);
+            color: rgba($squash, 0.75);
+        }
+        &__volume {
+            grid-area: vol;
+            background-image: url(/img/truck.svg);
+            color: rgba($blueberry, 0.75);
+        }
+
+        .title {
+            font-size: 32px;
+            font-weight: 900;
+            line-height: 1.28;
+            color: $black;
+        }
+
+        .description {
+            font-size: 12px;
+            line-height: 1.25;
+        }
+    }
+
     &-loader {
         height: 100%;
         width: 100%;

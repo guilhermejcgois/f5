@@ -1,4 +1,23 @@
-<% if (false) { %>
+<% if (org.payed) { %>
+<div class="dashboard-grid">
+    <div class="dashboard-grid__volume count">
+        <h4 class="title">800 kg</h4>
+        <span class="description">Volume coletado nos últimos 30 dias</span>
+    </div>
+    <div class="dashboard-grid__bins count">
+        <h4 class="title">10</h4>
+        <span class="description">Bins cadastradas e operando</span>
+    </div>
+    <div class="dashboard-grid__chart"></div>
+    <div class="dashboard-grid__map">
+        <div class="map-wrapper"></div>
+        <span class="description">Mapa de Bins</span>
+    </div>
+    <div class="dashboard-grid__schedule">
+        <div class="info"></div>
+        <span class="description">Coletas agendadas</span>
+    </div>
+</div>
 <% } else { %>
 <div class="empty-page empty-page--dashboard">
     <h2 class="empty-page__title">Bem-vindo à F5!</h2>
