@@ -1,6 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10">
-  <g id="pause" transform="translate(-2.5 -2.5)" opacity="0.75">
-    <path id="União_1" data-name="União 1" d="M2,0V0ZM0,0V0Z" transform="translate(6.5 5.85)" fill="none" stroke="#2d2d2d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-    <path id="Caminho_63" data-name="Caminho 63" d="M12,7.5A4.5,4.5,0,1,1,7.5,3,4.5,4.5,0,0,1,12,7.5Z" transform="translate(0 0)" fill="none" stroke="#2d2d2d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-  </g>
-</svg>
+<svg id="icones" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><defs><style>.cls-1{fill:gray;}</style></defs><title>pause</title><g id="pause"><path class="cls-1" d="M16,0A16,16,0,1,0,32,16,16,16,0,0,0,16,0Zm0,29A13,13,0,1,1,29,16,13,13,0,0,1,16,29Z"/><rect class="cls-1" x="10" y="9.5" width="4" height="13"/><rect class="cls-1" x="18" y="9.5" width="4" height="13"/></g></svg>
