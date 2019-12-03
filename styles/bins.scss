@@ -94,8 +94,8 @@ $cell-gap: 20px;
     }
 
     &__header-cell {
-        color: $black;
-        font-size: $text-4-font-size;
+        color: $light-grey;
+        font-size: 10px;
     }
 
     &__header-cell:first-child {
@@ -105,11 +105,11 @@ $cell-gap: 20px;
     &__cell {
         vertical-align: middle;
         height: $table-row-height;
-
+        font-size: 12px;
     }
 
     &__cell:first-child {
-        padding-left: 33px;
+        padding-left: 40px;
     }
     
     &__row {
@@ -163,6 +163,7 @@ $cell-gap: 20px;
         .bins__cell:first-child {
             border-left: 7px solid;
             border-left-color: $tomato;
+            padding-left: 33px;
         }
         
         .loading-bar__fill {
