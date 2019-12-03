@@ -31,7 +31,7 @@ router.post('/credit-card', configAuth.ensureAuthenticated, (req, res) => {
     }
 
     const updateQuery = { $set: { payment_info, payed: true } };
-console.log(req.user)
+
     return Organization.findByIdAndUpdate(req.user.organization, updateQuery, (err, org) => {
         if (err) {
             res.status(500);

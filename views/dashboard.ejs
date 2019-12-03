@@ -62,6 +62,12 @@
         };
         newBinLink.addEventListener('click', navigate);
     }
+    <% if (!org.payed) { %>
+    $.get('/users/first-access', (data) => {
+        __f5__.parseModalHTML(data, 'first-access');
+        document.querySelector('#register-cc').addEventListener('click', __f5__.router.navigate('/profile'));
+    });
+    <% } %>
 </script>
 
 <div class="dashboard">
