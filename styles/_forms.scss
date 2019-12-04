@@ -1,8 +1,23 @@
 @import "colors";
 @import "typography";
 
+input.form-control,
+.form-control input {
+  border: none;
+  height: 95%;
+  width: 100%;
+  font-size: inherit;
+  margin-left: 5px;
+  border-radius: 0 5px 5px 0;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+/* stylelint-disable-line */ input.form-control,
 .form-control {
-  height: 50px;
+  height: 50px !important;
   border-radius: 5px;
   border: solid 1px $light-grey;
   background-color: $white;
@@ -21,19 +36,19 @@
   }
 
   @media screen and (max-width: $xlg-width) {
-    height: 40px;
+    height: 40px !important;
     padding-left: 15px;
 
-    .icon {
+    .icon { /* stylelint-disable-line */
       margin-right: 5px !important;
     }
   }
 
   @media screen and (min-width: $xlg-width) {
-    height: 50px;
+    height: 50px !important;
   }
 
-  .icon {
+  .icon { /* stylelint-disable-line */
     display: block;
     background-repeat: no-repeat;
     background-size: 100%;
@@ -41,18 +56,6 @@
     width: 30px;
   }
 
-  input {
-    border: none;
-    height: 95%;
-    width: 100%;
-    font-size: inherit;
-    margin-left: 5px;
-    border-radius: 0 5px 5px 0;
-
-    &:focus {
-      outline: none;
-    }
-  }
 }
 
 .form-group {
