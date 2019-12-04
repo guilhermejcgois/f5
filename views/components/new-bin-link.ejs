@@ -1,5 +1,5 @@
 <% if (canAdd) { %>
-    <a id="new-bin-link" href="#" data-route="/dashboard/bins/cadastrar" class="btn-md btn--primary capitalize">Solicitar Bin</a>
+    <a id="new-bin-link" href="#" onClick="__f5__.router.navigate('/dashboard/bins/cadastrar')" class="btn-md btn--primary">Solicitar Bin</a>
 <% } else { %>
     <button id="new-bin-link" class="btn-md btn--inactive capitalize" disabled>Solicitar Bin</button>
 <% } %>
