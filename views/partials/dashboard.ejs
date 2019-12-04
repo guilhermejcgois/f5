@@ -1,11 +1,13 @@
 <% if (org.payed) { %>
+<!-- <script  onload="setPinPointsOnMap" async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDQXi8Ivilc0wysu24bcjh0t2qhAtz5ls"></script> -->
+
 <div class="dashboard-grid">
     <div class="dashboard-grid__volume count">
         <h4 class="title">800 kg</h4>
         <span class="description">Volume coletado nos últimos 30 dias</span>
     </div>
     <div class="dashboard-grid__bins count">
-        <h4 class="title">10</h4>
+        <h4 class="title"><%= activeBins %></h4>
         <span class="description">Bins cadastradas e operando</span>
     </div>
     <div class="dashboard-grid__chart"></div>
@@ -18,6 +20,38 @@
         <span class="description">Coletas agendadas</span>
     </div>
 </div>
+<script>
+    function setPinPointsOnMap() {
+        const places = JSON.parse('<%- JSON.stringify(places) %>'.replace("&#34;", "\""));
+        var map = new google.maps.Map(
+            document.querySelector('.map-wrapper'), {
+            center: places[0],
+            clickableIcons: false,
+            gestureHandling: 'none',
+            fullscreenControl: false,
+            mapTypeControl: false,
+            panControlOptions: false,
+            rotateControl: false,
+            streetViewControl: false,
+            zoomControl: false,
+            minZoom: 12,
+            maxZoom: 12,
+            zoom: 12,
+        }
+        );
+        places.forEach(place => new google.maps.Marker({
+            icon: '/img/F5-logo.svg',
+            position: place,
+            map: map
+        }));
+    }
+    var mapsScript = document.createElement('script');
+    mapsScript.onload = setPinPointsOnMap;
+    mapsScript.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCDQXi8Ivilc0wysu24bcjh0t2qhAtz5ls";
+    mapsScript.async = true;
+    mapsScript.defer = true;
+    document.querySelector('.dashboard-grid').parentElement.appendChild(mapsScript);
+</script>
 <% } else { %>
 <div class="empty-page empty-page--dashboard">
     <h2 class="empty-page__title">Bem-vindo à F5!</h2>

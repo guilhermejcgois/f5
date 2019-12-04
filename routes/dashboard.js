@@ -35,61 +35,106 @@ const renderWithPage = (req, res, org) => {
             lang,
             ...opts
         });
+    
+    const allOrdersForOrgCb = successCb => (err, orders) => {
+        if (err) {
+            res.render('login', err);
+
+            return;
+        }
+
+        successCb(orders);
+    };
+
+    const findsPlacesAndRender = cb => rawBins => {
+        const firstPromise = Promise.resolve({ bins: {}, places: {} });
+        const placeIsCached = (state, placeId) => !!state.places[placeId];
+        const reduceBins = async (previousPromise, rawBin) => {
+            const state = await previousPromise;
+            if (!rawBin.place) { return Promise.resolve(state); }
+
+            if (placeIsCached(state, rawBin.place)) {
+                state.bins[rawBin._id] = {
+                    ...rawBin._doc,
+                    place: state.places[rawBin.place]
+                };
+                return Promise.resolve(state);
+            }
+
+            return Places.findById(rawBin.place).then(place => {
+                if (!place) { return state; }
+
+                state.places[place._id] = place;
+                state.bins[rawBin._id] = {
+                    ...rawBin._doc,
+                    place
+                };
+
+                return state;
+            });
+        };
+        rawBins.filter(rb => !!rb)
+            .reduce(reduceBins, firstPromise)
+            .then(cb);
+    };
 
     switch (page) {
-        case 'bins':
-            const findsPlacesAndRender = rawBins => {
-                const firstPromise = Promise.resolve({ bins: {}, places: {} });
-                const placeIsCached = (state, placeId) => !!state.places[placeId];
-                const reduceBins = async (previousPromise, rawBin) => {
-                    const state = await previousPromise;
-                    if (!rawBin.place) { return Promise.resolve(state); }
-
-                    if (placeIsCached(state, rawBin.place)) {
-                        state.bins[rawBin._id] = {
-                            ...rawBin._doc,
-                            place: state.places[rawBin.place]
-                        };
-                        return Promise.resolve(state);
-                    }
-
-                    return Places.findById(rawBin.place).then(place => {
-                        if (!place) { return state; }
-
-                        state.places[place._id] = place;
-                        state.bins[rawBin._id] = {
-                            ...rawBin._doc,
-                            place
-                        };
-
-                        return state;
-                    });
-                };
-                rawBins.filter(rb => !!rb)
-                    .reduce(reduceBins, firstPromise)
-                    .then(res => render({ bins: Object.values(res.bins || {}), canDelete: true }));
-            };
-            const allOrdersForOrgCb = (err, orders) => {
-                if (err) {
-                    res.render('login', err);
-
-                    return;
-                }
+        case 'dashboard':
+            Orders.find({ organization: org._id }, allOrdersForOrgCb(orders => {
                 const binsPromises = orders.map(order => Bins.findById(order.bin));
-                Promise.all(binsPromises).then(findsPlacesAndRender);
-            };
-            Orders.find({ organization: org._id }, allOrdersForOrgCb);
+                Promise.all(binsPromises).then(findsPlacesAndRender(res => {
+                    const bins = Object.values(res.bins || {});
+                    let activeBins = [];
+                    let emptyBins = 0;
+                    let fullBins = 0;
+
+                    bins.forEach(bin => {
+                        if (bin.gathering_status != 'STATUS_INACTIVE') {
+                            activeBins.push(bin);
+                        }
+
+                        switch (bin.gathering_status) {
+                            case 'STATUS_ACTIVE':
+                                emptyBins++;
+                                break;
+                            case 'STATUS_GATHERING':
+                                fullBins++;
+                                break;
+                        }
+                    });
+                    
+                    render({
+                        activeBins: activeBins.length,
+                        gathering: {
+                            emptyBins,
+                            fullBins
+                        },
+                        places: Object.values(
+                            activeBins.map(bin => bin.place).reduce((acc, place) => ({
+                                ...acc,
+                                [`${place.latitude}:${place.longitude}`]: {
+                                    lat: place.latitude,
+                                    lng: place.longitude
+                                }
+                            }), {})
+                        )
+                    });
+                }));
+            }));
+            break;
+        case 'bins':
+            Orders.find({ organization: org._id }, allOrdersForOrgCb(orders => {
+                const binsPromises = orders.map(order => Bins.findById(order.bin));
+                Promise.all(binsPromises).then(findsPlacesAndRender(res => render({
+                    bins: Object.values(res.bins || {}),
+                    canDelete: true
+                })));
+            }));
             break;
         case 'requests':
-            Orders.find({ organization: org._id }, (err, orders) => {
-                if (err) {
-                    res.render('login', err);
-
-                    return;
-                }
-
+            Orders.find({ organization: org._id }, allOrdersForOrgCb(orders => {
                 render({ orders, orderStatuses });
-            });
+            }));
             break;
         default:
             render();
