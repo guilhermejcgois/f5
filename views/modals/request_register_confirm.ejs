@@ -18,5 +18,5 @@ sua solicitação na aba <a href="/dashboard/requests" class="link--primary">Meu
     </div>
 </main>
 <div class="modal-actions">
-    <button id="order-cancel" data-id="<%= data.orderId %>" class="btn btn-md btn--primary-ghost">Cancelar Pedido</button>
+    <button id="order-cancel" onClick="__f5__.orders.askDelete('<%= data.id %>')" class="btn btn-lg btn--primary-ghost">Cancelar Pedido</button>
 </div>

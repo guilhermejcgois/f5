@@ -105,7 +105,7 @@ router.post('/register', configAuth.ensureAuthenticated, (req, res) => {
         .then(() => org.save())
         .then(() => {
             res.render('modals/request_register_confirm', {
-                layout: 'modals/layout',
+                layout,
                 data: {
                     orderId: order._id,
                     address: bin.place.address,

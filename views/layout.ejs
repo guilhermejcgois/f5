@@ -160,6 +160,8 @@
                                 lg.append("rect").attr('x', +width / 10).attr('y', 30).attr("width", 15).attr("height", 15).attr("r", 5).style("fill", "#ef4941")
                                 lg.append("text").attr('x', +width / 10 + 25).attr('y', 40).text("Bins para coletar").style("font-size", "12px").attr("alignment-baseline", "middle")
                             });
+                        } else if (route.endsWith('bins/cadastrar')) {
+                            __f5__.bins.configureForm();
                         }
                     });
 
