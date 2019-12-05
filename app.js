@@ -61,6 +61,7 @@ app.get('/', function (req, res) {
 });
 app.use('/wp-content', express.static(__dirname + '/static/wp-content'));
 app.use('/wp-includes', express.static(__dirname + '/static/wp-includes'));
+app.use('/posts', express.static(__dirname + '/static/posts'));
 app.use('/blog', express.static(__dirname + '/static/blog.html'));
 app.use('/contato', express.static(__dirname + '/static/contato.html'));
 app.use('/e-lixo', express.static(__dirname + '/static/e-lixo.html'));
