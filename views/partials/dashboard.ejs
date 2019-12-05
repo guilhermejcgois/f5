@@ -10,7 +10,9 @@
         <h4 class="title"><%= activeBins %></h4>
         <span class="description">Bins cadastradas e operando</span>
     </div>
-    <div class="dashboard-grid__chart"></div>
+    <div class="dashboard-grid__chart">
+        <canvas id="dashChart" width="150" height="150"></canvas>
+    </div>
     <div class="dashboard-grid__map">
         <div class="map-wrapper"></div>
         <span class="description">Mapa de Bins</span>
@@ -51,6 +53,11 @@
     mapsScript.async = true;
     mapsScript.defer = true;
     document.querySelector('.dashboard-grid').parentElement.appendChild(mapsScript);
+
+    new Chart(document.getElementById('dashChart').getContext("2d")).Pie([
+        { color: '#70eb8d', value: <%= gathering.emptyBins %> },
+        { color: '#ef4941', value: <%= gathering.fullBins %> }
+    ]);
 </script>
 <% } else { %>
 <div class="empty-page empty-page--dashboard">

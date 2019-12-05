@@ -1,6 +1,11 @@
 @import "logged-out-page";
 
 .login {
+  input.form-control,
+  .form-control input {
+    height: 80%;
+  }
+
   .form-group .icon {
     margin-right: 20px;
     
