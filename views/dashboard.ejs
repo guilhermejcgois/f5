@@ -2,6 +2,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@7.2.0/dist/css/autoComplete.min.css">
 <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@7.2.0/dist/js/autoComplete.min.js"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDQXi8Ivilc0wysu24bcjh0t2qhAtz5ls"></script>
+<script src="/js/jq-mask-plugin.js"></script>
 
 <script type="text/javascript">
     __f5__.closeModal = function () {
@@ -171,7 +172,63 @@
             });
         }
     },
-    __f5__.payment = {},
+    __f5__.payment = {
+        configureForm: () => {
+            $('#cvv').mask('000');
+            $('#validity').mask('00/0000');
+            $('#number').mask('0000 0000 0000 0000');
+
+            const data = {
+                name: '',
+                number: '',
+                validity: '',
+                cvv: ''
+            };
+            const valid = {
+                name: true,
+                number: true,
+                validity: true,
+                cvv: true
+            };
+            const checkForm = (e) => {
+                const elId = e.target.id;
+                data[elId] = e.target.value;
+                valid[elId] = e.target.validity.valid;
+                const saveButton = document.querySelector('#save');
+                const isValid = valid.name && valid.number && valid.validity && valid.cvv;
+                if (isValid && saveButton.disabled) {
+                    saveButton.removeAttribute('disabled');
+                    saveButton.classList.add('btn--primary');
+                    saveButton.classList.remove('btn--inactive');
+                } else if (!isValid && !saveButton.disabled) {
+                    saveButton.setAttribute('disabled', true);
+                    saveButton.classList.remove('btn--primary');
+                    saveButton.classList.add('btn--inactive');
+                }
+            };
+            document.querySelector('#name').addEventListener('keyup', checkForm);
+            document.querySelector('#number').addEventListener('keyup', checkForm);
+            document.querySelector('#validity').addEventListener('keyup', checkForm);
+            document.querySelector('#cvv').addEventListener('keyup', checkForm);
+            document.querySelector('#save').addEventListener('click', () => {
+                const saveButton = document.querySelector('#save');
+
+                const cc = `name=${data.name}&number=${data.number}&validity=${data.validity}&cvv=${data.cvv}`;
+                $.post('/payment/credit-card', cc, (data) => {
+                    const modalContainer = document.querySelector('.dashboard__main .modal-container');
+                    if (modalContainer) {
+                        document.removeChild(modalContainer);
+                    }
+                    document.querySelector('.dashboard__main').innerHTML += data;
+                });
+            });
+
+            checkForm({ target: document.querySelector('#name') });
+            checkForm({ target: document.querySelector('#number') });
+            checkForm({ target: document.querySelector('#validity') });
+            checkForm({ target: document.querySelector('#cvv') });
+        }
+    },
     __f5__.gathering = {},
     __f5__.orders = {
         askDelete: function (id) {
