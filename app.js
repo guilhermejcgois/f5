@@ -3,6 +3,7 @@ import expressLayouts from 'express-ejs-layouts';
 import { connect } from 'mongoose';
 import flash from 'connect-flash';
 import session from 'express-session';
+import path from 'path';
 import passport from 'passport';
 import passportConfig from './config/passport';
 import routes from './routes/index';
@@ -55,13 +56,37 @@ app.use((req, res, next) => {
 });
 
 // Routes
-app.use('/', routes);
-app.use('/bins', routesBins);
-app.use('/dashboard', routesDashboard);
-app.use('/dashboard/requests', routesRequests);
-app.use('/payment', routesPayment);
-app.use('/users', routesUsers);
+app.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname + '/static/index.html'));
+});
+app.use('/wp-content', express.static(__dirname + '/static/wp-content'));
+app.use('/wp-includes', express.static(__dirname + '/static/wp-includes'));
+app.use('/blog', express.static(__dirname + '/static/blog.html'));
+app.use('/contato', express.static(__dirname + '/static/contato.html'));
+app.use('/e-lixo', express.static(__dirname + '/static/e-lixo.html'));
+app.use('/parceiros', express.static(__dirname + '/static/parceiros.html'));
+app.use('/blog/', express.static(__dirname + '/static/blog.html'));
+app.use('/contato/', express.static(__dirname + '/static/contato.html'));
+app.use('/e-lixo/', express.static(__dirname + '/static/e-lixo.html'));
+app.use('/parceiros/', express.static(__dirname + '/static/parceiros.html'));
+app.use('/blog.html', express.static(__dirname + '/static/blog.html'));
+app.use('/contato.html', express.static(__dirname + '/static/contato.html'));
+app.use('/e-lixo.html', express.static(__dirname + '/static/e-lixo.html'));
+app.use('/parceiros.html', express.static(__dirname + '/static/parceiros.html'));
 
+app.use('/app', routes);
+app.use('/app/bins', routesBins);
+app.use('/app/dashboard', routesDashboard);
+app.use('/app/dashboard/requests', routesRequests);
+app.use('/app/payment', routesPayment);
+app.use('/app/users', routesUsers);
+
+app.use('/app/css', express.static(__dirname + '/dist/css'));
+app.use('/app/favicon', express.static(__dirname + '/assets/favicon'));
+app.use('/app/fonts', express.static(__dirname + '/assets/fonts'));
+app.use('/app/js', express.static(__dirname + '/assets/js'));
+app.use('/app/icons', express.static(__dirname + '/assets/icons'));
+app.use('/app/img', express.static(__dirname + '/assets/img'));
 app.use('/css', express.static(__dirname + '/dist/css'));
 app.use('/js', express.static(__dirname + '/assets/js'));
 app.use('/favicon', express.static(__dirname + '/assets/favicon'));

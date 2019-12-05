@@ -46,7 +46,7 @@
                             <span title="Ainda não implementado" aria-label="Ainda não implementado" role="button" class="ic ic-edit"></span>
                         <% } %>
                         <% if (typeof canDelete != 'undefined' && canDelete) { %>
-                            <button onClick="__f5__.bins.askDelete(<%= bin._id%>)" aria-label="Apagar bin de código <%= bin._id%>" role="button" class="bin-delete btn-xs btn--danger-ghost">
+                            <button onClick="__f5__.bins.askDelete('<%= bin._id%>')" aria-label="Apagar bin de código <%= bin._id%>" role="button" class="bin-delete btn-xs btn--danger-ghost">
                                 Deletar
                             </button>
                         <% } %>

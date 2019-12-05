@@ -23,7 +23,7 @@
     </div>
 </div>
 <script>
-    $.get('/dashboard/data', data => {
+    $.get('/app/dashboard/data', data => {
         function setPinPointsOnDashMap() {
             const places = data.places;
             var map = new google.maps.Map(

@@ -56,14 +56,14 @@
                     const activeCandidate = document.querySelector(`.sidebar__menu-item a[data-route="${route}"]`);
                     if (activeCandidate) { activeCandidate.parentElement.classList.add('active'); }
 
-                    history.replaceState(history.state, document.title, route);
+                    history.replaceState(history.state, document.title, '/app' + route);
 
-                    $.get(route, data => {
+                    $.get('/app' + route, data => {
                         __f5__.parseDashHTML(data);
                         sessionStorage.setItem('lastroute', route);
 
                         if (route.endsWith('dashboard')) {
-                            $.get('/dashboard/data', data => {
+                            $.get('/app/dashboard/data', data => {
                                 function setPinPointsOnDashMap() {
                                     const places = data.places;
                                     var map = new google.maps.Map(

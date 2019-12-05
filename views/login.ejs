@@ -16,13 +16,13 @@
   <main class="lop__right-side">
     <div class="lop__header">
       <span class="lop__register-link text-4">
-        Ainda não possui uma conta? <a class="link--primary" href="/cadastro">Registre-se</a>
+        Ainda não possui uma conta? <a class="link--primary" href="/app/cadastro">Registre-se</a>
       </span>
     </div>
     <div class="lop__box">
       <div class="lop__box-body">
         <h2 class="text-1 bold">Entrar</h2>
-        <form action="/users/login" method="POST">
+        <form action="/app/users/login" method="POST">
           <div class="form-group email">
             <label class="text-4" for="email">Email</label>
             <%- include('partials/custom-input', {type:"email", id:"email", name:"email", placeholder:"Digite seu email"}); %>
@@ -33,7 +33,7 @@
           </div>
           <div class="form-footer">
             <button id="login" type="submit" class="btn-sm btn--primary capitalize">Entrar</button>
-            <a id="forgot-pass" class="text-4" style="line-height: initial;" href="/esqueci-minha-senha">Esqueceu a senha?</a>
+            <a id="forgot-pass" class="text-4" style="line-height: initial;" href="/app/esqueci-minha-senha">Esqueceu a senha?</a>
           </div>
         </form>
       </div>

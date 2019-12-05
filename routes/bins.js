@@ -15,7 +15,8 @@ const modalId = 'bin-delete-modal';
 router.get('/:id', configAuth.ensureAuthenticated, (req, res) => {
     res.render('modals/bin_delete', {
         layout,
-        modalId
+        modalId,
+        id: req.params.id
     });
 });
 

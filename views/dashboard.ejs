@@ -38,7 +38,7 @@
     };
     __f5__.bins = {
         askDelete: function (id) {
-            $.get(`/bins/${id}`, function (data) {
+            $.get(`/app/bins/${id}`, function (data) {
                 __f5__.parseModalHTML(data);
             });
         },
@@ -49,7 +49,7 @@
                 data: {
                     src: async () => {
                         const query = document.querySelector(addressSel).value;
-                        const source = await fetch(`/bins/search/address?q=${query}`);
+                        const source = await fetch(`/app/bins/search/address?q=${query}`);
                         return await source.json();
                     },
                     key: ["name"],
@@ -149,7 +149,7 @@
             document.querySelector('#size-g').addEventListener('click', enableSubmit);
             document.querySelector('#save-bin').addEventListener('click', () => {
                 const bin = `address=${data.address}&size=${data.size}`;
-                $.post('/bins/register', bin, (data) => {
+                $.post('/app/bins/register', bin, (data) => {
                     __f5__.parseModalHTML(data, 'registered-bin');
                     __f5__.orders.listenCancel();
                 });
@@ -157,7 +157,7 @@
         },
         delete: function (id) {
             $.ajax({
-                url: `/bins/${id}`,
+                url: `/app/bins/${id}`,
                 type: 'DELETE',
                 success: (data) => {
                     f5.parseModalHTML(data, 'confirmed');
@@ -214,7 +214,7 @@
                 const saveButton = document.querySelector('#save');
 
                 const cc = `name=${data.name}&number=${data.number}&validity=${data.validity}&cvv=${data.cvv}`;
-                $.post('/payment/credit-card', cc, (data) => {
+                $.post('/app/payment/credit-card', cc, (data) => {
                     const modalContainer = document.querySelector('.dashboard__main .modal-container');
                     if (modalContainer) {
                         document.removeChild(modalContainer);
@@ -232,17 +232,17 @@
     __f5__.gathering = {},
     __f5__.orders = {
         askDelete: function (id) {
-            $.get(`/dashboard/requests/${id}`, function (data) {
+            $.get(`/app/dashboard/requests/${id}`, function (data) {
                 __f5__.parseModalHTML(data);
             });
         },
         delete: function (id) {
-            const url = `/dashboard/requests/delete/${id}`;
+            const url = `/app/dashboard/requests/delete/${id}`;
             $.get(url, (data) => {
                 __f5__.parseModalHTML(data, 'delete-request');
                 document.querySelector('#delete-btn').addEventListener('click', () => {
                     $.ajax({
-                        url: `/dashboard/requests/${id}`,
+                        url: `/app/dashboard/requests/${id}`,
                         type: 'DELETE',
                         success: function (data) {
                             __f5__.parseModalHTML(data, 'deleted-request');

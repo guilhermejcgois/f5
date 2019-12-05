@@ -55,7 +55,7 @@ router.post('/register', (req, res) => {
                 .then(() => user.save())
                 .then(() => {
                     req.flash('success_msg', 'Você já está cadastrado e agora já pode fazer seu login');
-                    res.redirect('/login');
+                    res.redirect('/app/login');
                 })
                 .catch(err => console.error(err));
         };
@@ -101,20 +101,20 @@ router.post('/register', (req, res) => {
 // Local Handle
 router.post('/login', (req, res, next) => {
     passport.authenticate('local', {
-        successRedirect: '/dashboard',
-        failureRedirect: '/login',
+        successRedirect: '/app/dashboard',
+        failureRedirect: '/app/login',
         failureFlash: true
     })(req, res, next);
 
 });
 
-router.get('/login', (req, res) => res.redirect('../login'));
+router.get('/login', (req, res) => res.redirect('/app/login'));
 
 // Logout Handle
 router.post('/logout', (req, res) => {
     req.logout();
     req.flash('success_msg', 'You have logged out');
-    res.redirect('/login');
+    res.redirect('/app/login');
 });
 
 export default router;
