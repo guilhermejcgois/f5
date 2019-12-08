@@ -53,7 +53,7 @@
     if (li) {
         li.classList.add('active');
     }
-    document.querySelector('#logout-link').addEventListener('click', function (e) {
+    document.querySelector('#logout-link a').addEventListener('click', function (e) {
         e.preventDefault();
         $.post('/users/logout', () => location.href = '/');
     });
