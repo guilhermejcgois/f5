@@ -21,8 +21,18 @@
     }
 }
 
-.modal-disclaimer {
-    margin: 30px 66px;
-    line-height: 1.25;
-    text-align: center;
+#payment_confirm {
+    max-width: 655px;
+    padding: 45px 75.5px 50px 73.5px;
+
+    .modal-title {
+        max-width: 530px;
+        line-height: 2.19;
+    }
+
+    .modal-disclaimer {
+        margin: 30px 66px;
+        line-height: 1.25;
+        text-align: center;
+    }
 }

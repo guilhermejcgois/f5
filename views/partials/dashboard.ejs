@@ -4,10 +4,12 @@
 <div class="dashboard-grid">
     <div class="dashboard-grid__volume count">
         <h4 class="title">800 kg</h4>
+        <div class="spacing"></div>
         <span class="description">Volume coletado nos últimos 30 dias</span>
     </div>
     <div class="dashboard-grid__bins count">
         <h4 class="title"><%= activeBins %></h4>
+        <div class="spacing"></div>
         <span class="description">Bins cadastradas e operando</span>
     </div>
     <div class="dashboard-grid__chart">
@@ -62,7 +64,7 @@
             margin = 0;
         var radius = Math.min(width * 0.8, height * 0.8) / 2 - margin;
         var arc =  d3.arc()
-            .innerRadius(110)         // This is the size of the donut hole
+            .innerRadius(height > 500 ? radius - 50 : 110)         // This is the size of the donut hole
             .outerRadius(radius)
         var svg = d3.select("#dashChart")
             .append("svg")
@@ -102,9 +104,9 @@
             .enter()
             .append("text")
             .attr("text-anchor", "middle")
-            .attr('font-size', '3em')
+            .attr('font-size', height > 500 ? '3em' : '2em')
             .attr('y', 20)
-            .text('100%');
+            .text('Total de Bins');
 
         var lg =  d3.select("#dashChart svg").append('g')
             .attr('class', 'legend')
