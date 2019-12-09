@@ -41,7 +41,8 @@ router.post('/credit-card', configAuth.ensureAuthenticated, (req, res) => {
         }
 
         res.render('modals/payment_confirm', {
-            layout: 'layouts/modal'
+            layout: 'layouts/modal',
+            modalId: 'payment_confirm'
         });
     });
 });

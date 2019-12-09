@@ -22,8 +22,10 @@
 }
 
 #payment_confirm {
-    max-width: 655px;
-    padding: 45px 75.5px 50px 73.5px;
+    .modal {
+        max-width: 655px;
+        padding: 45px 75.5px 50px 73.5px;
+    }
 
     .modal-title {
         max-width: 530px;
