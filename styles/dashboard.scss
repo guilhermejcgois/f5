@@ -12,7 +12,7 @@
     &-grid {
         flex: 1;
         display: grid;
-        grid-template-columns: 1fr 1fr 1.16fr;
+        grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: 1fr 1.5fr 2fr;
         grid-template-areas: 
         'vol bin chart'
@@ -40,6 +40,7 @@
         }
         &__chart {
             grid-area: chart;
+            padding: 0;
         }
         &__map {
             grid-area: map;
@@ -69,18 +70,18 @@
         }
 
         .title {
-            font-size: 32px;
+            font-size: 30px;
             font-weight: 900;
             line-height: 41px;
             color: $black;
         }
 
         .description {
-            font-size: 16px;
+            font-size: 14px;
             line-height: 15px;
         }
 
-        @media screen and (min-width: $xlg-width) {
+        @media screen and (min-width: $xlg-width + 100px) {
             .title {
                 font-size: 68px;
             }
@@ -132,7 +133,7 @@
         position: relative;
         
         box-sizing: border-box;
-        padding: 50px 73px;
+        padding: 28px 73px;
         max-height: 100vh;
 
         .modal-container {

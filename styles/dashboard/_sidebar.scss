@@ -16,7 +16,7 @@
     &__header {
         background: $dark-blue-grey;
         height: 260px;
-        padding-top: 51px;
+        padding-top: 28px;
 
         .user-info {
             flex: 1;
@@ -51,7 +51,7 @@
 
     &__menu-item {
         color: $white;
-        height: 66px;
+        height: 55px;
         display: flex;
         align-items: center;
         cursor: pointer;
