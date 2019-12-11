@@ -43,7 +43,6 @@
             },
             router: {
                 navigate: function (route) {
-                    if (route === undefined) { return false; }
                     if (sessionStorage.getItem('lastroute') === route) { return false; }
 
                     const loader = document.querySelector('.dashboard-loader');
@@ -64,6 +63,8 @@
                         sessionStorage.setItem('lastroute', route);
 
                         if (route.endsWith('dashboard')) {
+                            const dashGrid = document.querySelector('.dashboard-grid');
+                            if (!dashGrid) { return; }
                             $.get('/app/dashboard/data', data => {
                                 function setPinPointsOnDashMap() {
                                     const places = data.places;
@@ -94,7 +95,7 @@
                                 mapsScript.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCDQXi8Ivilc0wysu24bcjh0t2qhAtz5ls";
                                 mapsScript.async = true;
                                 mapsScript.defer = true;
-                                document.querySelector('.dashboard-grid').parentElement.appendChild(mapsScript);
+                                dashGrid.parentElement.appendChild(mapsScript);
 
                                 /* D3 CHART */
                                 const dashChart = document.querySelector('#dashChart');

@@ -78,6 +78,7 @@ app.use('/app/dashboard', routesDashboard);
 app.use('/app/dashboard/requests', routesRequests);
 app.use('/app/payment', routesPayment);
 app.use('/app/users', routesUsers);
+app.use('/users', routesUsers);
 
 app.use('/app/css', express.static(__dirname + '/dist/css'));
 app.use('/app/favicon', express.static(__dirname + '/assets/favicon'));

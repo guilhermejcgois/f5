@@ -113,7 +113,6 @@ router.get('/login', (req, res) => res.redirect('/app/login'));
 router.get('/logout', (req, res) => {
     req.logout();
     req.flash('success_msg', 'You have logged out');
-    // res.redirect('/app/login');
     res.status(200);
     res.send('Logged out');
 });
