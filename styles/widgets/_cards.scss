@@ -1,24 +1,13 @@
 @import '../colors';
 
-.cards {
-    flex-grow: 1;
-    overflow-y: auto;
-    min-height: 0;
-}
-
 .card {
     border-radius: 3px;
     box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
     background-color: $white;
-    padding-top: 30px;
-    padding-left: 28px;
-    height: 250px;
+    padding: 0 28px;
+    min-height: 250px;
     display: flex;
     flex-direction: column;
-
-    &:not(:first-of-type) {
-        margin-top: 20px;
-    }
 
     &-header {
         display: flex;
@@ -45,5 +34,19 @@
         flex: 1;
         justify-content: flex-start;
         align-items: flex-start;
+    }
+}
+
+.cards {
+    flex-grow: 1;
+    overflow-y: auto;
+    min-height: 0;
+
+    .card {
+        padding-top: 30px;
+    }
+
+    .card:not(:first-of-type) {
+        margin-top: 20px;
     }
 }

@@ -1,33 +1,61 @@
 <link rel="stylesheet" href="/css/payment.css">
 
-<form class="payment__form">
-    <div class="form-group">
-        <label class="text-2" for="name">Nome do titular *</label>
-        <input type="text" id="name" name="name" class="form-control" placeholder="Digite o nome do titular igual ao cartão" required value="<%= typeof org.payment_info != 'undefined' ? org.payment_info.name : '' %>" />
-    </div>
-    <div class="form-group">
-        <label class="text-2" for="number">Número do Cartão *</label>
-        <input type="text" id="number" name="number" class="form-control"
-            placeholder="Ex.: 0000 0000 0000 0000" required value="<%= typeof org.payment_info != 'undefined' ? org.payment_info.number : '' %>"/>
-    </div>
-    <div class="form-row">
+<div class="profile-page">
+    <form class="card profile__form">
+        <h4 class="text-2">Dados de Perfil</h4>
         <div class="form-group">
-            <label class="text-2" for="validity">Validade *</label>
-            <input type="text" id="validity" name="validity" class="form-control" placeholder="Ex.: 10/2024"
-                required value="<%= typeof org.payment_info != 'undefined' ? org.payment_info.validity : '' %>"/>
+            <label class="text-4" for="name">Nome da empresa</label>
+            <input type="text" id="name" name="name" class="form-control" placeholder="Digite o nome da empresa"
+                required readonly value="<%= org.name %>" />
         </div>
         <div class="form-group">
-            <label class="text-2" for="cvv">CVV *</label>
-            <input type="text" id="cvv" name="cvv" class="form-control" placeholder="Ex.: 123"
-                required value="<%= typeof org.payment_info != 'undefined' ? org.payment_info.cvv : '' %>"/>
+            <label class="text-4" for="cnpj">CNPJ da empresa</label>
+            <input type="text" id="cnpj" name="cnpj" class="form-control" placeholder="Digite o CNPJ da empresa"
+                required readonly value="<%= org.cnpj %>" />
         </div>
-    </div>
-    <div class="form-footer">
-        <% if (org.payed) { %>
-            <input id="save" type="button" class="btn-lg btn--primary" value="Editar Meus Dados" />
-        <% } else { %>
-            <input id="save" type="button" class="btn-lg btn--inactive" disabled value="Cadastrar cartão" />
-        <% } %>
-    </div>
-</form>
+        <div class="form-group">
+            <label class="text-4" for="address">Endereço da empresa</label>
+            <input type="text" id="address" name="address" class="form-control" placeholder="Digite o endereço da empresa"
+                required readonly value="<%= org.address %>" />
+        </div>
+        <div class="form-footer">
+            <input id="edit-user" type="button" class="btn-lg btn--inactive" disabled value="Editar meus dados" />
+        </div>
+    </form>
+
+    <div class="divider"></div>
+
+    <form class="card payment__form">
+        <h4 class="text-2">Dados de Pagamento</h4>
+        <div class="form-group">
+            <label class="text-4" for="name">Nome do titular</label>
+            <input type="text" id="name" name="name" class="form-control" placeholder="Digite o nome do titular igual ao cartão" required value="<%= typeof org.payment_info != 'undefined' ? org.payment_info.name : '' %>" />
+        </div>
+        <div class="form-group">
+            <label class="text-4" for="number">Número do Cartão</label>
+            <input type="text" id="number" name="number" class="form-control"
+                placeholder="Ex.: 0000 0000 0000 0000" required value="<%= typeof org.payment_info != 'undefined' ? org.payment_info.number : '' %>"/>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label class="text-4" for="validity">Validade</label>
+                <input type="text" id="validity" name="validity" class="form-control" placeholder="Ex.: 10/2024"
+                    required value="<%= typeof org.payment_info != 'undefined' ? org.payment_info.validity : '' %>"/>
+            </div>
+            <div class="form-group">
+                <label class="text-4" for="cvv">CVV</label>
+                <input type="text" id="cvv" name="cvv" class="form-control" placeholder="Ex.: 123"
+                    required value="<%= typeof org.payment_info != 'undefined' ? org.payment_info.cvv : '' %>"/>
+            </div>
+        </div>
+        <div class="form-footer">
+            <% if (org.payed) { %>
+                <input id="save" type="button" class="btn-lg btn--primary" value="Editar Meus Dados" />
+            <% } else { %>
+                <input id="save" type="button" class="btn-lg btn--inactive" disabled value="Cadastrar cartão" />
+            <% } %>
+        </div>
+    </form>
+</div>
+
 <script>__f5__.payment.configureForm()</script>

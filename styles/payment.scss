@@ -1,40 +1,61 @@
-.payment__form {
-    max-width: 600px;
+@import 'colors';
+@import 'variables';
 
-    .form-group {
-        margin-top: 20px;
+.profile-page {
+    display: flex;
+        
+    @media screen and (min-width: $xlg-width + 100px) {
+        max-width: $xlg-width - 100px;
     }
 
-    .form-row {
-        display: flex;
-        justify-content: space-between;
-
-        .form-group {
-            max-width: 250px;
-        }
+    form {
+        flex: 1;
     }
 
+    .form-control {
+        margin: 0;
+        padding: 0 15px;
+        width: unset;
+    }
+
+    .divider {
+        width: 1px;
+        margin: 0 20px;
+    }
+    
     .form-footer {
-        margin-top: 50px;
+        margin: 20px 0;
         display: flex;
         justify-content: center;
     }
+
+    .payment__form {
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+    
+            .form-group {
+                max-width: 40%;
+            }
+        }
+    }
+    
+    #payment_confirm {
+        .modal {
+            max-width: 655px;
+            padding: 45px 75.5px 50px 73.5px;
+        }
+    
+        .modal-title {
+            max-width: 530px;
+            line-height: 2.19;
+        }
+    
+        .modal-disclaimer {
+            margin: 30px 66px;
+            line-height: 1.25;
+            text-align: center;
+        }
+    }
 }
 
-#payment_confirm {
-    .modal {
-        max-width: 655px;
-        padding: 45px 75.5px 50px 73.5px;
-    }
-
-    .modal-title {
-        max-width: 530px;
-        line-height: 2.19;
-    }
-
-    .modal-disclaimer {
-        margin: 30px 66px;
-        line-height: 1.25;
-        text-align: center;
-    }
-}

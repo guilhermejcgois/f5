@@ -6,7 +6,7 @@ export default {
     GATHERING: 'Minhas Coletas',
     LOGIN: 'Login',
     PAYMENT: 'Dados de Pagamento',
-    PROFILE: 'Dados de Pagamento',
+    PROFILE: 'Meu Perfil',
     REGISTER: 'Cadastrar',
     REQUESTS: 'Meus Pedidos',
 }

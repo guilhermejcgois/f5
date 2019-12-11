@@ -1,8 +1,9 @@
 @import 'colors';
-@import 'variables'
-;
+@import 'variables';
 @import 'dashboard/header';
 @import 'dashboard/sidebar';
+@import "widgets/cards";
+@import "widgets/modals";
 
 .dashboard {
     display: flex;
