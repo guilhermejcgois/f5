@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="83" height="83" viewBox="0 0 83 83">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#f29224"/>
+      <stop offset="1" stop-color="#e4007a"/>
+    </linearGradient>
+  </defs>
+  <g id="logo" transform="translate(-454 -82)">
+    <circle id="Foto_de_Perfil" data-name="Foto de Perfil" cx="41.5" cy="41.5" r="41.5" transform="translate(454 82)" fill="url(#linear-gradient)"/>
+    <path id="F5_White" data-name="F5 White" d="M38.1,19.57a5.606,5.606,0,0,0,.285-6.075A7.018,7.018,0,0,0,35.681,0H12.313A4.412,4.412,0,0,0,7.907,4.406v6.268H2.768A2.768,2.768,0,0,0,0,13.442v40.03a5.634,5.634,0,0,0,11.268,0V49.926A7.512,7.512,0,0,0,15.46,51.2H33.408A11.677,11.677,0,0,0,45.071,39.536V30.245A11.679,11.679,0,0,0,38.1,19.57Zm4.6,19.966a9.291,9.291,0,0,1-9.291,9.291H15.46a5.179,5.179,0,0,1-5.181-5.181V41.495a1.959,1.959,0,0,1,1.959-1.959H28.762a4.645,4.645,0,1,0,0-9.291H13.146a2.86,2.86,0,0,1-2.866-2.86V4.406a2.034,2.034,0,0,1,2.034-2.034H35.681a4.645,4.645,0,0,1,0,9.291H19.57v9.291H33.408A9.291,9.291,0,0,1,42.7,30.245Z" transform="translate(472.854 92.689)" fill="#fff"/>
+  </g>
+</svg>
