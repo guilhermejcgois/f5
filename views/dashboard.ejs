@@ -6,15 +6,17 @@
 
 <script type="text/javascript">
     __f5__.closeModal = function () {
-        let modal = document.querySelector('.modal-container');
+        let modal = $('.modal-container');
         if (modal) {
-            const closeBtn = modal.querySelector('.ic-close');
-            if (closeBtn) { closeBtn.removeEventListener('click', __f5__.modalCloseListener); }
+            const closeBtn = modal.find('.ic-close');
+            if (closeBtn) { closeBtn.unbind('click', __f5__.modalCloseListener); }
 
-            const cancelBtn = modal.querySelector('#cancel-btn');
-            if (cancelBtn) { cancelBtn.removeEventListener('click', __f5__.modalCloseListener); }
+            const cancelBtn = modal.find('#cancel-btn');
+            if (cancelBtn) { cancelBtn.unbind('click', __f5__.modalCloseListener); }
 
             modal.remove();
+        } else {
+            console.warn('Modal not found');
         }
     };
     __f5__.modalCloseListener = __f5__.closeModal;

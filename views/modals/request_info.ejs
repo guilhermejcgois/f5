@@ -1,18 +1,18 @@
 <%- include('modal_close') %>
 <header class="modal-title">Solicitação da BIN</header>
 <div class="wizard-step">
-    <div class="wizard-step__item"><span class="wizard-step__item-text text-3"><%= lang.ORDER_OPENED %></span></div>
+    <div class="wizard-step__item"><span class="wizard-step__item-text text-6"><%= lang.ORDER_OPENED %></span></div>
     <% if (orderStatuses.indexOf(data.status) >= 1) {%>
-    <div class="wizard-step__item"><span class="wizard-step__item-text text-3"><%= lang.ORDER_CONFIRMED %></span></div>
+    <div class="wizard-step__item"><span class="wizard-step__item-text text-6"><%= lang.ORDER_CONFIRMED %></span></div>
     <% } %>
     <% if (orderStatuses.indexOf(data.status) >= 2) {%>
-    <div class="wizard-step__item"><span class="wizard-step__item-text text-3"><%= lang.ORDER_WAITING %></span></div>
+    <div class="wizard-step__item"><span class="wizard-step__item-text text-6"><%= lang.ORDER_WAITING %></span></div>
     <% } %>
     <% if (orderStatuses.indexOf(data.status) >= 3) {%>
-    <div class="wizard-step__item"><span class="wizard-step__item-text text-3"><%= lang.ORDER_DISPATCHED %></span></div>
+    <div class="wizard-step__item"><span class="wizard-step__item-text text-6"><%= lang.ORDER_DISPATCHED %></span></div>
     <% } %>
     <% if (orderStatuses.indexOf(data.status) >= 4) {%>
-    <div class="wizard-step__item current"><span class="wizard-step__item-text text-3"><%= lang.ORDER_FINISHED %></span>
+    <div class="wizard-step__item current"><span class="wizard-step__item-text text-6"><%= lang.ORDER_FINISHED %></span>
     </div>
     <% } %>
 </div>
@@ -35,5 +35,5 @@
     </div>
 </main>
 <div class="modal-actions">
-    <button id="order-cancel" onClick="__f5__.orders.askDelete('<%= data.id %>')" class="btn btn-lg btn--primary-ghost">Cancelar Pedido</button>
+    <button id="order-cancel" onClick="__f5__.orders.delete('<%= data.id %>')" class="btn btn-lg btn--primary-ghost">Cancelar Pedido</button>
 </div>

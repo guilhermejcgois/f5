@@ -87,12 +87,18 @@
     .modal {
         height: $modal-order-delete-height;
         width: $modal-order-delete-width;
+    
+        &-title {
+            max-width: 600px;
+            line-height: 1.19;
+        }
     }
     
     .modal-actions {
         width: 100%;
         display: flex;
         justify-content: space-around;
+        margin-top: 30px;
 
         .btn {
             line-height: 1.19;

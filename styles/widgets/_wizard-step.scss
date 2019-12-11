@@ -1,7 +1,7 @@
 @import "../colors";
 
 .wizard-step {
-    $bullet-size: 20px;
+    $bullet-size: 10px;
     $line-width: 3px;
 
     display: flex;
@@ -14,6 +14,7 @@
     &__item {
         color: rgba($light-blueberry, 0.5);
         width: 20%;
+        position: relative;
     }
 
     &__item:before {
@@ -36,11 +37,11 @@
         &:after{
             content: "";
             display: block;
-            width: 20%;
+            width: 100%;
             background-color: $dark-hot-pink;
             height: $line-width;
             position: absolute;
-            margin-left: -10%;
+            margin-left: -50%;
             top: $bullet-size / 2;
             z-index: 0;
         }
