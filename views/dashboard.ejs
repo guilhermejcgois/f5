@@ -196,7 +196,7 @@
                 const elId = e.target.id;
                 data[elId] = e.target.value;
                 valid[elId] = e.target.validity.valid;
-                const saveButton = document.querySelector('#save');
+                const saveButton = document.querySelector('#save-cc');
                 const isValid = valid.name && valid.number && valid.validity && valid.cvv;
                 if (isValid && saveButton.disabled) {
                     saveButton.removeAttribute('disabled');
@@ -212,7 +212,7 @@
             document.querySelector('#number').addEventListener('keyup', checkForm);
             document.querySelector('#validity').addEventListener('keyup', checkForm);
             document.querySelector('#cvv').addEventListener('keyup', checkForm);
-            document.querySelector('#save').addEventListener('click', () => {
+            document.querySelector('#save-cc').addEventListener('click', () => {
                 const saveButton = document.querySelector('#save');
 
                 const cc = `name=${data.name}&number=${data.number}&validity=${data.validity}&cvv=${data.cvv}`;
@@ -229,6 +229,59 @@
             checkForm({ target: document.querySelector('#number') });
             checkForm({ target: document.querySelector('#validity') });
             checkForm({ target: document.querySelector('#cvv') });
+        }
+    },
+    __f5__.profile = {
+        configureForm: () => {
+            $('#cnpj').mask('00.000.000/0000-00');
+
+            const data = {
+                name: '',
+                address: '',
+                logo: '',
+                cnpj: ''
+            };
+            const valid = {
+                name: true,
+                address: true,
+                logo: true,
+                cnpj: true
+            };
+            const checkForm = (e) => {
+                const elId = e.target.id;
+                data[elId] = e.target.value;
+                valid[elId] = e.target.validity.valid;
+                const saveButton = document.querySelector('#edit-user');
+                const isValid = valid.name && valid.cnpj && valid.address && valid.logo;
+                if (isValid && saveButton.disabled) {
+                    saveButton.removeAttribute('disabled');
+                    saveButton.classList.add('btn--primary');
+                    saveButton.classList.remove('btn--inactive');
+                } else if (!isValid && !saveButton.disabled) {
+                    saveButton.setAttribute('disabled', true);
+                    saveButton.classList.remove('btn--primary');
+                    saveButton.classList.add('btn--inactive');
+                }
+            };
+            document.querySelector('#name').addEventListener('keyup', checkForm);
+            document.querySelector('#address').addEventListener('keyup', checkForm);
+            document.querySelector('#cnpj').addEventListener('keyup', checkForm);
+            document.querySelector('#edit-user').addEventListener('click', () => {
+                const saveButton = document.querySelector('#save');
+
+                const orgProfile = `name=${data.name}&address=${data.address}&cnpj=${data.cnpj}`;
+                $.post('/app/users/organization', orgProfile, (data) => {
+                    const modalContainer = document.querySelector('.dashboard__main .modal-container');
+                    if (modalContainer) {
+                        document.removeChild(modalContainer);
+                    }
+                    document.querySelector('.dashboard__main').innerHTML += data;
+                });
+            });
+
+            checkForm({ target: document.querySelector('#name') });
+            checkForm({ target: document.querySelector('#cnpj') });
+            checkForm({ target: document.querySelector('#address') });
         }
     },
     __f5__.gathering = {},

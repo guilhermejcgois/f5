@@ -6,17 +6,17 @@
         <div class="form-group">
             <label class="text-4" for="name">Nome da empresa</label>
             <input type="text" id="name" name="name" class="form-control" placeholder="Digite o nome da empresa"
-                required readonly value="<%= org.name %>" />
+                required value="<%= org.name %>" />
         </div>
         <div class="form-group">
             <label class="text-4" for="cnpj">CNPJ da empresa</label>
             <input type="text" id="cnpj" name="cnpj" class="form-control" placeholder="Digite o CNPJ da empresa"
-                required readonly value="<%= org.cnpj %>" />
+                required value="<%= org.cnpj %>" />
         </div>
         <div class="form-group">
             <label class="text-4" for="address">Endereço da empresa</label>
             <input type="text" id="address" name="address" class="form-control" placeholder="Digite o endereço da empresa"
-                required readonly value="<%= org.address %>" />
+                required value="<%= org.address %>" />
         </div>
         <div class="form-footer">
             <input id="edit-user" type="button" class="btn-lg btn--inactive" disabled value="Editar meus dados" />
@@ -50,12 +50,15 @@
         </div>
         <div class="form-footer">
             <% if (org.payed) { %>
-                <input id="save" type="button" class="btn-lg btn--primary" value="Editar Meus Dados" />
+                <input id="save-cc" type="button" class="btn-lg btn--primary" value="Editar Meus Dados" />
             <% } else { %>
-                <input id="save" type="button" class="btn-lg btn--inactive" disabled value="Cadastrar cartão" />
+                <input id="save-cc" type="button" class="btn-lg btn--inactive" disabled value="Cadastrar cartão" />
             <% } %>
         </div>
     </form>
 </div>
 
-<script>__f5__.payment.configureForm()</script>
+<script>
+__f5__.payment.configureForm();
+__f5__.profile.configureForm();
+</script>

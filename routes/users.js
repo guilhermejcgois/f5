@@ -119,4 +119,36 @@ router.get('/logout', (req, res) => {
     res.send('Logged out');
 });
 
+router.post('/organization', (req, res) => {
+    const { name, address, cnpj, logo } = req.body;
+
+    const updateOrgQuery = { $set: { } };
+    if (name) {
+        updateOrgQuery.$set.name = name;
+    }
+    if (address) {
+        updateOrgQuery.$set.address = address;
+    }
+    if (cnpj) {
+        updateOrgQuery.$set.cnpj = cnpj;
+    }
+    if (logo) {
+        updateOrgQuery.$set.logo = new Buffer(logo, 'binary').toString('base64');
+    }
+
+    Organization.findByIdAndUpdate(req.user.organization, updateOrgQuery, (err, org) => {
+        if (err) {
+            res.status(500);
+            res.send({ err, org });
+
+            return;
+        }
+
+        res.render('modals/profile_updated', {
+            layout: 'layouts/modal',
+            modalId: 'profile_updated'
+        });
+    });
+});
+
 export default router;
