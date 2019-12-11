@@ -39,7 +39,7 @@
     __f5__.bins = {
         askDelete: function (id) {
             $.get(`/app/bins/${id}`, function (data) {
-                __f5__.parseModalHTML(data);
+                __f5__.parseModalHTML(data, 'confirm');
             });
         },
         configureForm: () => {
@@ -160,7 +160,7 @@
                 url: `/app/bins/${id}`,
                 type: 'DELETE',
                 success: (data) => {
-                    f5.parseModalHTML(data, 'confirmed');
+                    __f5__.parseModalHTML(data, 'confirmed');
                     document.querySelector('.ic-close').addEventListener('click', () => {
                         const binRow = document.querySelector(`#bin-${id}`);
                         if (!binRow) { return; }

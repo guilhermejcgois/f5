@@ -23,12 +23,16 @@ router.get('/:id', configAuth.ensureAuthenticated, (req, res) => {
 router.delete('/:id', configAuth.ensureAuthenticated, (req, res) => {
     const { id } = req.params;
 
-    const deleteCb = () => res.render('modals/bin_delete_confirm', {
-        layout,
-        modalId
-    });
+    const deleteCb = function () {
+        res.render('modals/bin_delete_confirm', {
+            layout,
+            modalId
+        });
+    };
 
-    Bins.findByIdAndDelete(id).then(deleteCb);
+    Orders.findOneAndDelete({ bin: id })
+        .then(function () { Bins.findByIdAndDelete(id) })
+        .then(deleteCb);
 });
 
 router.get('/search/address', configAuth.ensureAuthenticated, (req, res) => {
