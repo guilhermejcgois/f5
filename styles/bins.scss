@@ -178,7 +178,7 @@ $cell-gap: 20px;
     }
 }
 
-#bin-delete-modal.confirm .modal {
+#bin-delete-modal.confirm {
     @extend %modal-bin-delete;
 }
 

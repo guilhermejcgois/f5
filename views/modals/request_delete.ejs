@@ -1,6 +1,6 @@
 <%- include('modal_close') %>
 <header class="modal-title">Tem certeza que deseja cancelar o pedido do seu ponto?</header>
 <div class="modal-actions">
-    <button id="delete-btn" class="btn btn-md btn--primary" onClick="__f5.orders.delete(<%= orderId %>)">Sim, cancelar</button>
+    <button id="delete-btn" class="btn btn-md btn--primary" onClick="__f5__.orders.delete('<%= orderId %>')">Sim, cancelar</button>
     <button id="cancel-btn" class="btn btn-sm btn--primary-ghost" onClick="__f5__.modalCloseListener">Voltar</button>
 </div>
