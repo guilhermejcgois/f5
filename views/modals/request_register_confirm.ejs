@@ -1,8 +1,8 @@
 <%- include('modal_close') %>
-<header class="modal-title">Seu pedido foi realizado com sucesso</header>
-<p class="modal-disclaimer text-3">Seu pedido foi enviado e deverá ser aprovado dentro de 24h pela
+<header class="modal-title">Seu pedido foi realizado com sucesso!</header>
+<p class="modal-disclaimer text-2">Seu pedido foi enviado e deverá ser aprovado dentro de 24h pela
 nossa equipe. Enquanto isso, você pode acompanhar o status da
-sua solicitação na aba <a href="/app/dashboard/requests" class="link--primary">Meus Pedidos</a>, no menu lateral.</p>
+sua solicitação na aba <a href="/app/dashboard/requests" class="link--primary">Solicitações</a>, no menu lateral.</p>
 <main class="request-data-table">
     <div class="row row--bottom-border">
         <span class="label text-2">Número da solicitação</span>
@@ -18,5 +18,5 @@ sua solicitação na aba <a href="/app/dashboard/requests" class="link--primary"
     </div>
 </main>
 <div class="modal-actions">
-    <button id="order-cancel" onClick="__f5__.orders.askDelete('<%= data.id %>')" class="btn btn-lg btn--primary-ghost">Cancelar Pedido</button>
+    <button id="order-cancel" onClick="__f5__.orders.askDelete('<%= data.id %>')" class="btn btn-lg btn--primary">Cancelar Pedido</button>
 </div>

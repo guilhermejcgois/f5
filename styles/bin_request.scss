@@ -18,8 +18,9 @@
         .map-wrapper {
             width: 627px;
             height: 493px;
-            border: solid 1px #707070;
-            background-color: $white;
+            background-image: url(/img/map-preview.png);
+            background-repeat: no-repeat;
+            background-size: contain;
         }
     }
 
@@ -60,7 +61,7 @@
             justify-content: center;
             align-items: center;
 
-            padding-top: 33px;
+            padding-top: 1rem;
             padding-left: 25px;
             padding-right: 25px;
 
@@ -95,8 +96,8 @@
         #address.searched {
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
-            border-top-left-radius: 33px;
-            border-top-right-radius: 33px;
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
         }
 
         #address,
@@ -114,8 +115,8 @@
             width: 493px;
             border-top-left-radius: 0;
             border-top-right-radius: 0;
-            border-bottom-left-radius: 33px;
-            border-bottom-right-radius: 33px;
+            border-bottom-left-radius: 1rem;
+            border-bottom-right-radius: 1rem;
         }
         
         .autoComplete_result {
