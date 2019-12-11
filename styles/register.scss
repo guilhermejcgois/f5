@@ -2,9 +2,13 @@
 @import "variables";
 
 .register {
+    .step-1 .link--primary,
+    .step-2 .link--primary {
+        font-size: $text-4-font-size;
+    }
+
     .step-1 .link--primary {
         display: flex;
-        font-size: $text-4-font-size;
     }
 
     .step-1 .link--primary:after {

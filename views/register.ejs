@@ -19,15 +19,15 @@
         <h2 class="text-1 bold">Registre-se</h2>
         <form id="form-step-1">
           <div class="form-group">
-            <label class="text-4" for="name">Nome da empresa *</label>
+            <label class="text-4" for="name">Nome da empresa</label>
             <input type="text" id="name" name="name" class="form-control" placeholder="Digite o nome da sua empresa" required/>
           </div>
           <div class="form-group">
-            <label class="text-4" for="address">Endereço *</label>
+            <label class="text-4" for="address">Endereço</label>
             <input type="text" id="address" name="address" class="form-control" placeholder="Digite o endereço da empresa" required/>
           </div>
           <div class="form-group">
-            <label class="text-4" for="cnpj">CNPJ *</label>
+            <label class="text-4" for="cnpj">CNPJ</label>
             <input type="text" id="cnpj" name="cnpj" class="form-control" placeholder="Digite o CNPJ da empresa sem pontos" required/>
           </div>
           <div class="form-footer">
@@ -42,20 +42,20 @@
         <h2 class="text-1 bold">Registre-se</h2>
         <form id="form-step-2">
           <div class="form-group">
-            <label class="text-4" for="email">Email *</label>
+            <label class="text-4" for="email">Email</label>
             <input type="email" id="email" name="email" class="form-control" placeholder="Digite seu email" required/>
           </div>
           <div class="form-group">
-            <label class="text-4" for="password">Senha *</label>
+            <label class="text-4" for="password">Senha</label>
             <input minlength="6" type="password" id="password" name="password" class="form-control" placeholder="Digite sua senha" required/>
           </div>
           <div class="form-group">
-            <label class="text-4" for="confirm_password">Confirme sua senha *</label>
+            <label class="text-4" for="confirm_password">Confirme sua senha</label>
             <input minlength="6" type="password" id="confirm_password" name="confirm_password" class="form-control" placeholder="Confirme a senha acima" required/>
             <div class="form-error"></div>
           </div>
           <div class="form-group">
-            <label class="text-4" style="line-height: initial;" for="accept"><input name="accept" id="accept" type="checkbox" required />Ao criar uma conta você concorda com os nossos <a class="link--primary" href="">Termos de Serviço</a> e <a class="link--primary" href=""></a>Política de Privacidade.</a></label>
+            <label class="text-5" style="line-height: inherit; font-weight: normal; margin-top: 10px" for="accept"><input name="accept" id="accept" type="checkbox" required />Ao criar uma conta você concorda com os nossos <a class="link--primary" href="">Termos de Serviço</a> e <a class="link--primary" href=""></a>Política de Privacidade.</a></label>
           </div>
           <div class="form-footer">
             <button id="submit" type="submit" class="btn-sm btn--primary">Registrar</button>
@@ -79,7 +79,7 @@
   const lopBox1 = $(lopBox1Sel);
   const lopBox2 = $(lopBox2Sel);
 
-  lopBox1.removeClass('hide');
+  lopBox2.removeClass('hide');
 
   $(lopBox1Sel + ' form').submit(function (e) {
     e.preventDefault();
