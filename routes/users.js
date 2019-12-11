@@ -8,7 +8,7 @@ import { User } from '../models/User';
 
 // Register Handle
 router.post('/register', (req, res) => {
-    const { name, email, password, confirm_password, address, cnpj, tel, accept } = req.body;
+    const { name, email, password, confirm_password, address, cnpj, accept } = req.body;
     let errors = [];
 
     // Check required fields
@@ -36,8 +36,7 @@ router.post('/register', (req, res) => {
             name,
             email,
             address,
-            cnpj,
-            phone
+            cnpj
         });
     };
 
@@ -111,10 +110,12 @@ router.post('/login', (req, res, next) => {
 router.get('/login', (req, res) => res.redirect('/app/login'));
 
 // Logout Handle
-router.post('/logout', (req, res) => {
+router.get('/logout', (req, res) => {
     req.logout();
     req.flash('success_msg', 'You have logged out');
-    res.redirect('/app/login');
+    // res.redirect('/app/login');
+    res.status(200);
+    res.send('Logged out');
 });
 
 export default router;

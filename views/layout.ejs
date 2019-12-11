@@ -43,6 +43,7 @@
             },
             router: {
                 navigate: function (route) {
+                    if (route === undefined) { return false; }
                     if (sessionStorage.getItem('lastroute') === route) { return false; }
 
                     const loader = document.querySelector('.dashboard-loader');

@@ -5,6 +5,10 @@ const bins = [
 ];
 
 const OrganizationSchema = new mongoose.Schema({
+    logo: {
+        data: Buffer,
+        type: String
+    },
     address: {
         type: String,
         required: true
@@ -27,21 +31,23 @@ const OrganizationSchema = new mongoose.Schema({
         default: false
     },
     payment_info: {
-        name: {
-            type: String,
-            required: true
-        },
-        number: {
-            type: String,
-            required: true
-        },
-        validity: {
-            type: String,
-            required: true
-        },
-        cvv: {
-            type: String,
-            required: true
+        type: {
+            name: {
+                type: String,
+                required: true
+            },
+            number: {
+                type: String,
+                required: true
+            },
+            validity: {
+                type: String,
+                required: true
+            },
+            cvv: {
+                type: String,
+                required: true
+            }
         },
     },
     bins

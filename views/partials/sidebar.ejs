@@ -55,6 +55,6 @@
     }
     document.querySelector('#logout-link a').addEventListener('click', function (e) {
         e.preventDefault();
-        $.post('/users/logout', () => location.href = '/');
+        $.get('/app/users/logout', () => location.href = '/app');
     });
 </script>

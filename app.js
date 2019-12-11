@@ -56,9 +56,6 @@ app.use((req, res, next) => {
 });
 
 // Routes
-app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname + '/static/index.html'));
-});
 app.use('/wp-content', express.static(__dirname + '/static/wp-content'));
 app.use('/wp-includes', express.static(__dirname + '/static/wp-includes'));
 app.use('/posts', express.static(__dirname + '/static/posts'));
@@ -94,6 +91,10 @@ app.use('/favicon', express.static(__dirname + '/assets/favicon'));
 app.use('/fonts', express.static(__dirname + '/assets/fonts'));
 app.use('/icons', express.static(__dirname + '/assets/icons'));
 app.use('/img', express.static(__dirname + '/assets/img'));
+
+app.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname + '/static/index.html'));
+});
 
 const PORT = process.env.PORT || 5000;
 
