@@ -4,7 +4,7 @@
             <img src="/img/F5-logo.svg">
         </div>
         <div class="user-info">
-            <img class="logo-org" src="<%= org.logo || '/img/logo-org-f5.png' %>" alt="Logo da Empresa">
+            <img class="logo-org" src="<%= org.logo || '/img/logo-org-' + (user.email.startsWith('sucata') ? 'sucata.jpeg' : 'f5.png') %>" alt="Logo da Empresa">
             <span class="name text-5"><%= org.name %></span>
             <span class="email text-6"><%= user.email %></span>
         </div>

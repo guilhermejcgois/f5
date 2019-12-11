@@ -3,15 +3,25 @@
 <div class="profile-page">
     <form class="card profile__form">
         <h4 class="text-2">Dados de Perfil</h4>
-        <div class="form-group">
-            <label class="text-4" for="name">Nome da empresa</label>
-            <input type="text" id="name" name="name" class="form-control" placeholder="Digite o nome da empresa"
-                required value="<%= org.name %>" />
-        </div>
-        <div class="form-group">
-            <label class="text-4" for="cnpj">CNPJ da empresa</label>
-            <input type="text" id="cnpj" name="cnpj" class="form-control" placeholder="Digite o CNPJ da empresa"
-                required value="<%= org.cnpj %>" />
+        <div class="form-row">
+            <div class="form-group">
+                <div class="logo-wrapper">
+                    <img id="logo-preview" src="<%= org.logo || '/img/logo-org-' + (user.email.startsWith('sucata') ? 'sucata.jpeg' : 'f5.png') %>" alt="Organization logo preview">
+                    <!-- <input type="file" id="logo-input" name="logo" accept=".png,.jpg,.jpeg" /> -->
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-group">
+                    <label class="text-4" for="name">Nome da empresa</label>
+                    <input type="text" id="name" name="name" class="form-control" placeholder="Digite o nome da empresa"
+                        required value="<%= org.name %>" />
+                </div>
+                <div class="form-group">
+                    <label class="text-4" for="cnpj">CNPJ da empresa</label>
+                    <input type="text" id="cnpj" name="cnpj" class="form-control" placeholder="Digite o CNPJ da empresa"
+                        required value="<%= org.cnpj %>" />
+                </div>
+            </div>
         </div>
         <div class="form-group">
             <label class="text-4" for="address">Endereço da empresa</label>

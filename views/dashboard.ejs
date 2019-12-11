@@ -238,7 +238,7 @@
             const data = {
                 name: '',
                 address: '',
-                logo: '',
+                logo: document.getElementById('logo-preview').getAttribute('src'),
                 cnpj: ''
             };
             const valid = {
@@ -269,7 +269,7 @@
             document.querySelector('#edit-user').addEventListener('click', () => {
                 const saveButton = document.querySelector('#save');
 
-                const orgProfile = `name=${data.name}&address=${data.address}&cnpj=${data.cnpj}`;
+                const orgProfile = `name=${data.name}&address=${data.address}&cnpj=${data.cnpj}&logo=${data.logo}`;
                 $.post('/app/users/organization', orgProfile, (data) => {
                     const modalContainer = document.querySelector('.dashboard__main .modal-container');
                     if (modalContainer) {
@@ -277,6 +277,19 @@
                     }
                     document.querySelector('.dashboard__main').innerHTML += data;
                 });
+            });
+            document.querySelector('#logo-input').addEventListener('change', (event) => {
+                const input = event.target;
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('#logo-preview')
+                            .attr('src', data.logo = e.target.result);
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                }
             });
 
             checkForm({ target: document.querySelector('#name') });

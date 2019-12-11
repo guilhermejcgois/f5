@@ -133,7 +133,8 @@ router.post('/organization', (req, res) => {
         updateOrgQuery.$set.cnpj = cnpj;
     }
     if (logo) {
-        updateOrgQuery.$set.logo = new Buffer(logo, 'binary').toString('base64');
+        // updateOrgQuery.$set.logo = new Buffer(logo.split(",")[1], "base64");
+        // updateOrgQuery.$set.logo = new Buffer(logo, 'binary').toString('base64');
     }
 
     Organization.findByIdAndUpdate(req.user.organization, updateOrgQuery, (err, org) => {
