@@ -42,20 +42,22 @@
     </footer>
 </aside>
 <script>
-    document.querySelectorAll('.sidebar__menu-item:not(.disabled) a').forEach(a => {
-        a.addEventListener('click', function (e) {
-            console.log(e.target.dataset.route)
-            __f5__.router.navigate(e.target.dataset.route);
-            e.target.parentElement.classList.add('active');
+    setTimeout(() => {
+        document.querySelectorAll('.sidebar__menu-item:not(.disabled) a').forEach(a => {
+            a.addEventListener('click', function (e) {
+                console.log(e.target.dataset.route)
+                __f5__.router.navigate(e.target.dataset.route);
+                e.target.parentElement.classList.add('active');
+            });
         });
-    });
-    const activeMenuItem = '#<%= page%>-link';
-    const li = document.querySelector(activeMenuItem);
-    if (li) {
-        li.classList.add('active');
-    }
-    document.querySelector('#logout-link a').addEventListener('click', function (e) {
-        e.preventDefault();
-        $.get('/app/users/logout', () => location.href = '/app');
+        const activeMenuItem = '#<%= page%>-link';
+        const li = document.querySelector(activeMenuItem);
+        if (li) {
+            li.classList.add('active');
+        }
+        document.querySelector('#logout-link a').addEventListener('click', function (e) {
+            e.preventDefault();
+            $.get('/app/users/logout', () => location.href = '/app');
+        });
     });
 </script>

@@ -79,7 +79,7 @@
   const lopBox1 = $(lopBox1Sel);
   const lopBox2 = $(lopBox2Sel);
 
-  lopBox2.removeClass('hide');
+  lopBox1.removeClass('hide');
 
   $(lopBox1Sel + ' form').submit(function (e) {
     e.preventDefault();
@@ -98,7 +98,13 @@
     if ($('#password.form-control').val() !== $('#confirm_password.form-control').val()) { return; }
 
     const data = $(this).serialize() + '&' + $(lopBox1Sel + ' form').serialize();
-    $.post('users/register', data);
+    $.post('users/register', data, function (_, textStatus) {
+      if (textStatus === 'success') {
+        location.href = '/app/dashboard';
+      } else {
+        console.warn('Register failed')
+      }
+    });
   });
 
   const password = $('#password.form-control');

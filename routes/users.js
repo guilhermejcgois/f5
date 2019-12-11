@@ -7,7 +7,7 @@ import { Organization } from '../models/Organization';
 import { User } from '../models/User';
 
 // Register Handle
-router.post('/register', (req, res) => {
+router.post('/register', (req, res, next) => {
     const { name, email, password, confirm_password, address, cnpj, accept } = req.body;
     let errors = [];
 
@@ -53,8 +53,11 @@ router.post('/register', (req, res) => {
             user.organization.save()
                 .then(() => user.save())
                 .then(() => {
-                    req.flash('success_msg', 'Você já está cadastrado e agora já pode fazer seu login');
-                    res.redirect('/app/login');
+                    passport.authenticate('local', {
+                        successRedirect: '/app/dashboard',
+                        failureRedirect: '/app/login',
+                        failureFlash: true
+                    })(req, res, next);
                 })
                 .catch(err => console.error(err));
         };
@@ -84,8 +87,7 @@ router.post('/register', (req, res) => {
                 organization = new Organization({
                     name,
                     address,
-                    cnpj,
-                    tel
+                    cnpj
                 });
 
                 User.findOne({ email }).then(thenUser);
