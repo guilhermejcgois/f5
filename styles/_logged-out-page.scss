@@ -40,7 +40,7 @@ $content-padding-top: 45px;
         width: 64px;
       }
     
-      @media screen and (min-width: $xlg-width) {
+      @media screen and (min-width: $xlg-width + 100px) {
         height: 110px;
         width: 110px;
       }
@@ -132,6 +132,14 @@ $content-padding-top: 45px;
 
   .form-footer {
     margin-top: 50px;
+  }
+
+  input.form-control {
+    width: unset;
+  }
+
+  button {
+    padding-right: 0;
   }
 
   @media screen and (max-width: $md-width) {
