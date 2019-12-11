@@ -1,0 +1,88 @@
+@import 'variables';
+
+%modal-bin-delete {
+    .modal {
+        height: $modal-bin-delete-height;
+        width: $modal-bin-delete-width;
+
+        &-actions {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+        }
+    
+        &-title {
+            max-width: 600px;
+        }
+    }
+    
+}
+
+%modal-bin-deleted {
+    .ic {
+        top: 30px;
+    }
+
+    .modal {
+        padding: 0;
+        height: $modal-bin-deleted-height;
+        width: $modal-bin-deleted-width;
+        justify-content: center;
+    }
+}
+
+%modal-bin-inserted {
+    .modal {
+        min-height: 481px;
+        max-height: 681px;
+    }
+
+    .label {
+        color: $blueberry;
+    }
+
+    .modal-disclaimer {
+        width: 681px;
+        text-align: center;
+    }
+
+    .row .value {
+        margin-left: 50px;
+    }
+
+    #order-cancel {
+        line-height: 60px;
+        text-align: center;
+    }
+}
+
+%modal-order-delete {
+    .ic {
+        display: none;
+    }
+
+    .modal {
+        height: $modal-order-delete-height;
+        width: $modal-order-delete-width;
+    }
+    
+    .modal-actions {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+    }
+}
+
+%modal-order-deleted {
+    .ic {
+        top: 30px;
+    }
+
+    .modal {
+        padding: 0;
+        height: $modal-order-deleted-height;
+        width: $modal-order-deleted-width;
+        justify-content: center;
+    }
+}
