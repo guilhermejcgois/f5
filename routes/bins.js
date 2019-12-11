@@ -78,7 +78,7 @@ router.post('/register', configAuth.ensureAuthenticated, (req, res) => {
             return;
         }
 
-        Places.findById(address, (err, place) => {
+        Places.findById(address, function (err, place) {
             if (err) {
                 res.status(500);
                 res.send(err);
@@ -96,15 +96,15 @@ router.post('/register', configAuth.ensureAuthenticated, (req, res) => {
             org.bins.push(bin);
             return bin.save();
         })
-        .then(() => {
+        .then(function () {
             order = new Orders({
                 bin,
                 organization: org
             });
             return order.save();
         })
-        .then(() => org.save())
-        .then(() => {
+        .then(function () { org.save() })
+        .then(function () {
             res.render('modals/request_register_confirm', {
                 layout,
                 data: {
