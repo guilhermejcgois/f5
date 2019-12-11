@@ -151,18 +151,23 @@
         }
 
         .modal {
-            max-width: 851px;
+            max-width: 603px;
             
             border-radius: 5px;
             box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.16);
             background: $white;
             position: relative;
-            padding: 49px 75.5px 72px 73.5px;
+            padding: 50px 72.5px 50px 72.5px;
 
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
+            text-align: center;
+
+            .btn {
+                height: 40px;
+            }
         }
 
         .modal .ic-close {
@@ -173,17 +178,20 @@
 
         .modal-title {
             font-size: 36px;
-            line-height: 1.19;
+            line-height: 2.19;
             font-weight: 900;
             color: $blueberry;
             text-align: center;
-            width: 75%;
-            max-width: 445px;
+            width: 93%;
+            max-width: 525px;
             margin: 0 auto;
         }
 
         .modal-disclaimer {
-            line-height: 27px;
+            font-size: 1.2rem;
+            line-height: 30px;
+            text-align: center;
+            padding-bottom: 34px;
         }
 
         .modal-actions {
