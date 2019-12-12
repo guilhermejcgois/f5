@@ -24,8 +24,9 @@
         > * {
             background-color: $white;
             background-repeat: no-repeat;
-            background-position: 95% bottom;
-            background-size: auto 55px;
+            background-position: right bottom;
+            background-size: auto 65px;
+            background-origin: content-box;
             position: relative;
             padding: 26px 20px 18px 20px;
             display: flex;
@@ -82,7 +83,21 @@
             line-height: 15px;
         }
 
-        @media screen and (min-width: $xlg-width + 100px) {
+        @media screen and (min-width: $xlg-width) {
+            .title {
+                font-size: 40px;
+            }
+
+            .description {
+                font-size: 18px;
+            }
+
+            .spacing {
+                height: 45px;
+            }
+        }
+
+        @media screen and (min-width: $xlg-width + 500px) {
             .title {
                 font-size: 68px;
             }
