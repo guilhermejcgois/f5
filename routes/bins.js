@@ -75,7 +75,7 @@ router.post('/register', configAuth.ensureAuthenticated, (req, res) => {
 
     let bin;
     let order;
-    return Organization.findById(req.user.organization, (err, org) => {
+    return Organization.findById(req.user.organization, function (err, org) {
         if (err) {
             res.render('login', err);
 

@@ -126,11 +126,15 @@ const renderWithPage = (req, res, org) => {
             break;
         case 'bins':
             Orders.find({ organization: org._id }, allOrdersForOrgCb(orders => {
-                const binsPromises = orders.map(order => Bins.findById(order.bin));
-                Promise.all(binsPromises).then(findsPlacesAndRender(res => render({
-                    bins: Object.values(res.bins || {}),
-                    canDelete: true
-                })));
+                const binsPromises = orders.map(order => {
+                    return Bins.findById(order.bin);
+                });
+                Promise.all(binsPromises).then(findsPlacesAndRender(res => {
+                    render({
+                        bins: Object.values(res.bins || {}),
+                        canDelete: true
+                    })
+                }));
             }));
             break;
         case 'requests':
