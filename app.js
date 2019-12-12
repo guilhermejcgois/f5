@@ -92,6 +92,7 @@ app.use('/favicon', express.static(__dirname + '/assets/favicon'));
 app.use('/fonts', express.static(__dirname + '/assets/fonts'));
 app.use('/icons', express.static(__dirname + '/assets/icons'));
 app.use('/img', express.static(__dirname + '/assets/img'));
+app.use('/static/img', express.static(__dirname + '/static/img'));
 
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname + '/static/index.html'));
