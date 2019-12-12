@@ -1,4 +1,5 @@
 import express from 'express';
+import moment from 'moment';
 
 import PAGE_TITLES from './config/page-titles';
 
@@ -76,6 +77,7 @@ const renderWithPage = (req, res, org) => {
             page,
             title,
             lang,
+            moment,
             ...opts
         });
 

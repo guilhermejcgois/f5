@@ -9,7 +9,7 @@
                     Número da solicitação: <%= order._id.toString().substr(0, 4) + '...' + order._id.toString().substr(-4) %>
                 </span>
                 <span class="text-4 card-header__subtitle">
-                    Atualização em <%= order.lastModifiedDate %>
+                    Atualização em <%= moment.utc(order.lastModifiedDate).format('YYYY-MM-DD HH:mm:SS UTC') %>
                 </span>
             </div>
             <div class="card-body">
