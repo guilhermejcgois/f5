@@ -4,7 +4,7 @@
     "STATUS_ACTIVE": "Operando",
     "ORDER_OPENED": "Pedido realizado",
     "ORDER_CONFIRMED": "Pedido confirmado",
-    "ORDER_WAITING": "BIN pronta para dispacho",
+    "ORDER_WAITING": "BIN pronta para despacho",
     "ORDER_DISPATCHED": "Em trânsito",
     "ORDER_FINISHED": "BIN instalada e pronta para uso!"
 }
