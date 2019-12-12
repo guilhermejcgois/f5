@@ -24,10 +24,11 @@
         border: $line-width solid $dark-hot-pink;
         width: $bullet-size;
         height: $bullet-size;
-        line-height: $bullet-size;
+        line-height: 6px;
         border-radius: $bullet-size;
         position: relative;
         left: 50%;
+        margin-top: -1.3px;
         margin-bottom: $bullet-size / 2;
         margin-left: $bullet-size * -0.5;
         z-index: 1;
