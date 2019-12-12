@@ -5,6 +5,7 @@ import PAGE_TITLES from './config/page-titles';
 import configAuth from '../config/auth';
 import * as lang from '../i18n/lang.json';
 import { Bins } from '../models/Bins';
+import { Places } from '../models/Places';
 import { Orders, orderStatuses } from '../models/Orders';
 import { Organization } from '../models/Organization';
 
@@ -49,30 +50,31 @@ router.delete('/:id', configAuth.ensureAuthenticated, (req, res) => {
 
 router.get('/:id', configAuth.ensureAuthenticated, (req, res) => {
     const { id } = req.params;
-    let address;
     let status;
     let size;
 
-    Orders.findById(id).then(order => {
+    Orders.findById(id).then(function (order) {
         status = order.status
         return Bins.findById(order.bin);
-    }).then(bin => {
+    }).then(function (bin) {
         size = bin.size;
-        address = bin.place.address;
-    }).then(() => res.render('modals/request_info', {
-        layout: 'layouts/modal',
-        modalId: 'info-modal',
-        user: req.user,
-        title: PAGE_TITLES.REQUESTS,
-        lang,
-        orderStatuses,
-        data: {
-            address,
-            id,
-            size,
-            status
-        }
-    }));
+        return Places.findById(bin.place);
+    }).then(function (place) {
+        res.render('modals/request_info', {
+            layout: 'layouts/modal',
+            modalId: 'info-modal',
+            user: req.user,
+            title: PAGE_TITLES.REQUESTS,
+            lang,
+            orderStatuses,
+            data: {
+                address: place.address,
+                id,
+                size,
+                status
+            }
+        });
+    });
 });
 
 export default router;
