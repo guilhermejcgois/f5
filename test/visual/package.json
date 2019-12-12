@@ -1,7 +1,9 @@
 {
   "name": "f5-test-visual",
   "scripts": {
-    "test": "percy exec -- node snapshots.js"
+    "test": "percy exec -- node snapshots.js",
+    "test:not-payed": "percy exec -- node snapshots-not-payed.js",
+    "test:payed-empty": "percy exec -- node snapshots-payed-empty.js"
   },
   "devDependencies": {
     "@percy/script": "^1.0.2"
