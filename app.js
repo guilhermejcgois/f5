@@ -11,6 +11,7 @@ import routesBins from './routes/bins';
 import routesDashboard from './routes/dashboard';
 import routesPayment from './routes/payment';
 import routesRequests from './routes/requests';
+import routesContactUs from './routes/contact-us';
 import routesUsers from './routes/users';
 
 const app = express();
@@ -78,6 +79,7 @@ app.use('/app/dashboard', routesDashboard);
 app.use('/app/dashboard/requests', routesRequests);
 app.use('/app/payment', routesPayment);
 app.use('/app/users', routesUsers);
+app.use('/contact-us', routesContactUs);
 app.use('/users', routesUsers);
 
 app.use('/app/css', express.static(__dirname + '/dist/css'));

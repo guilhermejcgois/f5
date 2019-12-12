@@ -609,13 +609,89 @@ flexibility(document.documentElement);
 		</section>
 				<div class="elementor-element elementor-element-a175341 elementor-icon-list--layout-traditional elementor-widget elementor-widget-icon-list" data-id="a175341" data-element_type="widget" data-widget_type="icon-list.default">
 				<div class="elementor-widget-container">
-					<ul class="elementor-icon-list-items">
+					<!-- <ul class="elementor-icon-list-items">
 							<li class="elementor-icon-list-item" >
 											<span class="elementor-icon-list-icon">
 							<i aria-hidden="true" class="fas fa-envelope"></i>						</span>
 										<span class="elementor-icon-list-text">somosf5@contato.com.br</span>
 									</li>
-						</ul>
+						</ul> -->
+						<style>
+							.f5-container {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.f5-form-contact {
+  width: 100%;
+  font-family: "Arial", Times, serif;
+}
+
+.f5-form-contact-input {
+  width: 100%;
+  color: #292929;
+  font-size: 18px;
+  background-color: #E9E9E9;
+  border: 1px solid #E9E9E9;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  height: 40px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  text-indent: 20px;
+}
+
+.f5-form-contact-textarea {
+  width: 100%;
+  color: #292929;
+  font-size: 18px;
+  background-color: #E9E9E9;
+  border: 1px solid #E9E9E9;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  height: 200px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  text-indent: 20px;
+  padding-top: 16px;
+  padding-left: 0;
+  padding-right: 0;
+  font-family: "Arial", Times, serif;
+}
+
+.f5-form-contact-button {
+  width: 100%;
+  font-size: 18px;
+  border-radius: 4px;
+  color: #fff;
+  height: 40px;
+  opacity: .8;
+  margin-bottom: 20px;
+  cursor: pointer;
+  background: dark-hot-pink;
+  display: block;
+  border: none;
+  border-bottom: 1px solid #500707;
+  border-right: 1px solid #500707;
+  transition: 1s;
+}
+
+.f5-form-contact-button:hover {
+  opacity: 1;
+}
+						</style>
+						<div class="f5-container">
+							<form action="/contact-us" class="f5-form-contact" method="post" tabindex="1" onSubmit="alert('Mensagem enviada com sucesso!')">
+								<input type="text" class="f5-form-contact-input" name="nome" placeholder="Nome" required />
+								<input type="email" class="f5-form-contact-input" name="email" placeholder="Email" required />
+								<textarea class="f5-form-contact-textarea" name="message" placeholder="Deixe uma mensagem" required></textarea>
+								<button type="submit" class="f5-form-contact-button">Enviar</button>
+							</form>
+						</div>
 				</div>
 				</div>
 						</div>
