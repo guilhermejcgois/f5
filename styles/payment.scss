@@ -51,6 +51,8 @@
         margin: 20px 0;
         display: flex;
         justify-content: center;
+        flex: 1;
+        align-items: flex-end;
     }
 
     .payment__form {
