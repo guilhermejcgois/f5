@@ -20,7 +20,9 @@
         <span class="description">Mapa de Bins</span>
     </div>
     <div class="dashboard-grid__schedule">
-        <div class="info"></div>
+        <div class="info">
+            <p>Em breve!</p>
+        </div>
         <span class="description">Coletas agendadas</span>
     </div>
 </div>
@@ -49,18 +51,14 @@
                 map: map
             }));
         }
-        var mapsScript = document.createElement('script');
-        mapsScript.onload = setPinPointsOnDashMap;
-        mapsScript.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCDQXi8Ivilc0wysu24bcjh0t2qhAtz5ls";
-        mapsScript.async = true;
-        mapsScript.defer = true;
-        document.querySelector('.dashboard-grid').parentElement.appendChild(mapsScript);
+        
+        setPinPointsOnDashMap();
 
         /* D3 CHART */
         const dashChart = document.querySelector('#dashChart');
-        var width = dashChart.parentElement.offsetWidth,
-            height = dashChart.parentElement.offsetHeight,
-            margin = 0;
+        var width = dashChart.parentElement.offsetWidth - 25,
+            height = dashChart.parentElement.offsetHeight - 25,
+            margin = 50;
         var radius = Math.min(width * 0.8, height * 0.8) / 2 - margin;
         var arc =  d3.arc()
             .innerRadius(height > 500 ? radius - 50 : 130)         // This is the size of the donut hole
@@ -103,7 +101,7 @@
             .enter()
             .append("text")
             .attr("text-anchor", "middle")
-            .attr('font-size', height > 500 ? '3em' : '1.7em')
+            .attr('font-size', height > 500 ? '3em' : '1.5em')
             .attr('y', 20)
             .text('Total de Bins');
 
@@ -116,10 +114,10 @@
             .attr("width", width * 2)
             .attr("height", height * 0.4)
             .attr('transform', (d, i) => `translate(${i * -100},${height * 0})`);
-        lg.append("rect").attr('x', -width / 4).attr('y', 30).attr("width", 15).attr("height", 15).attr("r", 5).style("fill", "#70eb8d")
-        lg.append("text").attr('x', -width / 4 + 25).attr('y', 40).text("Bins coletadas").style("font-size", "12px").attr("alignment-baseline", "middle")
-        lg.append("rect").attr('x', +width / 10).attr('y', 30).attr("width", 15).attr("height", 15).attr("r", 5).style("fill", "#ef4941")
-        lg.append("text").attr('x', +width / 10 + 25).attr('y', 40).text("Bins para coletar").style("font-size", "12px").attr("alignment-baseline", "middle")
+        lg.append("rect").attr('x', -width / 3).attr('y', 30).attr("width", 15).attr("height", 15).attr("r", 5).style("fill", "#70eb8d")
+        lg.append("text").attr('x', -width / 3 + 25).attr('y', 40).text("Bins coletadas").style("font-size", "16px").attr("alignment-baseline", "middle")
+        lg.append("rect").attr('x', +width / 15).attr('y', 30).attr("width", 15).attr("height", 15).attr("r", 5).style("fill", "#ef4941")
+        lg.append("text").attr('x', +width / 15 + 25).attr('y', 40).text("Bins para coletar").style("font-size", "16px").attr("alignment-baseline", "middle")
     });
 </script>
 <% } else { %>

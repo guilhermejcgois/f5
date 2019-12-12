@@ -40,10 +40,10 @@ a.btn-lg {
 
 .btn-xs {
   @extend %btn;
-  height: 25px;
-  width: 50px;
+  height: 30px;
+  width: 85px;
   box-shadow: none;
-  font-size: 8px;
+  font-size: 14px;
 }
 
 .btn-sm {
@@ -78,9 +78,9 @@ a.btn-lg {
 
 .btn--danger-ghost {
   @extend %btn-ghost;
-  border-color: #bfc5d2;
+  border-color: #a5a5a5;
   border-width: 1px;
-  color: #bfc5d2;
+  color: #a5a5a5;
   
   &:focus,
   &:hover {

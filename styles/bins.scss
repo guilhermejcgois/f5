@@ -2,7 +2,8 @@
 @import "variables";
 @import "widgets/modals";
 
-$table-row-height: 40px;
+$table-cell-height: 60px;
+$table-row-height: 60px;
 $cell-gap: 20px;
 
 .bins {
@@ -33,8 +34,8 @@ $cell-gap: 20px;
 
             .ic {
                 margin-right: 5px;
-                width: 10px;
-                height: 10px;
+                width: 15px;
+                height: 15px;
             }
 
             &.active {
@@ -42,7 +43,7 @@ $cell-gap: 20px;
             }
 
             &.inactive {
-                color: #bfc5d2;
+                color: #a5a5a5;
             }
         }
 
@@ -94,8 +95,8 @@ $cell-gap: 20px;
     }
 
     &__header-cell {
-        color: $light-grey;
-        font-size: 10px;
+        color: #a5a5a5;
+        font-size: 15px;
     }
 
     &__header-cell:first-child {
@@ -104,8 +105,8 @@ $cell-gap: 20px;
 
     &__cell {
         vertical-align: middle;
-        height: $table-row-height;
-        font-size: 12px;
+        height: $table-cell-height;
+        font-size: 15px;
     }
 
     &__cell:first-child {

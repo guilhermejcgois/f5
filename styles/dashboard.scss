@@ -43,6 +43,11 @@
         &__chart {
             grid-area: chart;
             padding: 0;
+
+            #dashChart {
+                display: flex;
+                justify-content: center;
+            }
         }
         &__map {
             grid-area: map;
@@ -58,6 +63,21 @@
             grid-area: sched;
             background-image: url(/img/appointment.svg);
             color: rgba($squash, 0.75);
+
+            .info {
+                font-size: 1.5rem;
+                font-weight: bold;
+
+                flex: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                background-image: url(/img/ilustracao-coletas.png);
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: 50%;
+            }
         }
         &__volume {
             grid-area: vol;

@@ -71,16 +71,15 @@
                                     var map = new google.maps.Map(
                                         document.querySelector('.map-wrapper'), {
                                         center: places[0],
-                                        clickableIcons: false,
-                                        gestureHandling: 'none',
-                                        fullscreenControl: false,
-                                        mapTypeControl: false,
-                                        panControlOptions: false,
-                                        rotateControl: false,
-                                        streetViewControl: false,
-                                        zoomControl: false,
-                                        minZoom: 12,
-                                        maxZoom: 12,
+                                        clickableIcons: true,
+                                        fullscreenControl: true,
+                                        mapTypeControl: true,
+                                        panControlOptions: true,
+                                        rotateControl: true,
+                                        streetViewControl: true,
+                                        zoomControl: true,
+                                        minZoom: 10,
+                                        maxZoom: 14,
                                         zoom: 12,
                                     }
                                     );
@@ -90,12 +89,8 @@
                                         map: map
                                     }));
                                 }
-                                var mapsScript = document.createElement('script');
-                                mapsScript.onload = setPinPointsOnDashMap;
-                                mapsScript.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCDQXi8Ivilc0wysu24bcjh0t2qhAtz5ls";
-                                mapsScript.async = true;
-                                mapsScript.defer = true;
-                                dashGrid.parentElement.appendChild(mapsScript);
+                                
+                                setPinPointsOnDashMap();
 
                                 /* D3 CHART */
                                 const dashChart = document.querySelector('#dashChart');
